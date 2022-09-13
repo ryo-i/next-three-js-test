@@ -1,10 +1,10 @@
 {
     "head": {
-        "url": "https://next-app-started.vercel.app/"
+        "url": "https://next-three-js-test.vercel.app/"
     },
     "header": {
-        "title":"Nextアプリスターターキット",
-        "text": "Next.js + TypeScript + CSS in JS環境"
+        "title":"Next-three-js-test",
+        "text": "Next.js環境でthree.jsが動くかテスト"
     },
     "main": {
         "title":"メインページです",
