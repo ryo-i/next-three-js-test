@@ -1,0 +1,26 @@
+{
+    "head": {
+        "url": "https://next-app-started.vercel.app/"
+    },
+    "header": {
+        "title":"Nextアプリスターターキット",
+        "text": "Next.js + TypeScript + CSS in JS環境"
+    },
+    "main": {
+        "title":"メインページです",
+        "text": "メインページのテキストです。テキストですったらテキストです。"
+    },
+    "inner": [
+        {
+        "title": "CSS（文字色）",
+        "text": "CSSでタイトルの文字色変更。"
+        },
+        {
+        "title": "JS（文字列）",
+        "text": "JSでテキストの文字列追加「<span class='hello'></span>」"
+        }
+    ],
+    "footer": {
+        "text": "©️ イイダリョウ"
+    }
+}

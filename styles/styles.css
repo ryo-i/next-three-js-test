@@ -1,0 +1,9 @@
+.no-fouc {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.fouc {
+    visibility: visible;
+    opacity: 1;
+}
