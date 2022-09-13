@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- ローカル環境構築中 [#1](https://github.com/ryo-i/next-three-js-test/issues/1)
+- three.jsと@typesをインストール [#1](https://github.com/ryo-i/next-three-js-test/issues/1)
 
 ## 詳細（ブログ）
 
