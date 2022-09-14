@@ -1,5 +1,6 @@
 import React, { useState }  from 'react';
 import { indexContext } from '../context/indexContext';
+import * as THREE from 'three';
 import Head from 'next/head';
 import Header from '../components/Header';
 import Inner from '../components/Inner';
