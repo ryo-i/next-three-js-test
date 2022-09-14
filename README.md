@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- npm install, npm audit fix --force実行 [#1](https://github.com/ryo-i/next-three-js-test/issues/1)
+- Three.jsをimport（パス付きで） [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
 
 ## 詳細（ブログ）
 
