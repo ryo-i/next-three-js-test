@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext }  from 'react';
 import { indexContext } from '../context/indexContext';
 import styled from 'styled-components';
+import * as THREE from 'three/src/Three';
 import { hello } from '../modules/hello/hello';
 
 
@@ -19,6 +20,7 @@ function Inner() {
 
   useEffect(() => {
     hello();
+    console.log('THREE', THREE);
   });
 
   // JSX

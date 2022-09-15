@@ -1,6 +1,5 @@
 import React, { useState }  from 'react';
 import { indexContext } from '../context/indexContext';
-import * as THREE from 'three/src/Three'
 import Head from 'next/head';
 import Header from '../components/Header';
 import Inner from '../components/Inner';
@@ -17,8 +16,6 @@ const pageText = Data.main.text;
 function Home() {
   // Hooks
   const [innerData, setInnerData] = useState(Data.inner);
-
-  console.log('THREE', THREE);
 
   return (
     <>

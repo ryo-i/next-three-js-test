@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Three.jsをimport（パス付きで） [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
+- Three.jsをInnerコンポーネントに移動 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
 
 ## 詳細（ブログ）
 
