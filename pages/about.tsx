@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>Three.jsのcanvasを特定のタグの子要素として追加 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
+                    <li>不要なタグを削除 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
                 </ul>
             </section>
             <section>

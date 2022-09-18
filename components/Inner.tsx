@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, useRef }  from 'react';
-import { indexContext } from '../context/indexContext';
+import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
 import { hello } from '../modules/hello/hello';
@@ -15,7 +14,6 @@ function Inner() {
   // Hooks
   const [title, setTitle] = useState('内容が無いよう');
   const [text, setText] = useState('へんじがない、ただのしかばねのようだ。');
-  const {innerData, setInnerData} = useContext(indexContext);
 
   const canvasElm = useRef(null);
 
@@ -51,23 +49,7 @@ function Inner() {
 
   // JSX
   return (
-    <>
-      {
-        // innerData.length >= 5 // test
-        innerData.length >= 1
-          ? innerData.map((inner, index) =>
-            <section key={ index }>
-              <H2>{ inner.title }</H2>
-              <p dangerouslySetInnerHTML={{ __html: inner.text }}></p>
-            </section>
-          )
-          : <section>
-              <h2>{ title }</h2>
-              <p>{ text }</p>
-          </section>
-      }
-      <div className="canvasElm" ref={canvasElm}></div>
-    </>
+    <figure className="canvasElm" ref={canvasElm}></figure>
   );
 }
 
