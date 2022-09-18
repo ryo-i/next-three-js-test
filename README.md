@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Three.jsのcanvasをページ上に表示 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
+- Three.jsのcanvasを特定のタグの子要素として追加 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
 
 ## 詳細（ブログ）
 

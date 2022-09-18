@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext }  from 'react';
+import React, { useState, useEffect, useContext, useRef }  from 'react';
 import { indexContext } from '../context/indexContext';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
@@ -17,18 +17,18 @@ function Inner() {
   const [text, setText] = useState('へんじがない、ただのしかばねのようだ。');
   const {innerData, setInnerData} = useContext(indexContext);
 
+  const canvasElm = useRef(null);
+
   useEffect(() => {
     hello();
 
     // three.js
-    console.log('THREE', THREE);
-
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
-    document.body.appendChild( renderer.domElement );
+    canvasElm.current.appendChild( renderer.domElement );
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -66,6 +66,7 @@ function Inner() {
               <p>{ text }</p>
           </section>
       }
+      <div className="canvasElm" ref={canvasElm}></div>
     </>
   );
 }
