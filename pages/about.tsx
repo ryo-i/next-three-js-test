@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>画面幅に合わせてcanvasサイズを設定 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
+                    <li>windowリサイズ時にcanvasサイズを変更 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
                 </ul>
             </section>
             <section>

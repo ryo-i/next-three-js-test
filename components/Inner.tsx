@@ -12,19 +12,29 @@ const Figure = styled.figure`
 
 // Component
 function Inner() {
-  // Hooks
   const [canvasSize, setCanvasSize] = useState(0);
+  const figureElm = useRef(null);
 
-  const canvasElm = useRef(null);
-
-  useEffect(() => {
-    const canvasElmWidth = canvasElm.current.clientWidth;
-    if (canvasElmWidth < 600) {
+  const changeCanvasSize = (canvasElmWidth) => {
+    if (canvasElmWidth < 900) {
       setCanvasSize(canvasElmWidth);
     } else {
-      setCanvasSize(600);
+      setCanvasSize(900);
     }
-  });
+  }
+
+  useEffect(() => {
+    const canvasElmWidth = figureElm.current.clientWidth;
+    // console.log('canvasElmWidth(load)', canvasElmWidth);
+    changeCanvasSize(canvasElmWidth);
+
+    window.addEventListener('resize', () => {
+      const canvasElmWidth = figureElm.current.clientWidth;
+      // console.log('canvasElmWidth(resize)', canvasElmWidth);
+      changeCanvasSize(canvasElmWidth);
+    });
+  }, [0]);
+
 
   useEffect(() => {
     // three.js
@@ -33,7 +43,11 @@ function Inner() {
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
-    canvasElm.current.appendChild( renderer.domElement );
+
+    if (figureElm.current.firstChild) {
+      figureElm.current.removeChild( figureElm.current.firstChild );
+    }
+    figureElm.current.appendChild( renderer.domElement );
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
     const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -56,7 +70,7 @@ function Inner() {
 
   // JSX
   return (
-    <Figure className="canvasElm" ref={canvasElm}></Figure>
+    <Figure ref={figureElm}></Figure>
   );
 }
 
