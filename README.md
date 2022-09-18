@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 不要なタグを削除 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
+- 画面幅に合わせてcanvasサイズを設定 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
 
 ## 詳細（ブログ）
 

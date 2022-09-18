@@ -7,8 +7,8 @@
         "text": "Next.js環境でthree.jsが動くかテスト"
     },
     "main": {
-        "title":"メインページです",
-        "text": "メインページのテキストです。テキストですったらテキストです。"
+        "title":"Next + Three.js",
+        "text": "はじめのいっぽ。"
     },
     "inner": [
         {

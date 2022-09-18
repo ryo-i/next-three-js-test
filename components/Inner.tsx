@@ -1,31 +1,38 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
-import { hello } from '../modules/hello/hello';
 
 
 // CSS in JS
-const H2 = styled.h2`
-  color: red;
+const Figure = styled.figure`
+  canvas {
+    box-shadow: 0 0 15px 2px rgb(0 0 0 / 10%);
+  }
 `;
 
 // Component
 function Inner() {
   // Hooks
-  const [title, setTitle] = useState('内容が無いよう');
-  const [text, setText] = useState('へんじがない、ただのしかばねのようだ。');
+  const [canvasSize, setCanvasSize] = useState(0);
 
   const canvasElm = useRef(null);
 
   useEffect(() => {
-    hello();
+    const canvasElmWidth = canvasElm.current.clientWidth;
+    if (canvasElmWidth < 600) {
+      setCanvasSize(canvasElmWidth);
+    } else {
+      setCanvasSize(600);
+    }
+  });
 
+  useEffect(() => {
     // three.js
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    const camera = new THREE.PerspectiveCamera( 75, canvasSize / canvasSize, 0.1, 1000 );
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize( canvasSize, canvasSize );
     canvasElm.current.appendChild( renderer.domElement );
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
@@ -45,11 +52,11 @@ function Inner() {
     };
 
     animate();
-  });
+  }, [canvasSize]);
 
   // JSX
   return (
-    <figure className="canvasElm" ref={canvasElm}></figure>
+    <Figure className="canvasElm" ref={canvasElm}></Figure>
   );
 }
 
