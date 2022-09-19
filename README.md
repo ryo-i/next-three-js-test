@@ -10,7 +10,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- windowリサイズ時にcanvasサイズを変更 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
+- ライティング設定を追加 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
 
 ## 詳細（ブログ）
 
