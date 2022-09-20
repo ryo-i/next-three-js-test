@@ -4,7 +4,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 作ったもの
 
-※参考：[Next-three-js-test](https://github.com/ryo-i/next-three-js-test)
+※参考：[Next-three-js-test](https://next-three-js-test.vercel.app/)
 
 ## 進捗（コミット）
 
