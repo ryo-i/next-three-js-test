@@ -1,12 +1,10 @@
-# Next-three-js test
+# Next-three-js-test
 
 Next.js環境でthree.jsが動くかテスト
 
 ## 作ったもの
 
-（作成中）
-
-※参考：[作成中]()
+※参考：[Next-three-js-test](https://github.com/ryo-i/next-three-js-test)
 
 ## 進捗（コミット）
 

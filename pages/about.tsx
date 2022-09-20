@@ -7,8 +7,8 @@ import Data from '../data/data.json';
 
 
 const headerTitle = Data.header.title;
-const pageTitle = 'このアプリについて';
-const pageText = 'アプリの概要をここに書く。';
+const pageTitle = 'このサイトについて';
+const pageText = 'Next.js環境でThree.jsが動くのかを検証しています。';
 const headTitle = pageTitle + ' | ' + headerTitle;
 
 
@@ -62,31 +62,14 @@ function About() {
                 </ul>
             </section>
             <section>
-                <h2>使い方</h2>
-                <section>
-                    <h3>タイトル</h3>
-                    <p>説明説明説明説明説明説明説明説明</p>
-                </section>
-                <section>
-                    <h3>タイトル</h3>
-                    <p>説明説明説明説明説明説明説明説明</p>
-                </section>
-                <section>
-                    <h3>タイトル</h3>
-                    <p>説明説明説明説明説明説明説明説明</p>
-                </section>
-            </section>
-            <section>
                 <h2>詳細</h2>
                 <section>
                     <h3>ブログ</h3>
-                    <p><a href="https://www.i-ryo.com/entry/2021/05/01/184600" target="_blank">【React】Nextスターターキットを作った-1 - クモのようにコツコツと</a></p>
-                    <p><a href="https://www.i-ryo.com/entry/2021/05/02/101424" target="_blank">【React】Nextスターターキットを作った-2 - クモのようにコツコツと</a></p>
-                    <p><a href="https://www.i-ryo.com/entry/2021/05/02/102630" target="_blank">【React】Nextスターターキットを作った-3 - クモのようにコツコツと</a></p>
+                    <p>（作成中） - クモのようにコツコツと</p>
                 </section>
                 <section>
                     <h3>ソースコード（GitHub）</h3>
-                    <p><a href="https://github.com/ryo-i/next-app-started" target="_blank">リポジトリ</a></p>
+                    <p><a href="https://github.com/ryo-i/next-three-js-test" target="_blank">リポジトリ</a></p>
                 </section>
             </section>
             <Profile />
