@@ -1,9 +1,10 @@
 import React, { useState }  from 'react';
-import Link from 'next/link';
+import { indexContext } from '../../context/indexContext';
 import Head from 'next/head';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Data from '../data/data.json';
+import Header from '../../components/Header';
+import Inner from '../../components/Inner_001';
+import Footer from '../../components/Footer';
+import Data from '../../data/data.json';
 
 
 const headerTitle = Data.header.title;
@@ -26,10 +27,11 @@ function Home() {
       </Head>
       <Header />
       <main>
-        <h1>作ったもの</h1>
-        <ul>
-          <li><Link href="test/001"><a>Test_001: はじめのいっぽ</a></Link></li>
-        </ul>
+        <h1>{ pageTitle }</h1>
+        <p dangerouslySetInnerHTML={{ __html: pageText }}></p>
+        <indexContext.Provider value={{innerData, setInnerData}} >
+          <Inner />
+        </indexContext.Provider>
       </main>
       <Footer />
     </>
