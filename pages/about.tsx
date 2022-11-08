@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ライティング設定を追加 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
+                    <li>page構成を更新しやすい形に修正 <a href="https://github.com/ryo-i/next-app-started/issues/1">#1</a></li>
                 </ul>
             </section>
             <section>

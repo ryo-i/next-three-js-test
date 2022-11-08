@@ -8,14 +8,9 @@ import Data from '../data/data.json';
 
 const headerTitle = Data.header.title;
 const headerText = Data.header.text;
-const pageTitle = Data.main.title;
-const pageText = Data.main.text;
 
 
 function Home() {
-  // Hooks
-  const [innerData, setInnerData] = useState(Data.inner);
-
   return (
     <>
       <Head>
@@ -28,7 +23,7 @@ function Home() {
       <main>
         <h1>作ったもの</h1>
         <ul>
-          <li><Link href="test/001"><a>Test_001: はじめのいっぽ</a></Link></li>
+          <li><Link href="test/001"><a>{ Data.test001.title }</a></Link></li>
         </ul>
       </main>
       <Footer />

@@ -4,11 +4,11 @@
     },
     "header": {
         "title":"Next-three-js-test",
-        "text": "Next.js環境でthree.jsが動くかテスト"
+        "text": "Next.js環境でthree.jsを動かす"
     },
-    "main": {
-        "title":"Next + Three.js",
-        "text": "はじめのいっぽ。"
+    "test001": {
+        "title":"Test_001: Next + Three.js",
+        "text": "はじめのいっぽ。Next.js環境でthree.jsが動くかテスト"
     },
     "inner": [
         {
