@@ -65,7 +65,7 @@ function About() {
                 <h2>詳細</h2>
                 <section>
                     <h3>ブログ</h3>
-                    <p>（作成中） - クモのようにコツコツと</p>
+                    <p><a href="https://www.i-ryo.com/entry/2022/11/15/133243" target="_blank">【Three.js + Next.js】Three.js再始動！Next.js環境でThree.jsを動かすの巻 - クモのようにコツコツと</a></p>
                 </section>
                 <section>
                     <h3>ソースコード（GitHub）</h3>
