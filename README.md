@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- page構成を更新しやすい形に修正 [#1](https://github.com/ryo-i/next-three-js-test/issues/1)
+- テストページにブログとコードのリンクを追加 [#1](https://github.com/ryo-i/next-three-js-test/issues/1)
 
 ## 詳細（ブログ）
 

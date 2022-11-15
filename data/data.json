@@ -8,7 +8,9 @@
     },
     "test001": {
         "title":"Test_001: Next + Three.js",
-        "text": "はじめのいっぽ。Next.js環境でthree.jsが動くかテスト"
+        "text": "はじめのいっぽ。Next.js環境でthree.jsが動くかテスト",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_001.tsx",
+        "blog": "https://www.i-ryo.com/entry/2022/11/15/133243"
     },
     "inner": [
         {

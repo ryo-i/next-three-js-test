@@ -25,6 +25,10 @@ function Home() {
         <h1>{ pageTitle }</h1>
         <p>{ pageText }</p>
         <Inner />
+        <ul>
+          <li>コード：<a href={ pageData.code } target="_blank">{ pageData.code }</a></li>
+          <li>ブログ：<a href={ pageData.blog } target="_blank">{ pageData.blog }</a></li>
+        </ul>
       </main>
       <Footer />
     </>
