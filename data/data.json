@@ -12,6 +12,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_001.tsx",
         "blog": "https://www.i-ryo.com/entry/2022/11/15/133243"
     },
+    "test002": {
+        "title":"Test_002: 線を引く",
+        "text": "LineBasicMaterialを使って線を引く",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_002.tsx",
+        "blog": "作成中"
+    },
     "inner": [
         {
         "title": "CSS（文字色）",

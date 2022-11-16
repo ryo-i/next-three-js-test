@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>テストページにブログとコードのリンクを追加 <a href="https://github.com/ryo-i/next-app-started/issues/1">#1</a></li>
+                    <li>線を引いてみる <a href="https://github.com/ryo-i/next-app-started/issues/1">#1</a></li>
                 </ul>
             </section>
             <section>

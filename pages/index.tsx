@@ -21,10 +21,18 @@ function Home() {
       </Head>
       <Header />
       <main>
-        <h1>作ったもの</h1>
-        <ul>
-          <li><Link href="test/001"><a>{ Data.test001.title }</a></Link></li>
-        </ul>
+        <section>
+          <h2>作ったもの</h2>
+          <ul>
+            <li><Link href="test/001"><a>{ Data.test001.title }</a></Link></li>
+          </ul>
+        </section>
+        <section>
+          <h2>作成中</h2>
+          <ul>
+            <li><Link href="test/002"><a>{ Data.test002.title }</a></Link></li>
+          </ul>
+        </section>
       </main>
       <Footer />
     </>
