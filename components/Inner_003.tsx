@@ -36,6 +36,19 @@ function Inner() {
   }, [0]);
 
 
+  const getRandomAarry = () => {
+    const length = 3;
+    const max = 50;
+    const array = [];
+
+    for (let i = 0; i < length; i++) {
+      const random = (Math.floor(Math.random() * max)) - (max / 2 );
+      array.push(random);
+    }
+
+    return array;
+  }
+
   useEffect(() => {
     // three.js
     const scene = new THREE.Scene();
@@ -52,17 +65,13 @@ function Inner() {
     figureElm.current.appendChild( renderer.domElement );
 
     const points = [];
-    points.push( new THREE.Vector3( -10, 0, 0 ) );
-    points.push( new THREE.Vector3( 0, 10, 0 ) );
-    points.push( new THREE.Vector3( 10, 0, 0 ) );
-    // 以下、適当な数字に打ち替え
-    points.push( new THREE.Vector3( 0, 10, 10 ) );
-    points.push( new THREE.Vector3( 0, -10, -10 ) );
-    points.push( new THREE.Vector3( 10, 20, -10 ) );
-    points.push( new THREE.Vector3( 10, -20, 0 ) );
-    points.push( new THREE.Vector3( 10, -10, 15 ) );
-    points.push( new THREE.Vector3( 10, 0, 20 ) );
-    points.push( new THREE.Vector3( - 10, 0, 0 ) );
+    for (let i = 0; i < 50; i++ ) {
+      const rundomArray = getRandomAarry();
+      const xNumber = rundomArray[0];
+      const yNumber = rundomArray[1];
+      const zNumber = rundomArray[2];
+      points.push( new THREE.Vector3(xNumber, yNumber, zNumber) );
+    }
 
     const geometry = new THREE.BufferGeometry().setFromPoints( points );
     const material = new THREE.LineDashedMaterial( { color: 0xff66ff } );

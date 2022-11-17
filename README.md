@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 線を引いてみる [#4](https://github.com/ryo-i/next-three-js-test/issues/4)
+- 線をランダムに引いてみる [#4](https://github.com/ryo-i/next-three-js-test/issues/4)
 
 ## 詳細（ブログ）
 

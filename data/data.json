@@ -18,6 +18,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_002.tsx",
         "blog": "作成中"
     },
+    "test003": {
+        "title":"Test_003: 線をランダムに引く",
+        "text": "Math.random()で線をランダムに引く",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_003.tsx",
+        "blog": "作成中"
+    },
     "inner": [
         {
         "title": "CSS（文字色）",
