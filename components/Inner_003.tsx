@@ -74,7 +74,7 @@ function Inner() {
     }
 
     const geometry = new THREE.BufferGeometry().setFromPoints( points );
-    const material = new THREE.LineDashedMaterial( { color: 0xff66ff } );
+    const material = new THREE.LineBasicMaterial( { color: 0xff66ff } );
     const line = new THREE.Line( geometry, material );
     scene.add( line );
 

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>線をランダムに引いてみる <a href="https://github.com/ryo-i/next-app-started/issues/4">#4</a></li>
+                    <li>マテリアルの種類を変更 <a href="https://github.com/ryo-i/next-app-started/issues/4">#4</a></li>
                 </ul>
             </section>
             <section>
