@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>マテリアルの種類を変更 <a href="https://github.com/ryo-i/next-app-started/issues/4">#4</a></li>
+                    <li>pタグをcanvasタグの上に重ねる <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
                 </ul>
             </section>
             <section>
