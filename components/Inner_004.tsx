@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
-const Font = '../node_modules/three/examples/fonts/helvetiker_regular.typeface.json';
-
-console.log('FontLoader', FontLoader);
-console.log('TextGeometry', TextGeometry);
-
 
 // CSS in JS
 const Wrapper = styled.div`
@@ -58,7 +53,7 @@ function Inner() {
     // three.js
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45, canvasSize / canvasSize, 1, 500 );
-    camera.position.set( 0, 0, 100 );
+    camera.position.set( 0, 0, 200 );
     camera.lookAt( 0, 0, 0 );
 
     const renderer = new THREE.WebGLRenderer();
@@ -71,7 +66,7 @@ function Inner() {
 
     const loader = new FontLoader();
     loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
-      const geometry = new TextGeometry( 'Hello three.js!', {
+      const geometry = new TextGeometry( 'Hello three.js!!!', {
         font: font,
         size: 80,
         height: 5,
@@ -106,7 +101,7 @@ function Inner() {
   return (
     <Wrapper className="wrapper">
       <Figure ref={figureElm}></Figure>
-      <p id="info">字幕的なテキスト</p>
+      <p id="info">文字を立体化！</p>
     </Wrapper>
   );
 }

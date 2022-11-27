@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- fontのパス修正4 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
+- カメラ位置を変更 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
 
 ## 詳細（ブログ）
 

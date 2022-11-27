@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>fontのパス修正4 <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
+                    <li>カメラ位置を変更 <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
                 </ul>
             </section>
             <section>
