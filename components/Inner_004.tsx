@@ -68,12 +68,12 @@ function Inner() {
     loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
       const geometry = new TextGeometry( 'Yatto Deta Yo!!', {
         font: font,
-        size: 20,
-        height: 5,
-        curveSegments: 12,
+        size: 10,
+        height: 1,
+        curveSegments: 10,
         bevelEnabled: true,
-        bevelThickness: 10,
-        bevelSize: 8,
+        bevelThickness: 1,
+        bevelSize: 1,
         bevelOffset: 0,
         bevelSegments: 5
       } );
@@ -88,7 +88,7 @@ function Inner() {
       function animate() {
         requestAnimationFrame( animate );
 
-        text.rotation.x += 0.01;
+        // text.rotation.x += 0.01;
         text.rotation.y += 0.01;
 
         renderer.render( scene, camera );

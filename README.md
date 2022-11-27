@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- カメラ位置ではなく文字サイズを変更 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
+- fontの細かい設定値を変更 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
 
 ## 詳細（ブログ）
 
