@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
-import dynamic from 'next/dynamic'
-// import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
-// import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 
+/* import dynamic from 'next/dynamic'
 const FontLoader = dynamic(() => import('../node_modules/three/examples/jsm/loaders/FontLoader').then((module) => module.FontLoader), {
   ssr: false,
 });
 const TextGeometry = dynamic(() => import('../node_modules/three/examples/jsm/geometries/TextGeometry').then((module) => module.TextGeometry), {
   ssr: false,
-});
+}); */
 
 console.log('FontLoader', FontLoader);
 console.log('TextGeometry', TextGeometry);

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>テキストを読み込む（エラー中？） <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
+                    <li>テキストを読み込む（エラー対応2） <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
                 </ul>
             </section>
             <section>

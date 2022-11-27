@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- テキストを読み込む（エラー中？） [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
+- テキストを読み込む（エラー対応2） [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
 
 ## 詳細（ブログ）
 
