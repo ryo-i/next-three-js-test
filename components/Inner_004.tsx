@@ -4,14 +4,6 @@ import * as THREE from 'three/src/Three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 
-/* import dynamic from 'next/dynamic'
-const FontLoader = dynamic(() => import('../node_modules/three/examples/jsm/loaders/FontLoader').then((module) => module.FontLoader), {
-  ssr: false,
-});
-const TextGeometry = dynamic(() => import('../node_modules/three/examples/jsm/geometries/TextGeometry').then((module) => module.TextGeometry), {
-  ssr: false,
-}); */
-
 console.log('FontLoader', FontLoader);
 console.log('TextGeometry', TextGeometry);
 
@@ -77,7 +69,7 @@ function Inner() {
     figureElm.current.appendChild( renderer.domElement );
 
     const loader = new FontLoader();
-    loader.load( './helvetiker_regular.typeface.json', ( font ) => {
+    loader.load( 'fonts/helvetiker_regular.typeface.json', ( font ) => {
       const geometry = new TextGeometry( 'Hello three.js!', {
         font: font,
         size: 80,
