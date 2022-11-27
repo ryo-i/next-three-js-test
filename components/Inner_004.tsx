@@ -69,7 +69,7 @@ function Inner() {
     figureElm.current.appendChild( renderer.domElement );
 
     const loader = new FontLoader();
-    loader.load( 'three/fonts/helvetiker_regular.typeface.json', ( font ) => {
+    loader.load( '../node_modules/three/fonts/helvetiker_regular.typeface.json', ( font ) => {
       const geometry = new TextGeometry( 'Hello three.js!', {
         font: font,
         size: 80,
