@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- fontのパス修正3 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
+- fontのパス修正4 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
 
 ## 詳細（ブログ）
 
