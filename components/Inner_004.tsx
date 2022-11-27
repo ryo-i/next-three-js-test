@@ -53,7 +53,7 @@ function Inner() {
     // three.js
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45, canvasSize / canvasSize, 1, 500 );
-    camera.position.set( 0, 0, 200 );
+    camera.position.set( 0, 0, 500 );
     camera.lookAt( 0, 0, 0 );
 
     const renderer = new THREE.WebGLRenderer();
@@ -66,7 +66,7 @@ function Inner() {
 
     const loader = new FontLoader();
     loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
-      const geometry = new TextGeometry( 'Hello three.js!!!', {
+      const geometry = new TextGeometry( 'Yatto Deta Yo!!', {
         font: font,
         size: 80,
         height: 5,
