@@ -1,6 +1,19 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
+import dynamic from 'next/dynamic'
+// import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+// import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+
+const FontLoader = dynamic(() => import('../node_modules/three/examples/jsm/loaders/FontLoader').then((module) => module.FontLoader), {
+  ssr: false,
+});
+const TextGeometry = dynamic(() => import('../node_modules/three/examples/jsm/geometries/TextGeometry').then((module) => module.TextGeometry), {
+  ssr: false,
+});
+
+console.log('FontLoader', FontLoader);
+console.log('TextGeometry', TextGeometry);
 
 
 // CSS in JS
@@ -48,19 +61,6 @@ function Inner() {
   }, [0]);
 
 
-  const getRandomAarry = () => {
-    const length = 3;
-    const max = 50;
-    const array = [];
-
-    for (let i = 0; i < length; i++) {
-      const random = (Math.floor(Math.random() * max)) - (max / 2 );
-      array.push(random);
-    }
-
-    return array;
-  }
-
   useEffect(() => {
     // three.js
     const scene = new THREE.Scene();
@@ -76,33 +76,37 @@ function Inner() {
     }
     figureElm.current.appendChild( renderer.domElement );
 
-    const points = [];
-    for (let i = 0; i < 50; i++ ) {
-      const rundomArray = getRandomAarry();
-      const xNumber = rundomArray[0];
-      const yNumber = rundomArray[1];
-      const zNumber = rundomArray[2];
-      points.push( new THREE.Vector3(xNumber, yNumber, zNumber) );
-    }
+    const loader = new FontLoader();
+    loader.load( './helvetiker_regular.typeface.json', ( font ) => {
+      const geometry = new TextGeometry( 'Hello three.js!', {
+        font: font,
+        size: 80,
+        height: 5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 10,
+        bevelSize: 8,
+        bevelOffset: 0,
+        bevelSegments: 5
+      } );
 
-    const geometry = new THREE.BufferGeometry().setFromPoints( points );
-    const material = new THREE.LineBasicMaterial( { color: 0xff66ff } );
-    const line = new THREE.Line( geometry, material );
-    scene.add( line );
+      const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
+      const text = new THREE.Mesh( geometry, material );
+      scene.add( text );
 
-    const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-    scene.add( light );
+      const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+      scene.add( light );
 
-    function animate() {
-      requestAnimationFrame( animate );
+      function animate() {
+        requestAnimationFrame( animate );
 
-      line.rotation.x += 0.01;
-      line.rotation.y += 0.01;
+        text.rotation.x += 0.01;
+        text.rotation.y += 0.01;
 
-      renderer.render( scene, camera );
-    };
-
-    animate();
+        renderer.render( scene, camera );
+      };
+      animate();
+    } );
   }, [canvasSize]);
 
   // JSX

@@ -1,0 +1,3 @@
+const withTM = require('next-transpile-modules')(['three']);
+
+module.exports = withTM(/* ご自身のカスタム設定 */);
