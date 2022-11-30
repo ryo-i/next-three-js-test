@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- React three fiberインストール [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
+- Next13に合わせてLink修正 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 
 ## 詳細（ブログ）
 

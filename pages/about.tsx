@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>React three fiberインストール <a href="https://github.com/ryo-i/next-app-started/issues/6">#6</a></li>
+                    <li>Next13に合わせてLink修正 <a href="https://github.com/ryo-i/next-app-started/issues/6">#6</a></li>
                 </ul>
             </section>
             <section>

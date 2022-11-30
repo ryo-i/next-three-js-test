@@ -24,15 +24,16 @@ function Home() {
         <section>
           <h2>作ったもの</h2>
           <ul>
-            <li><Link href="test/001"><a>{ Data.test001.title }</a></Link></li>
-            <li><Link href="test/002"><a>{ Data.test002.title }</a></Link></li>
-            <li><Link href="test/003"><a>{ Data.test003.title }</a></Link></li>
+            <li><Link href="test/001">{ Data.test001.title }</Link></li>
+            <li><Link href="test/002">{ Data.test002.title }</Link></li>
+            <li><Link href="test/003">{ Data.test003.title }</Link></li>
+            <li><Link href="test/004">{ Data.test004.title }</Link></li>
           </ul>
         </section>
         <section>
           <h2>作成中</h2>
           <ul>
-          <li><Link href="test/004"><a>{ Data.test004.title }</a></Link></li>
+            <li><Link href="test/005">{ Data.test005.title }</Link></li>
           </ul>
         </section>
       </main>

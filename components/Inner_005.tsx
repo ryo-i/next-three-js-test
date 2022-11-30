@@ -53,7 +53,7 @@ function Inner() {
     // three.js
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera( 45, canvasSize / canvasSize, 1, 500 );
-    camera.position.set( 0, 0, 150 );
+    camera.position.set( 0, 0, 100 );
     camera.lookAt( 0, 0, 0 );
 
     const renderer = new THREE.WebGLRenderer();
@@ -66,7 +66,7 @@ function Inner() {
 
     const loader = new FontLoader();
     loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
-      const geometry = new TextGeometry( 'I am text!', {
+      const geometry = new TextGeometry( 'Yatto Deta Yo!!', {
         font: font,
         size: 10,
         height: 1,
@@ -80,8 +80,6 @@ function Inner() {
 
       const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
       const text = new THREE.Mesh( geometry, material );
-      /* geometry.computeBoundingBox();
-      geometry.boundingBox.getCenter(text.position).multiplyScalar(-1); */
       scene.add( text );
 
       const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );

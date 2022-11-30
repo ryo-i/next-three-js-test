@@ -30,6 +30,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
         "blog": "作成中"
     },
+    "test005": {
+        "title":"Test_005: 日本語テキストを作成する",
+        "text": "日本語フォントを読み込む",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
+        "blog": "作成中"
+    },
     "inner": [
         {
         "title": "CSS（文字色）",
