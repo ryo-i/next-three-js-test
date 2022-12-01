@@ -29,7 +29,7 @@ function Home() {
         <Inner />
         <ul>
           <li>コード：<a href={ pageCode } target="_blank">{ pageCode }</a></li>
-          <li>ブログ：<a href={ pageBlog } target="_blank">{ pageBlog }</a></li>
+          { pageBlog  && <li>ブログ：<a href={ pageBlog } target="_blank">{ pageBlog }</a></li> }
         </ul>
       </main>
       <Footer />

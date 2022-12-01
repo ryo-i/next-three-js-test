@@ -16,25 +16,25 @@
         "title":"Test_002: 線を引く",
         "text": "LineBasicMaterialを使って線を引く",
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_002.tsx",
-        "blog": "作成中"
+        "blog": ""
     },
     "test003": {
         "title":"Test_003: 線をランダムに引く",
         "text": "Math.random()で線をランダムに引く",
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_003.tsx",
-        "blog": "作成中"
+        "blog": ""
     },
     "test004": {
         "title":"Test_004: テキストを作成する",
         "text": "TextGeometryでテキストを作成する",
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
-        "blog": "作成中"
+        "blog": ""
     },
     "test005": {
         "title":"Test_005: 日本語テキストを作成する",
         "text": "日本語フォントを読み込む",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
-        "blog": "作成中"
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_005.tsx",
+        "blog": ""
     },
     "inner": [
         {

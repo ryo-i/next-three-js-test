@@ -8,6 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
+- ブログurlがある時だけページに表示 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 - テキストを中央に配置 [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
 - Next13に合わせてLink修正 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 
