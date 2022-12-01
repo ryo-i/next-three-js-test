@@ -65,10 +65,11 @@ function Inner() {
     figureElm.current.appendChild( renderer.domElement );
 
     const loader = new FontLoader();
-    loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
-      const geometry = new TextGeometry( 'I am text!', {
+    // loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
+    loader.load( '/fonts/MPLUS1p_Regular.json', ( font ) => {
+      const geometry = new TextGeometry( '僕はてきすと', {
         font: font,
-        size: 15,
+        size: 10,
         height: 1,
         curveSegments: 10,
         bevelEnabled: true,
@@ -77,6 +78,7 @@ function Inner() {
         bevelOffset: 0,
         bevelSegments: 5
       } );
+      geometry.center();
 
       const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
       const text = new THREE.Mesh( geometry, material );
@@ -90,8 +92,8 @@ function Inner() {
       function animate() {
         requestAnimationFrame( animate );
 
-        text.rotation.x += 0.03;
-        // text.rotation.y += 0.01;
+        text.rotation.x += 0.01;
+        text.rotation.y += 0.01;
 
         renderer.render( scene, camera );
       };

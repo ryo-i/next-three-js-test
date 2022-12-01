@@ -58,8 +58,8 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
+                    <li>日本語フォントを表示、中央寄せ <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
                     <li>ブログurlがある時だけページに表示 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
-                    <li>テキストを中央に配置 <a href="https://github.com/ryo-i/next-app-started/issues/5">#5</a></li>
                     <li>Next13に合わせてLink修正 <a href="https://github.com/ryo-i/next-app-started/issues/6">#6</a></li>
                 </ul>
             </section>

@@ -77,6 +77,7 @@ function Inner() {
         bevelOffset: 0,
         bevelSegments: 5
       } );
+      geometry.center();
 
       const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
       const text = new THREE.Mesh( geometry, material );
@@ -90,8 +91,8 @@ function Inner() {
       function animate() {
         requestAnimationFrame( animate );
 
-        text.rotation.x += 0.03;
-        // text.rotation.y += 0.01;
+        text.rotation.x += 0.01;
+        text.rotation.y += 0.01;
 
         renderer.render( scene, camera );
       };
