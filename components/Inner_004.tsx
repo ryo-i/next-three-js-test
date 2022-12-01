@@ -68,7 +68,7 @@ function Inner() {
     loader.load( '/fonts/helvetiker_regular.typeface.json', ( font ) => {
       const geometry = new TextGeometry( 'I am text!', {
         font: font,
-        size: 10,
+        size: 15,
         height: 1,
         curveSegments: 10,
         bevelEnabled: true,
@@ -80,8 +80,8 @@ function Inner() {
 
       const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
       const text = new THREE.Mesh( geometry, material );
-      /* geometry.computeBoundingBox();
-      geometry.boundingBox.getCenter(text.position).multiplyScalar(-1); */
+      geometry.computeBoundingBox();
+      geometry.boundingBox.getCenter(text.position).multiplyScalar(-1);
       scene.add( text );
 
       const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -90,8 +90,8 @@ function Inner() {
       function animate() {
         requestAnimationFrame( animate );
 
-        // text.rotation.x += 0.01;
-        text.rotation.y += 0.01;
+        text.rotation.x += 0.03;
+        // text.rotation.y += 0.01;
 
         renderer.render( scene, camera );
       };
