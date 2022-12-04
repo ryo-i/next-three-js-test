@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 3Dモデルを読み込む [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
+- react-three-fiberをインストール [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 - ブログurlがある時だけページに表示 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

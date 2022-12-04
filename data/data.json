@@ -42,6 +42,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_006.tsx",
         "blog": ""
     },
+    "test007": {
+        "title":"Test_007: react-three-fiber",
+        "text": "react-three-fiberで立体を表示する",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_007.tsx",
+        "blog": ""
+    },
     "inner": [
         {
         "title": "CSS（文字色）",
