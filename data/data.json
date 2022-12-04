@@ -36,6 +36,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_005.tsx",
         "blog": ""
     },
+    "test006": {
+        "title":"Test_006: 3Dモデルを読み込む",
+        "text": "GLTFLoaderでgltf形式の3Dモデルを読み込む",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_006.tsx",
+        "blog": ""
+    },
     "inner": [
         {
         "title": "CSS（文字色）",

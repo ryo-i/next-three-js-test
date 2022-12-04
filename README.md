@@ -8,9 +8,8 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 日本語フォントを表示、中央寄せ [#5](https://github.com/ryo-i/next-three-js-test/issues/5)
+- 3Dモデルを読み込む [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 - ブログurlがある時だけページに表示 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
-- Next13に合わせてLink修正 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 
 ## 詳細（ブログ）
 
