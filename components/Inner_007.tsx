@@ -73,6 +73,13 @@ function Inner() {
   }, [canvasSize]);
 
 
+  const Div = styled.div`
+    width: ${canvasSize}px;
+    height: ${canvasSize}px;
+    background: #000;
+  `;
+
+
   const Cube = () => {
     const ref = useRef(null);
     useFrame(() => {
@@ -92,14 +99,13 @@ function Inner() {
   // JSX
   return (
     <>
-        <Figure ref={figureElm}></Figure>
-
-        <div id="canvas-container">
-          <Canvas>
-            <hemisphereLight args={[0xffffbb, 0x080820, 1]} />
-            <Cube />
-          </Canvas>
-        </div>
+      <Figure ref={figureElm}></Figure>
+      <Div id="canvas-container">
+        <Canvas>
+          <hemisphereLight args={[0xffffbb, 0x080820, 1]} />
+          <Cube />
+        </Canvas>
+      </Div>
     </>
 
   );
