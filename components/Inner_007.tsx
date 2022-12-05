@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
+import { Canvas, useFrame } from '@react-three/fiber';
 
 
 // CSS in JS
@@ -71,9 +72,36 @@ function Inner() {
     animate();
   }, [canvasSize]);
 
+
+  const Cube = () => {
+    const ref = useRef(null);
+    useFrame(() => {
+      ref.current.rotation.x += 0.01;
+      ref.current.rotation.y += 0.01;
+    });
+
+    return (
+      <mesh ref={ref}>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="0xff0000" />
+      </mesh>
+    );
+  }
+
+
   // JSX
   return (
-    <Figure ref={figureElm}></Figure>
+    <>
+        <Figure ref={figureElm}></Figure>
+
+        <div id="canvas-container">
+          <Canvas>
+            <hemisphereLight args={[0xffffbb, 0x080820, 1]} />
+            <Cube />
+          </Canvas>
+        </div>
+    </>
+
   );
 }
 
