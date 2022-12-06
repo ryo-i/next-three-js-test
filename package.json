@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-three/drei": "^9.46.2",
     "@react-three/fiber": "^8.9.1",
     "next": "^13.0.5",
     "next-transpile-modules": "^10.0.0",

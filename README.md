@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 外枠にCSSでサイズ、背景色を設定 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
+- PerspectiveCameraを設定 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
 - ブログurlがある時だけページに表示 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { PerspectiveCamera } from '@react-three/drei'
 
 
 // CSS in JS
@@ -37,49 +38,6 @@ function Inner() {
   }, [0]);
 
 
-  useEffect(() => {
-    // three.js
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera( 35, canvasSize / canvasSize, 0.1, 1000 );
-
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize( canvasSize, canvasSize );
-
-    if (figureElm.current.firstChild) {
-      figureElm.current.removeChild( figureElm.current.firstChild );
-    }
-    figureElm.current.appendChild( renderer.domElement );
-
-    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    const material = new THREE.MeshStandardMaterial( { color: 0xff0000 } );
-    const cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
-
-    camera.position.z = 5;
-
-    const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-    scene.add( light );
-
-    function animate() {
-      requestAnimationFrame( animate );
-
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-
-      renderer.render( scene, camera );
-    };
-
-    animate();
-  }, [canvasSize]);
-
-
-  const Div = styled.div`
-    width: ${canvasSize}px;
-    height: ${canvasSize}px;
-    background: #000;
-  `;
-
-
   const Cube = () => {
     const ref = useRef(null);
     useFrame(() => {
@@ -89,8 +47,12 @@ function Inner() {
 
     return (
       <mesh ref={ref}>
+        <PerspectiveCamera
+          args={[35, canvasSize / canvasSize, 0.1, 1000]}
+          position={[0, 0, 5]}
+        />
         <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="0xff0000" />
+        <meshStandardMaterial color="red" />
       </mesh>
     );
   }
@@ -99,13 +61,16 @@ function Inner() {
   // JSX
   return (
     <>
-      <Figure ref={figureElm}></Figure>
-      <Div id="canvas-container">
-        <Canvas>
+      <div id="canvas-container" style={{
+        width: canvasSize + "px",
+        height: canvasSize + "px",
+        background: "#000"
+      }}>
+        <Canvas ref={figureElm}>
           <hemisphereLight args={[0xffffbb, 0x080820, 1]} />
           <Cube />
         </Canvas>
-      </Div>
+      </div>
     </>
 
   );
