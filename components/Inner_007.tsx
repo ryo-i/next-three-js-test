@@ -61,12 +61,12 @@ function Inner() {
   // JSX
   return (
     <>
-      <div id="canvas-container" style={{
-        width: canvasSize + "px",
-        height: canvasSize + "px",
-        background: "#000"
-      }}>
-        <Canvas ref={figureElm}>
+      <div id="canvas-container" ref={figureElm}>
+        <Canvas style={{
+          width: canvasSize + "px",
+          height: canvasSize + "px",
+          background: "#000"
+        }}>
           <hemisphereLight args={[0xffffbb, 0x080820, 1]} />
           <Cube />
         </Canvas>
