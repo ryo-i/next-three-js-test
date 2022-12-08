@@ -5,13 +5,12 @@ import Inner from '../../components/Inner_001';
 import Footer from '../../components/Footer';
 import Data from '../../data/data.json';
 
-
-const pageData = Data.test001;
+const innerNumber = '001';
+const pageData = Data['test' + innerNumber];
 const pageTitle = pageData.title;
 const pageText = pageData.text;
 const pageCode = pageData.code;
 const pageBlog = pageData.blog;
-
 
 function Home() {
   return (

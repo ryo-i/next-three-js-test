@@ -59,7 +59,7 @@ function About() {
                 <h2>進捗</h2>
                 <ul>
                     <li>canvasタグのサイズ設定を変更 <a href="https://github.com/ryo-i/next-app-started/issues/6">#6</a></li>
-                    <li>ブログurlがある時だけページに表示 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
+                    <li>testページの固有値の微修正 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>
             </section>
