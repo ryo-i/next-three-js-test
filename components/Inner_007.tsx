@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
-import * as THREE from 'three/src/Three';
+// import * as THREE from 'three/src/Three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { PerspectiveCamera } from '@react-three/drei'
 

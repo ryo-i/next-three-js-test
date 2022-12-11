@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Data from '../../data/data.json';
 
+
 function Home() {
   const [pageData, setPageData] = useState({});
   const [pageTitle, setPageTitle] = useState('');
@@ -15,11 +16,12 @@ function Home() {
   const router = useRouter();
   const { id } = router.query;
 
+
   useEffect(() => {
     const pageData = Data['test' + id];
     setPageData(pageData);
-
   }, [id]);
+
 
   useEffect(() => {
     if (pageData) {
@@ -30,10 +32,8 @@ function Home() {
     } else {
       setPageTitle(String(id));
     }
-
-    console.log('id', id);
-    console.log('pageData', pageData);
   }, [pageData]);
+
 
   const Inner = dynamic(() => import('../../components/Inner_' + id)
     .catch(err => {
@@ -44,6 +44,7 @@ function Home() {
       loading: () => <div>読み込み中...</div>,
     }
   );
+
 
   return (
     <>

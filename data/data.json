@@ -48,6 +48,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_007.tsx",
         "blog": ""
     },
+    "test008": {
+        "title":"Test_008: キューブを複数配置",
+        "text": "キューブ作成を関数化し、色や位置を引数で指定して複数配置する",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_008.tsx",
+        "blog": ""
+    },
     "inner": [
         {
         "title": "CSS（文字色）",

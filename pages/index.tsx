@@ -31,6 +31,7 @@ function Home() {
             <li><Link href="test/005">{ Data.test005.title }</Link></li>
             <li><Link href="test/006">{ Data.test006.title }</Link></li>
             <li><Link href="test/007">{ Data.test007.title }</Link></li>
+            <li><Link href="test/008">{ Data.test008.title }</Link></li>
           </ul>
         </section>
         <section>
