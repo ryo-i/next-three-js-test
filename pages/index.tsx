@@ -30,12 +30,12 @@ function Home() {
             <li><Link href="test/004">{ Data.test004.title }</Link></li>
             <li><Link href="test/005">{ Data.test005.title }</Link></li>
             <li><Link href="test/006">{ Data.test006.title }</Link></li>
+            <li><Link href="test/007">{ Data.test007.title }</Link></li>
           </ul>
         </section>
         <section>
           <h2>作成中</h2>
           <ul>
-            <li><Link href="test/007">{ Data.test007.title }</Link></li>
           </ul>
         </section>
       </main>

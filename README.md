@@ -9,7 +9,7 @@ Next.js環境でthree.jsが動くかテスト
 ## 進捗（コミット）
 
 - canvasタグのサイズ設定を変更 [#6](https://github.com/ryo-i/next-three-js-test/issues/6)
-- testページの固有値の微修正 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
+- testページを動的ルーティングで生成 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
 
