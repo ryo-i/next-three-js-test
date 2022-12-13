@@ -54,6 +54,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_008.tsx",
         "blog": ""
     },
+    "test009": {
+        "title":"Test_009: 二次元の円(CircleGeometry)",
+        "text": "CircleGeometryで二次元の円を作る",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_009.tsx",
+        "blog": ""
+    },
     "inner": [
         {
         "title": "CSS（文字色）",

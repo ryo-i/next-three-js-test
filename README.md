@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- キューブの複数配置 [#2](https://github.com/ryo-i/next-three-js-test/issues/2)
+- CircleGeometryで二次元の円を作る [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - testページを動的ルーティングで生成 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

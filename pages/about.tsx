@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>キューブの複数配置 <a href="https://github.com/ryo-i/next-app-started/issues/2">#2</a></li>
+                    <li>CircleGeometryで二次元の円を作る <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
                     <li>testページを動的ルーティングで生成 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>
