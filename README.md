@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- CircleGeometryで二次元の円を作る [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- 3つの円に異なる設定値を入れる [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - testページを動的ルーティングで生成 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

@@ -57,25 +57,58 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-    const radius = 1;  // ui: radius
-    const segments = 24;  // ui: segments
-    const geometry = new THREE.CircleGeometry(radius, segments);
+    const geometryParams = {
+      basic: {
+        radius: 1,
+        segments: 24
+      },
+      expansion: {
+        radius: 1,
+        segments: 24,
+        thetaStart: Math.PI * 0.25,
+        thetaLength: Math.PI * 1.5
+      },
+      custom: {
+        radius: 1,
+        segments: 37,
+        thetaStart: Math.PI * 0.378,
+        thetaLength: Math.PI * 0.642
+      }
+    };
+
+    const geometry1 = new THREE.CircleGeometry(
+      geometryParams.basic.radius,
+      geometryParams.basic.segments
+    );
+
+    const geometry2 = new THREE.CircleGeometry(
+      geometryParams.expansion.radius,
+      geometryParams.expansion.segments,
+      geometryParams.expansion.thetaStart,
+      geometryParams.expansion.thetaLength
+    );
+
+    const geometry3 = new THREE.CircleGeometry(
+      geometryParams.custom.radius,
+      geometryParams.custom.segments,
+      geometryParams.custom.thetaStart,
+      geometryParams.custom.thetaLength
+    );
 
     function makeInstance(geometry, color, x) {
       const material = new THREE.MeshPhongMaterial({color});
-
       const primitive = new THREE.Mesh(geometry, material);
-      scene.add(primitive);
 
+      scene.add(primitive);
       primitive.position.x = x;
 
       return primitive;
     }
 
     const primitives = [
-      makeInstance(geometry, 'green',  -2),
-      makeInstance(geometry, 'yellow', 0),
-      makeInstance(geometry, 'red',  2),
+      makeInstance(geometry1, 'green',  -2),
+      makeInstance(geometry2, 'yellow', 0),
+      makeInstance(geometry3, 'red',  2),
     ];
 
     function render(time) {
