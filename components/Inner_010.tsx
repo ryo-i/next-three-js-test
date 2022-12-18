@@ -59,40 +59,54 @@ function Inner() {
 
     const gParams = {
       basic: {
-        radius: 1,
-        segments: 24
+        radius: 0.8,
+        height: 2,
+        radialSegments: 16
       },
       expansion: {
-        radius: 1,
-        segments: 24,
+        radius: 0.8,
+        height: 2,
+        radialSegments: 16,
+        heightSegments: 2,
+        openEnded :true,
         thetaStart: Math.PI * 0.25,
         thetaLength: Math.PI * 1.5
       },
       custom: {
-        radius: 1,
-        segments: 37,
-        thetaStart: Math.PI * 0.378,
-        thetaLength: Math.PI * 0.642
+        radius: 0.8,
+        height: 2,
+        radialSegments: 23,
+        heightSegments: 5,
+        openEnded :false,
+        thetaStart: Math.PI * 0.46,
+        thetaLength: Math.PI * 17
       }
     };
 
-    const geometry1 = new THREE.CircleGeometry(
+    const geometry1 = new THREE.ConeGeometry(
       gParams.basic.radius,
-      gParams.basic.segments
+      gParams.basic.height,
+      gParams.basic.radialSegments
     );
 
-    const geometry2 = new THREE.CircleGeometry(
+    const geometry2 = new THREE.ConeGeometry(
       gParams.expansion.radius,
-      gParams.expansion.segments,
+      gParams.expansion.height,
+      gParams.expansion.radialSegments,
+      gParams.expansion.heightSegments,
+      gParams.expansion.openEnded,
       gParams.expansion.thetaStart,
-      gParams.expansion.thetaLength
+      gParams.expansion.thetaLength,
     );
 
-    const geometry3 = new THREE.CircleGeometry(
+    const geometry3 = new THREE.ConeGeometry(
       gParams.custom.radius,
-      gParams.custom.segments,
+      gParams.custom.height,
+      gParams.custom.radialSegments,
+      gParams.custom.heightSegments,
+      gParams.custom.openEnded,
       gParams.custom.thetaStart,
-      gParams.custom.thetaLength
+      gParams.custom.thetaLength,
     );
 
     function makeInstance(geometry, color, x) {

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>3つの円に異なる設定値を入れる <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
+                    <li>ConeGeometryで円錐を作る <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
                     <li>testページを動的ルーティングで生成 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>

@@ -60,6 +60,12 @@
         "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_009.tsx",
         "blog": ""
     },
+    "test010": {
+        "title":"Test_010: 円錐(ConeGeometry)",
+        "text": "ConeGeometryで円錐を作る",
+        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_010.tsx",
+        "blog": ""
+    },
     "inner": [
         {
         "title": "CSS（文字色）",
