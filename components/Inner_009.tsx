@@ -57,42 +57,26 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-    const gParams = {
-      basic: {
-        radius: 1,
-        segments: 24
-      },
-      expansion: {
-        radius: 1,
-        segments: 24,
-        thetaStart: Math.PI * 0.25,
-        thetaLength: Math.PI * 1.5
-      },
-      custom: {
-        radius: 1,
-        segments: 37,
-        thetaStart: Math.PI * 0.378,
-        thetaLength: Math.PI * 0.642
-      }
-    };
-
+    // basic
     const geometry1 = new THREE.CircleGeometry(
-      gParams.basic.radius,
-      gParams.basic.segments
+      1, // radius
+      24 // segments
     );
 
+    // expansion
     const geometry2 = new THREE.CircleGeometry(
-      gParams.expansion.radius,
-      gParams.expansion.segments,
-      gParams.expansion.thetaStart,
-      gParams.expansion.thetaLength
+      1, // radius
+      24, // segments
+      Math.PI * 0.25, // thetaStart
+      Math.PI * 1.5 // thetaLength
     );
 
+    // custom
     const geometry3 = new THREE.CircleGeometry(
-      gParams.custom.radius,
-      gParams.custom.segments,
-      gParams.custom.thetaStart,
-      gParams.custom.thetaLength
+      1, // radius
+      37, // segments
+      Math.PI * 0.378, //thetaStart
+      Math.PI * 0.642 // thetaLength
     );
 
     function makeInstance(geometry, color, x) {

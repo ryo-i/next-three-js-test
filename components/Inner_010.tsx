@@ -57,56 +57,33 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-    const gParams = {
-      basic: {
-        radius: 0.8,
-        height: 2,
-        radialSegments: 16
-      },
-      expansion: {
-        radius: 0.8,
-        height: 2,
-        radialSegments: 16,
-        heightSegments: 2,
-        openEnded :true,
-        thetaStart: Math.PI * 0.25,
-        thetaLength: Math.PI * 1.5
-      },
-      custom: {
-        radius: 0.8,
-        height: 2,
-        radialSegments: 23,
-        heightSegments: 5,
-        openEnded :false,
-        thetaStart: Math.PI * 0.46,
-        thetaLength: Math.PI * 17
-      }
-    };
-
+    // basic
     const geometry1 = new THREE.ConeGeometry(
-      gParams.basic.radius,
-      gParams.basic.height,
-      gParams.basic.radialSegments
+      0.8,// radius
+      2, // height
+      16 // radialSegments
     );
 
+    // expansion
     const geometry2 = new THREE.ConeGeometry(
-      gParams.expansion.radius,
-      gParams.expansion.height,
-      gParams.expansion.radialSegments,
-      gParams.expansion.heightSegments,
-      gParams.expansion.openEnded,
-      gParams.expansion.thetaStart,
-      gParams.expansion.thetaLength,
+      0.8, // radius
+      2, // height
+      16, // radialSegments
+      2,// heightSegments
+      true, // openEnded
+      Math.PI * 0.25, // thetaStart
+      Math.PI * 1.5// thetaLength
     );
 
+    // custom
     const geometry3 = new THREE.ConeGeometry(
-      gParams.custom.radius,
-      gParams.custom.height,
-      gParams.custom.radialSegments,
-      gParams.custom.heightSegments,
-      gParams.custom.openEnded,
-      gParams.custom.thetaStart,
-      gParams.custom.thetaLength,
+      0.8, // radius
+      2, // height
+      23, // radialSegments
+      5, // heightSegments
+      false, // openEnded
+      Math.PI * 0.46, // thetaStart
+      Math.PI * 17 // thetaLength
     );
 
     function makeInstance(geometry, color, x) {
