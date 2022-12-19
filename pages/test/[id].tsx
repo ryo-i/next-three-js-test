@@ -18,7 +18,7 @@ function Home() {
 
 
   useEffect(() => {
-    const pageData = Data['test' + id];
+    const pageData = Data.test['test' + id];
     setPageData(pageData);
   }, [id]);
 
@@ -41,7 +41,7 @@ function Home() {
       return () => <p>読み込めませんでした</p>
     }), {
       ssr: false,
-      loading: () => <div>読み込み中...</div>,
+      loading: () => <p>読み込み中...</p>,
     }
   );
 
@@ -58,7 +58,7 @@ function Home() {
       <main>
         <h1>{ pageTitle }</h1>
         <p>{ pageText }</p>
-        <Inner />
+        { id ? <Inner /> : <p>読み込み中...</p> }
         <ul>
           <li>コード：<a href={ pageCode } target="_blank">{ pageCode }</a></li>
           { pageBlog  && <li>ブログ：<a href={ pageBlog } target="_blank">{ pageBlog }</a></li> }

@@ -10,6 +10,23 @@ const headerTitle = Data.header.title;
 const headerText = Data.header.text;
 
 
+function IndexList() {
+  const testInfo = Data.test;
+  const indexList = [];
+
+  for (let key in testInfo) {
+    indexList.push(
+    <li key={ key }>
+      <Link href={ testInfo[key].path }>
+        {testInfo[key].title }
+      </Link>
+    </li>);
+  }
+
+  return <ul>{ indexList }</ul>;
+};
+
+
 function Home() {
   return (
     <>
@@ -23,23 +40,7 @@ function Home() {
       <main>
         <section>
           <h2>作ったもの</h2>
-          <ul>
-            <li><Link href="test/001">{ Data.test001.title }</Link></li>
-            <li><Link href="test/002">{ Data.test002.title }</Link></li>
-            <li><Link href="test/003">{ Data.test003.title }</Link></li>
-            <li><Link href="test/004">{ Data.test004.title }</Link></li>
-            <li><Link href="test/005">{ Data.test005.title }</Link></li>
-            <li><Link href="test/006">{ Data.test006.title }</Link></li>
-            <li><Link href="test/007">{ Data.test007.title }</Link></li>
-            <li><Link href="test/008">{ Data.test008.title }</Link></li>
-            <li><Link href="test/009">{ Data.test009.title }</Link></li>
-            <li><Link href="test/010">{ Data.test010.title }</Link></li>
-          </ul>
-        </section>
-        <section>
-          <h2>作成中</h2>
-          <ul>
-          </ul>
+          <IndexList />
         </section>
       </main>
       <Footer />

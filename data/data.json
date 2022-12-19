@@ -6,65 +6,77 @@
         "title":"Next-three-js-test",
         "text": "Next.js環境でthree.jsを動かす"
     },
-    "test001": {
-        "title":"Test_001: Next + Three.js",
-        "text": "はじめのいっぽ。Next.js環境でthree.jsが動くかテスト",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_001.tsx",
-        "blog": "https://www.i-ryo.com/entry/2022/11/15/133243"
-    },
-    "test002": {
-        "title":"Test_002: 線を引く",
-        "text": "LineBasicMaterialを使って線を引く",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_002.tsx",
-        "blog": ""
-    },
-    "test003": {
-        "title":"Test_003: 線をランダムに引く",
-        "text": "Math.random()で線をランダムに引く",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_003.tsx",
-        "blog": ""
-    },
-    "test004": {
-        "title":"Test_004: テキストを作成する",
-        "text": "TextGeometryでテキストを作成する",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
-        "blog": ""
-    },
-    "test005": {
-        "title":"Test_005: 日本語テキストを作成する",
-        "text": "日本語フォントを読み込む",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_005.tsx",
-        "blog": ""
-    },
-    "test006": {
-        "title":"Test_006: 3Dモデルを読み込む",
-        "text": "GLTFLoaderでgltf形式の3Dモデルを読み込む",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_006.tsx",
-        "blog": ""
-    },
-    "test007": {
-        "title":"Test_007: react-three-fiber",
-        "text": "react-three-fiberで立体を表示する",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_007.tsx",
-        "blog": ""
-    },
-    "test008": {
-        "title":"Test_008: キューブを複数配置",
-        "text": "キューブ作成を関数化し、色や位置を引数で指定して複数配置する",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_008.tsx",
-        "blog": ""
-    },
-    "test009": {
-        "title":"Test_009: 二次元の円(CircleGeometry)",
-        "text": "CircleGeometryで二次元の円を作る",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_009.tsx",
-        "blog": ""
-    },
-    "test010": {
-        "title":"Test_010: 円錐(ConeGeometry)",
-        "text": "ConeGeometryで円錐を作る",
-        "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_010.tsx",
-        "blog": ""
+    "test": {
+        "test001": {
+            "path": "test/001",
+            "title":"Test_001: Next + Three.js",
+            "text": "はじめのいっぽ。Next.js環境でthree.jsが動くかテスト",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_001.tsx",
+            "blog": "https://www.i-ryo.com/entry/2022/11/15/133243"
+        },
+        "test002": {
+            "path": "test/002",
+            "title":"Test_002: 線を引く",
+            "text": "LineBasicMaterialを使って線を引く",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_002.tsx",
+            "blog": ""
+        },
+        "test003": {
+            "path": "test/003",
+            "title":"Test_003: 線をランダムに引く",
+            "text": "Math.random()で線をランダムに引く",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_003.tsx",
+            "blog": ""
+        },
+        "test004": {
+            "path": "test/004",
+            "title":"Test_004: テキストを作成する",
+            "text": "TextGeometryでテキストを作成する",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_004.tsx",
+            "blog": ""
+        },
+        "test005": {
+            "path": "test/005",
+            "title":"Test_005: 日本語テキストを作成する",
+            "text": "日本語フォントを読み込む",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_005.tsx",
+            "blog": ""
+        },
+        "test006": {
+            "path": "test/006",
+            "title":"Test_006: 3Dモデルを読み込む",
+            "text": "GLTFLoaderでgltf形式の3Dモデルを読み込む",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_006.tsx",
+            "blog": ""
+        },
+        "test007": {
+            "path": "test/007",
+            "title":"Test_007: react-three-fiber",
+            "text": "react-three-fiberで立体を表示する",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_007.tsx",
+            "blog": ""
+        },
+        "test008": {
+            "path": "test/008",
+            "title":"Test_008: キューブを複数配置",
+            "text": "キューブ作成を関数化し、色や位置を引数で指定して複数配置する",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_008.tsx",
+            "blog": ""
+        },
+        "test009": {
+            "path": "test/009",
+            "title":"Test_009: 二次元の円(CircleGeometry)",
+            "text": "CircleGeometryで二次元の円を作る",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_009.tsx",
+            "blog": ""
+        },
+        "test010": {
+            "path": "test/010",
+            "title":"Test_010: 円錐(ConeGeometry)",
+            "text": "ConeGeometryで円錐を作る",
+            "code": "https://github.com/ryo-i/next-three-js-test/blob/main/components/Inner_010.tsx",
+            "blog": ""
+        }
     },
     "inner": [
         {
