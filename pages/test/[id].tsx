@@ -15,6 +15,7 @@ function Home() {
   const [pageBlog, setPageBlog] = useState('');
   const router = useRouter();
   const { id } = router.query;
+  const testPagePath = Data.link.repository + Data.link.testPath;
 
 
   useEffect(() => {
@@ -25,9 +26,9 @@ function Home() {
 
   useEffect(() => {
     if (pageData) {
-      setPageTitle(pageData['title']);
+      setPageTitle('Test_' + pageData['id'] + ': ' + pageData['title']);
       setPageText(pageData['text']);
-      setPageCode(pageData['code']);
+      setPageCode(testPagePath + 'Inner_' + pageData['id'] + '.tsx');
       setPageBlog(pageData['blog']);
     } else {
       setPageTitle(String(id));

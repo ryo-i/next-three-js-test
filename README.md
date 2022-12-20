@@ -9,7 +9,7 @@ Next.js環境でthree.jsが動くかテスト
 ## 進捗（コミット）
 
 - geometry1の引数を直接書く方法に変更 [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
-- indexページを動的に生成 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
+- テキストやurlの共通部分をidに統合 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
 

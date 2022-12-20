@@ -17,8 +17,8 @@ function IndexList() {
   for (let key in testInfo) {
     indexList.push(
     <li key={ key }>
-      <Link href={ testInfo[key].path }>
-        {testInfo[key].title }
+      <Link href={ 'test/' + testInfo[key].id }>
+        { 'Test_' + testInfo[key].id + ': ' + testInfo[key].title }
       </Link>
     </li>);
   }
