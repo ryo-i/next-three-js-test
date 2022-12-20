@@ -45,7 +45,7 @@ function Inner() {
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.z = 10;
+    camera.position.z = 80;
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
@@ -59,13 +59,13 @@ function Inner() {
 
     // basic
     const geometry1 = new THREE.CircleGeometry(
-      1, // radius
+      7, // radius
       24 // segments
     );
 
     // expansion
     const geometry2 = new THREE.CircleGeometry(
-      1, // radius
+      7, // radius
       24, // segments
       Math.PI * 0.25, // thetaStart
       Math.PI * 1.5 // thetaLength
@@ -73,7 +73,7 @@ function Inner() {
 
     // custom
     const geometry3 = new THREE.CircleGeometry(
-      1, // radius
+      7, // radius
       37, // segments
       Math.PI * 0.378, //thetaStart
       Math.PI * 0.642 // thetaLength
@@ -90,9 +90,9 @@ function Inner() {
     }
 
     const primitives = [
-      makeInstance(geometry1, 'green',  -2),
+      makeInstance(geometry1, 'green',  -15),
       makeInstance(geometry2, 'yellow', 0),
-      makeInstance(geometry3, 'red',  2),
+      makeInstance(geometry3, 'red',  15),
     ];
 
     function render(time) {

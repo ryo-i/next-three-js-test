@@ -45,7 +45,7 @@ function Inner() {
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.z = 10;
+    camera.position.z = 50;
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
@@ -57,7 +57,7 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    const geometry = new THREE.BoxGeometry( 6, 6, 6 );
 
     function makeInstance(geometry, color, x) {
       const material = new THREE.MeshPhongMaterial({color});
@@ -71,9 +71,9 @@ function Inner() {
     }
 
     const cubes = [
-      makeInstance(geometry, 'green',  -2),
+      makeInstance(geometry, 'green',  -10),
       makeInstance(geometry, 'yellow', 0),
-      makeInstance(geometry, 'red',  2),
+      makeInstance(geometry, 'red',  10),
     ];
 
     function render(time) {

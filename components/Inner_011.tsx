@@ -45,7 +45,7 @@ function Inner() {
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.z = 70;
+    camera.position.z = 50;
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
@@ -58,32 +58,35 @@ function Inner() {
     scene.add( light );
 
     // basic
-    const geometry1 = new THREE.ConeGeometry(
-      6,// radius
-      8, // height
-      16 // radialSegments
+    const geometry1 = new THREE.CylinderGeometry(
+      4, // ui: radiusTop
+      4, // ui: radiusBottom
+      8, // ui: height
+      12 // ui: radialSegments
     );
 
     // expansion
-    const geometry2 = new THREE.ConeGeometry(
-      6, // radius
-      8, // height
-      16, // radialSegments
-      2,// heightSegments
-      true, // openEnded
-      Math.PI * 0.25, // thetaStart
-      Math.PI * 1.5// thetaLength
+    const geometry2 = new THREE.CylinderGeometry(
+      4, // ui: radiusTop
+      4, // ui: radiusBottom
+      8, // ui: height
+      12, // ui: radialSegments
+      2, // ui: heightSegments
+      false, // ui: openEnded
+      Math.PI * 0.25, // ui: thetaStart
+      Math.PI * 1.5 // ui: thetaLength
     );
 
     // custom
-    const geometry3 = new THREE.ConeGeometry(
-      6, // radius
-      8, // height
-      23, // radialSegments
-      5, // heightSegments
-      false, // openEnded
-      Math.PI * 0.46, // thetaStart
-      Math.PI * 17 // thetaLength
+    const geometry3 = new THREE.CylinderGeometry(
+      2, // ui: radiusTop
+      4, // ui: radiusBottom
+      10, // ui: height
+      14.8, // ui: radialSegments
+      6, // ui: heightSegments
+      false, // ui: openEnded
+      Math.PI * 17, // ui: thetaStart
+      Math.PI * 467 // ui: thetaLength
     );
 
     function makeInstance(geometry, color, x) {
@@ -97,9 +100,9 @@ function Inner() {
     }
 
     const primitives = [
-      makeInstance(geometry1, 'green',  -13),
+      makeInstance(geometry1, 'green',  -10),
       makeInstance(geometry2, 'yellow', 0),
-      makeInstance(geometry3, 'red',  13),
+      makeInstance(geometry3, 'red',  10),
     ];
 
     function render(time) {
