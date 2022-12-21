@@ -82,6 +82,12 @@
             "title":"十二面体(DodecahedronGeometry)",
             "text": "DodecahedronGeometryで十二面体を作る",
             "blog": ""
+        },
+        "test013": {
+            "id": "013",
+            "title":"2次元パスを押し出す(ExtrudeGeometry) ※作成中",
+            "text": "ExtrudeGeometryで2次元パスを押し出す。ベベル機能もつける。",
+            "blog": ""
         }
     },
     "footer": {
