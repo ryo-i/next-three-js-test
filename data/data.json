@@ -19,7 +19,7 @@
         },
         "test002": {
             "id": "002",
-            "path": "test/002",
+            "title":"線を引く(LineBasicMaterial)",
             "text": "LineBasicMaterialを使って線を引く",
             "blog": ""
         },
@@ -31,7 +31,7 @@
         },
         "test004": {
             "id": "004",
-            "title":"テキストを作成する",
+            "title":"テキストを作成する(TextGeometry)",
             "text": "TextGeometryでテキストを作成する",
             "blog": ""
         },
@@ -43,7 +43,7 @@
         },
         "test006": {
             "id": "006",
-            "title":"3Dモデルを読み込む",
+            "title":"3Dモデルを読み込む(GLTFLoader)",
             "text": "GLTFLoaderでgltf形式の3Dモデルを読み込む",
             "blog": ""
         },
@@ -55,7 +55,7 @@
         },
         "test008": {
             "id": "008",
-            "title":"キューブを複数配置",
+            "title":"キューブを複数配置(BoxGeometry)",
             "text": "キューブ作成を関数化し、色や位置を引数で指定して複数配置する",
             "blog": ""
         },
@@ -75,6 +75,12 @@
             "id": "011",
             "title":"円筒(CylinderGeometry)",
             "text": "CylinderGeometryで円筒を作る",
+            "blog": ""
+        },
+        "test012": {
+            "id": "012",
+            "title":"十二面体(DodecahedronGeometry)",
+            "text": "DodecahedronGeometryで十二面体を作る",
             "blog": ""
         }
     },
