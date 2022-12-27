@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
-// import { CurvePath } from 'three/src/extras/core/CurvePath';
-// import { CubicBezierCurve3 } from 'three/src/extras/curves/CubicBezierCurve3';
 
 
 // CSS in JS
@@ -59,10 +57,11 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
-    // basic
+
+    // Basic
     const shape1 = new THREE.Shape();
-    let x = -2.5;
-    let y = -5;
+    const x = -2.5;
+    const y = -5;
     shape1.moveTo(x + 2.5, y + 2.5);
     shape1.bezierCurveTo(x + 2.5, y + 2.5, x + 2, y, x, y);
     shape1.bezierCurveTo(x - 3, y, x - 3, y + 3.5, x - 3, y + 3.5);
@@ -82,16 +81,15 @@ function Inner() {
 
     const geometry1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings1);
 
-    // expansion
-    const outline = new THREE.Shape([
+
+    // Expansion
+    const outline2 = new THREE.Shape([
       [ -2, -0.1], [  2, -0.1], [ 2,  0.6],
       [1.6,  0.6], [1.6,  0.1], [-2,  0.1],
     ].map(p => new THREE.Vector2(...p)));
 
-    x = -2.5;
-    y = -5;
     const shape2: THREE.CurvePath<THREE.Vector> = new THREE.CurvePath();
-    const points: THREE.Vector3[] = [
+    const points2: THREE.Vector3[] = [
       [x + 2.5, y + 2.5],
       [x + 2.5, y + 2.5], [x + 2,   y      ], [x,       y      ],
       [x - 3,   y      ], [x - 3,   y + 3.5], [x - 3,   y + 3.5],
@@ -101,8 +99,8 @@ function Inner() {
       [x + 3.5, y      ], [x + 2.5, y + 2.5], [x + 2.5, y + 2.5],
     ].map(p => new THREE.Vector3(...p, 0));
 
-    for (let i = 0; i < points.length; i += 3) {
-      const slicePoints: THREE.Vector3[] = points.slice(i, i + 4);
+    for (let i = 0; i < points2.length; i += 3) {
+      const slicePoints: THREE.Vector3[] = points2.slice(i, i + 4);
       shape2.add(new THREE.CubicBezierCurve3(
         slicePoints[0], // starting point
         slicePoints[1], // first control point
@@ -123,10 +121,50 @@ function Inner() {
       extrudePath: shape2,
     };
 
-    const geometry2 =  new THREE.ExtrudeGeometry(outline, extrudeSettings2);
+    const geometry2 =  new THREE.ExtrudeGeometry(outline2, extrudeSettings2);
 
-    // custom
-    const geometry3 = new THREE.ExtrudeGeometry(shape1, extrudeSettings1);
+
+    // Custom
+    const outline3 = new THREE.Shape([
+      [ -2, -0.1], [  2, -0.1], [ 2,  0.6],
+      [1.6,  0.6], [1.6,  0.1], [-2,  0.1],
+    ].map(p => new THREE.Vector2(...p)));
+
+    const shape3: THREE.CurvePath<THREE.Vector> = new THREE.CurvePath();
+    const points3: THREE.Vector3[] = [
+      [x + 2.5, y + 2.5],
+      [x + 2.5, y + 2.5], [x + 2,   y      ], [x,       y      ],
+      [x - 3,   y      ], [x - 3,   y + 3.5], [x - 3,   y + 3.5],
+      [x - 3,   y + 5.5], [x - 1.5, y + 7.7], [x + 2.5, y + 9.5],
+      [x + 6,   y + 7.7], [x + 8,   y + 4.5], [x + 8,   y + 3.5],
+      [x + 8,   y + 3.5], [x + 8,   y      ], [x + 5,   y      ],
+      [x + 3.5, y      ], [x + 2.5, y + 2.5], [x + 2.5, y + 2.5],
+    ].map(p => new THREE.Vector3(...p, 0));
+
+    for (let i = 0; i < points3.length; i += 3) {
+      const slicePoints: THREE.Vector3[] = points3.slice(i, i + 4);
+      shape3.add(new THREE.CubicBezierCurve3(
+        slicePoints[0], // starting point
+        slicePoints[1], // first control point
+        slicePoints[2], // second control point
+        slicePoints[3], // ending point
+        // ...points.slice(i, i + 4) // TS error: 2556
+      ));
+    }
+
+    const extrudeSettings3: {
+      steps: number;
+      bevelEnabled: boolean;
+      extrudePath: any;
+      // extrudePath: THREE.CurvePath<THREE.Vector>; // TS error: 2345
+    } = {
+      steps: 100,  // ui: steps
+      bevelEnabled: false,
+      extrudePath: shape2,
+    };
+
+    const geometry3 =  new THREE.ExtrudeGeometry(outline3, extrudeSettings3);
+
 
     function makeInstance(geometry, color, x) {
       const material = new THREE.MeshPhongMaterial({color});

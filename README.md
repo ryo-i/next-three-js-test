@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- CurvePath、CubicBezierCurve3などでカスタマイズ（TSエラー対策も） [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- 2番目のジオメトリを元に3番目のベースを作成 [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - テキストやurlの共通部分をidに統合 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
