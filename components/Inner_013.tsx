@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
-import { CurvePath } from 'three/src/extras/core/CurvePath';
-import { CubicBezierCurve3 } from 'three/src/extras/curves/CubicBezierCurve3';
+// import { CurvePath } from 'three/src/extras/core/CurvePath';
+// import { CubicBezierCurve3 } from 'three/src/extras/curves/CubicBezierCurve3';
 
 
 // CSS in JS
@@ -71,7 +71,7 @@ function Inner() {
     shape1.bezierCurveTo(x + 8, y + 3.5, x + 8, y, x + 5, y);
     shape1.bezierCurveTo(x + 3.5, y, x + 2.5, y + 2.5, x + 2.5, y + 2.5);
 
-    let extrudeSettings = {
+    const extrudeSettings1 = {
       steps: 2,  // ui: steps
       depth: 2,  // ui: depth
       bevelEnabled: true,  // ui: bevelEnabled
@@ -80,18 +80,18 @@ function Inner() {
       bevelSegments: 2,  // ui: bevelSegments
     };
 
-    const geometry1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+    const geometry1 = new THREE.ExtrudeGeometry(shape1, extrudeSettings1);
 
     // expansion
-    /* const outline = new THREE.Shape([
+    const outline = new THREE.Shape([
       [ -2, -0.1], [  2, -0.1], [ 2,  0.6],
       [1.6,  0.6], [1.6,  0.1], [-2,  0.1],
     ].map(p => new THREE.Vector2(...p)));
 
     x = -2.5;
     y = -5;
-    const shape2 = new CurvePath();
-    const points = [
+    const shape2: THREE.CurvePath<THREE.Vector> = new THREE.CurvePath();
+    const points: THREE.Vector3[] = [
       [x + 2.5, y + 2.5],
       [x + 2.5, y + 2.5], [x + 2,   y      ], [x,       y      ],
       [x - 3,   y      ], [x - 3,   y + 3.5], [x - 3,   y + 3.5],
@@ -102,19 +102,31 @@ function Inner() {
     ].map(p => new THREE.Vector3(...p, 0));
 
     for (let i = 0; i < points.length; i += 3) {
-      shape2.add(new CubicBezierCurve3(...points.slice(i, i + 4)));
+      const slicePoints: THREE.Vector3[] = points.slice(i, i + 4);
+      shape2.add(new THREE.CubicBezierCurve3(
+        slicePoints[0], // starting point
+        slicePoints[1], // first control point
+        slicePoints[2], // second control point
+        slicePoints[3], // ending point
+        // ...points.slice(i, i + 4) // TS error: 2556
+      ));
     }
 
-    extrudeSettings = {
+    const extrudeSettings2: {
+      steps: number;
+      bevelEnabled: boolean;
+      extrudePath: any;
+      // extrudePath: THREE.CurvePath<THREE.Vector>; // TS error: 2345
+    } = {
       steps: 100,  // ui: steps
       bevelEnabled: false,
       extrudePath: shape2,
-    }; */
+    };
 
-    const geometry2 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+    const geometry2 =  new THREE.ExtrudeGeometry(outline, extrudeSettings2);
 
     // custom
-    const geometry3 = new THREE.ExtrudeGeometry(shape1, extrudeSettings);
+    const geometry3 = new THREE.ExtrudeGeometry(shape1, extrudeSettings1);
 
     function makeInstance(geometry, color, x) {
       const material = new THREE.MeshPhongMaterial({color});
