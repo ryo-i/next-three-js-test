@@ -125,21 +125,29 @@ function Inner() {
 
 
     // Custom
-    const outline3 = new THREE.Shape([
-      [ -2, -0.1], [  2, -0.1], [ 2,  0.6],
-      [1.6,  0.6], [1.6,  0.1], [-2,  0.1],
-    ].map(p => new THREE.Vector2(...p)));
+    const getArray = (x, y, length, minValue, maxValue) => {
+      const array = [];
+      const min = Math.ceil(minValue);
+      const max = Math.floor(maxValue);
 
+      for (let i = 0; i < length; i++) {
+        array.push([
+          x + Math.floor(Math.random() * (max - min) + min),
+          y + Math.floor(Math.random() * (max - min) + min)
+        ]);
+      }
+
+      return array;
+    }
+
+    const outlineArray3 = getArray(0, 0, 6, -3, 3);
+    console.log('outlineArray3', outlineArray3);
+    const outline3 = new THREE.Shape(outlineArray3.map(p => new THREE.Vector2(...p)));
+
+    const shapeArray3 = getArray(x, y, 19, -10, 10);
+    console.log('shapeArray3', shapeArray3);
     const shape3: THREE.CurvePath<THREE.Vector> = new THREE.CurvePath();
-    const points3: THREE.Vector3[] = [
-      [x + 2.5, y + 2.5],
-      [x + 2.5, y + 2.5], [x + 2,   y      ], [x,       y      ],
-      [x - 3,   y      ], [x - 3,   y + 3.5], [x - 3,   y + 3.5],
-      [x - 3,   y + 5.5], [x - 1.5, y + 7.7], [x + 2.5, y + 9.5],
-      [x + 6,   y + 7.7], [x + 8,   y + 4.5], [x + 8,   y + 3.5],
-      [x + 8,   y + 3.5], [x + 8,   y      ], [x + 5,   y      ],
-      [x + 3.5, y      ], [x + 2.5, y + 2.5], [x + 2.5, y + 2.5],
-    ].map(p => new THREE.Vector3(...p, 0));
+    const points3: THREE.Vector3[] = shapeArray3.map(p => new THREE.Vector3(...p, 0));
 
     for (let i = 0; i < points3.length; i += 3) {
       const slicePoints: THREE.Vector3[] = points3.slice(i, i + 4);
