@@ -57,11 +57,11 @@ function Inner() {
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
 
+    const x = -2.5;
+    const y = -5;
 
     // Basic
     const shape1 = new THREE.Shape();
-    const x = -2.5;
-    const y = -5;
     shape1.moveTo(x + 2.5, y + 2.5);
     shape1.bezierCurveTo(x + 2.5, y + 2.5, x + 2, y, x, y);
     shape1.bezierCurveTo(x - 3, y, x - 3, y + 3.5, x - 3, y + 3.5);

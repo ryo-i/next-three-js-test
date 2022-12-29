@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>3番目のジオメトリをランダムな設定値に <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
+                    <li>DodecahedronGeometryで十二面体を作る <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
                     <li>テキストやurlの共通部分をidに統合 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>

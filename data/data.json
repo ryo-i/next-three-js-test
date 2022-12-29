@@ -85,8 +85,14 @@
         },
         "test013": {
             "id": "013",
-            "title":"2次元パスを押し出す(ExtrudeGeometry) ※作成中",
+            "title":"2次元パスを押し出す(ExtrudeGeometry)",
             "text": "ExtrudeGeometryで2次元パスを押し出す。ベベル機能もつける。",
+            "blog": ""
+        },
+        "test014": {
+            "id": "014",
+            "title":"二十面体(IcosahedronGeometry) ※作成中",
+            "text": "IcosahedronGeometryで二十面体を作る。",
             "blog": ""
         }
     },
