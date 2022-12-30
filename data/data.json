@@ -91,8 +91,14 @@
         },
         "test014": {
             "id": "014",
-            "title":"二十面体(IcosahedronGeometry) ※作成中",
+            "title":"二十面体(IcosahedronGeometry)",
             "text": "IcosahedronGeometryで二十面体を作る。",
+            "blog": ""
+        },
+        "test015": {
+            "id": "015",
+            "title":"ろくろ回し的な形状(LatheGeometry)",
+            "text": "LatheGeometryで線を回転させてできる形状を作る。",
             "blog": ""
         }
     },

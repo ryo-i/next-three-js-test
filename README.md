@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- DodecahedronGeometryで十二面体を作る [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- ろくろ回し的な形状(LatheGeometry) [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - テキストやurlの共通部分をidに統合 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
