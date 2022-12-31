@@ -59,7 +59,7 @@ function About() {
                 <h2>進捗</h2>
                 <ul>
                     <li>ろくろ回し的な形状(LatheGeometry) <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
-                    <li>テキストやurlの共通部分をidに統合 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
+                    <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>
             </section>

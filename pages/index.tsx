@@ -23,7 +23,9 @@ function IndexList() {
     </li>);
   }
 
-  return <ul>{ indexList }</ul>;
+  const newOrderIndex = indexList.reverse();
+
+  return <ul>{ newOrderIndex }</ul>;
 };
 
 
