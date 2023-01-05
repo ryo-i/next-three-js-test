@@ -100,6 +100,12 @@
             "title":"ろくろ回し的な形状(LatheGeometry)",
             "text": "LatheGeometryで線を回転させてできる形状を作る。",
             "blog": ""
+        },
+        "test016": {
+            "id": "016",
+            "title":"八面体(OctahedronGeometry)",
+            "text": "OctahedronGeometryで八面体を作る。",
+            "blog": ""
         }
     },
     "footer": {
