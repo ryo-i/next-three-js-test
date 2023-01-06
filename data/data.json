@@ -106,6 +106,12 @@
             "title":"八面体(OctahedronGeometry)",
             "text": "OctahedronGeometryで八面体を作る。",
             "blog": ""
+        },
+        "test017": {
+            "id": "017",
+            "title":"関数を与えることでできる表面(ParametricGeometry)",
+            "text": "ParametricGeometryで関数を与えることでできる表面を作る。",
+            "blog": ""
         }
     },
     "footer": {
