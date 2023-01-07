@@ -64,11 +64,54 @@ function Inner() {
 
 
     // Expansion
-    const geometry2 = new ParametricGeometry( ParametricGeometries.klein, 25, 25 );
+    // from: https://github.com/mrdoob/three.js/blob/b8d8a8625465bd634aa68e5846354d69f34d2ff5/examples/js/ParametricGeometries.js
+    const klein1 = (v, u, target) => {
+      u *= Math.PI;
+      v *= 2 * Math.PI;
+      u = u * 2;
+
+      let x;
+      let z;
+
+      if (u < Math.PI) {
+          x = 3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(u) * Math.cos(v);
+          z = -8 * Math.sin(u) - 2 * (1 - Math.cos(u) / 2) * Math.sin(u) * Math.cos(v);
+      } else {
+          x = 3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(v + Math.PI);
+          z = -8 * Math.sin(u);
+      }
+
+      const y = -2 * (1 - Math.cos(u) / 2) * Math.sin(v);
+
+      target.set(x, y, z).multiplyScalar(0.75);
+    }
+
+    const geometry2 = new ParametricGeometry( klein1, 25, 25 );
 
 
     // Custom
-    const geometry3 = new ParametricGeometry( ParametricGeometries.klein, 25, 25 );
+    const klein2 = (v, u, target) => {
+      u *= Math.PI;
+      v *= 5 * Math.PI; // 3 -> 5
+      u = u * -8; // 3 -> -8
+
+      let x;
+      let z;
+
+      if (u < Math.PI) {
+          x = -3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(u) * Math.cos(v); // 3 -> -3
+          z = 8 * Math.sin(u) - 2 * (1 - Math.cos(u) / 2) * Math.sin(u) * Math.cos(v); // -8 -> 8
+      } else {
+          x = -3 * Math.cos(u) * (1 + Math.sin(u)) + (2 * (1 - Math.cos(u) / 2)) * Math.cos(v + Math.PI); // 3 -> -3
+          z = 8 * Math.sin(u); // -8 -> 8
+      }
+
+      const y = -6 * (1 - Math.cos(u) / 2) * Math.sin(v); // -2 -> -6
+
+      target.set(x, y, z).multiplyScalar(0.75);
+    }
+
+    const geometry3 = new ParametricGeometry( klein2, 25, 25 );
 
 
 
