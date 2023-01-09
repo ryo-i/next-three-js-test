@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- ParametricGeometryを改造してみる [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- 2次元の四角形(PlaneGeometry) [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
