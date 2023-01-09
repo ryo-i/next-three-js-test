@@ -118,6 +118,12 @@
             "title":"2次元の四角形(PlaneGeometry)",
             "text": "PlaneGeometryで2次元の四角形を作る。",
             "blog": ""
+        },
+        "test019": {
+            "id": "019",
+            "title":"三角形を集めた球体(PolyhedronGeometry)",
+            "text": "PolyhedronGeometryで三角形を点の周りに集めて球体にする",
+            "blog": ""
         }
     },
     "footer": {
