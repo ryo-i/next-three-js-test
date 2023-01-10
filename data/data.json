@@ -124,6 +124,12 @@
             "title":"三角形を集めた球体(PolyhedronGeometry)",
             "text": "PolyhedronGeometryで三角形を点の周りに集めて球体にする",
             "blog": ""
+        },
+        "test020": {
+            "id": "020",
+            "title":"真ん中に穴のあいた円盤(RingGeometry)",
+            "text": "RingGeometryで真ん中に穴のあいた円盤を作る",
+            "blog": ""
         }
     },
     "footer": {
