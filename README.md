@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 真ん中に穴のあいた円盤(RingGeometry) [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- 三角形分割された2次元の輪郭(ShapeGeometry) ※作成中 [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
