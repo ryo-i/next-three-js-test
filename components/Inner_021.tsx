@@ -76,24 +76,66 @@ function Inner() {
 
 
     // Expansion
-    const geometry2 = new THREE.RingGeometry(
-      2, // ui: innerRadius,
-      7, // ui: outerRadius,
-      18, // ui: thetaSegments,
-      2, // ui: phiSegments,
-      Math.PI * 0.25, // ui: thetaStart,
-      Math.PI * 1.5 // ui: thetaLength
+    const shape2 = new THREE.Shape();
+    shape2.moveTo(x + 2.5, y + 2.5);
+    shape2.bezierCurveTo(x + 2.5, y + 2.5, x + 2, y, x, y);
+    shape2.bezierCurveTo(x - 3, y, x - 3, y + 3.5, x - 3, y + 3.5);
+    shape2.bezierCurveTo(x - 3, y + 5.5, x - 1.5, y + 7.7, x + 2.5, y + 9.5);
+    shape2.bezierCurveTo(x + 6, y + 7.7, x + 8, y + 4.5, x + 8, y + 3.5);
+    shape2.bezierCurveTo(x + 8, y + 3.5, x + 8, y, x + 5, y);
+    shape2.bezierCurveTo(x + 3.5, y, x + 2.5, y + 2.5, x + 2.5, y + 2.5);
+    const geometry2 = new THREE.ShapeGeometry(
+      shape2,
+      5 // ui: curveSegments
     );
 
 
     // Custom
-    const geometry3 = new THREE.RingGeometry(
-      5.5, // ui: innerRadius,
-      7, // ui: outerRadius,
-      36, // ui: thetaSegments,
-      2, // ui: phiSegments,
-      Math.PI * 2.25, // ui: thetaStart,
-      Math.PI * 1.5 // ui: thetaLength
+    const shape3BezierCurveTo = () => {
+      const array = [];
+      const verticesOfshape3ValurMax = 9.5;
+      const verticesOfshape3ValurMin = -9.5;
+
+      for (let i = 0; i < 6; i++) {
+        let value = 0;
+        if( i % 2 == 0 ) {
+          value = x;
+        } else {
+          value = y;
+        }
+        const rundomNum = Math.floor(Math.random() * (verticesOfshape3ValurMax - verticesOfshape3ValurMin + 1) + verticesOfshape3ValurMin);
+        // console.log('x, x', x, y);
+        // console.log('value', value);
+        // console.log('rundomNum', rundomNum);
+        // console.log('rundomNum + value', rundomNum + value);
+
+        array.push(
+          value + rundomNum
+        );
+      }
+
+      console.log('array', array);
+      shape3.bezierCurveTo(
+        array[0],
+        array[1],
+        array[2],
+        array[3],
+        array[4],
+        array[5]
+      );
+    };
+
+    const shape3 = new THREE.Shape();
+    shape3.moveTo(x + 2.5, y + 2.5);
+    shape3BezierCurveTo();
+    shape3BezierCurveTo();
+    shape3BezierCurveTo();
+    shape3BezierCurveTo();
+    shape3BezierCurveTo();
+    shape3BezierCurveTo();
+    const geometry3 = new THREE.ShapeGeometry(
+      shape3,
+      8 // ui: curveSegments
     );
 
 
@@ -109,8 +151,8 @@ function Inner() {
 
     const primitives = [
       makeInstance(geometry1, 'green',  -15),
-      makeInstance(geometry1, 'yellow', 0),
-      makeInstance(geometry1, 'red',  15),
+      makeInstance(geometry2, 'yellow', 0),
+      makeInstance(geometry3, 'red',  15),
     ];
 
     function render(time) {

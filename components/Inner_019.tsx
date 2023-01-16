@@ -110,11 +110,11 @@ function Inner() {
     // Custom
     const verticesOfCube3 = [];
     const verticesOfCubeMax = 3;
-    const verticesOfCubeMim = -3;
+    const verticesOfCubeMin = -3;
 
     for (let i = 0; i < 24; i++) {
       verticesOfCube3.push(
-        Math.floor(Math.random() * (verticesOfCubeMax - verticesOfCubeMim + 1) + verticesOfCubeMim),
+        Math.floor(Math.random() * (verticesOfCubeMax - verticesOfCubeMin + 1) + verticesOfCubeMin),
       );
     }
     console.log('verticesOfCube3', verticesOfCube3);
