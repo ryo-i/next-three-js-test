@@ -136,6 +136,12 @@
             "title":"三角形分割された2次元の輪郭(ShapeGeometry)",
             "text": "ShapeGeometryで三角形分割された2次元の輪郭を作る",
             "blog": ""
+        },
+        "test022": {
+            "id": "022",
+            "title":"球体(SphereGeometry)",
+            "text": "SphereGeometryで三球体を作る",
+            "blog": ""
         }
     },
     "footer": {
