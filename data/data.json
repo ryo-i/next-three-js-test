@@ -148,6 +148,12 @@
             "title":"四面体(TetrahedronGeometry)",
             "text": "TetrahedronGeometryで四面体（4面のもの）を作る",
             "blog": ""
+        },
+        "test024": {
+            "id": "024",
+            "title":"円環(TorusGeometry)",
+            "text": "TorusGeometryで円環（ドーナツ）を作る",
+            "blog": ""
         }
     },
     "footer": {
