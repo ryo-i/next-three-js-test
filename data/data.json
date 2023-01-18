@@ -140,7 +140,13 @@
         "test022": {
             "id": "022",
             "title":"球体(SphereGeometry)",
-            "text": "SphereGeometryで三球体を作る",
+            "text": "SphereGeometryで球体を作る",
+            "blog": ""
+        },
+        "test023": {
+            "id": "023",
+            "title":"四面体(TetrahedronGeometry)",
+            "text": "TetrahedronGeometryで四面体（4面のもの）を作る",
             "blog": ""
         }
     },
