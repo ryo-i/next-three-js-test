@@ -25,8 +25,8 @@
         },
         "test003": {
             "id": "003",
-            "title":"線をランダムに引く",
-            "text": "Math.random()で線をランダムに引く",
+            "title":"線をランダムに引く(LineBasicMaterial)",
+            "text": "LineBasicMaterialとMath.random()で線をランダムに引く",
             "blog": ""
         },
         "test004": {
@@ -37,8 +37,8 @@
         },
         "test005": {
             "id": "005",
-            "title":"日本語テキストを作成する",
-            "text": "日本語フォントを読み込む",
+            "title":"日本語テキストを作成する(TextGeometry)",
+            "text": "TextGeometryで日本語フォントを読み込む",
             "blog": ""
         },
         "test006": {
@@ -151,8 +151,14 @@
         },
         "test024": {
             "id": "024",
-            "title":"円環(TorusGeometry)",
+            "title":"ドーナツ(TorusGeometry)",
             "text": "TorusGeometryで円環（ドーナツ）を作る",
+            "blog": ""
+        },
+        "test025": {
+            "id": "025",
+            "title":"結び目(TorusKnotGeometry)",
+            "text": "TorusKnotGeometryで円環（結び目）を作る",
             "blog": ""
         }
     },
