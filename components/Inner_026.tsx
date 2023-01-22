@@ -65,6 +65,7 @@ function Inner() {
     const y = -5;
 
     // Basic
+    // @ts-ignore
     class CustomSinCurve extends THREE.Curve {　// TSエラーあり
       scale: number;
       t: number;
@@ -87,6 +88,7 @@ function Inner() {
     const radialSegments = 8;  // ui: radialSegments
     const closed = false;  // ui: closed
     const geometry1 = new THREE.TubeGeometry(
+      // @ts-ignore
       path, // TSエラーあり
       tubularSegments,
       radius,
