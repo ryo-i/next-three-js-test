@@ -160,6 +160,12 @@
             "title":"結び目(TorusKnotGeometry)",
             "text": "TorusKnotGeometryで円環（結び目）を作る",
             "blog": ""
+        },
+        "test026": {
+            "id": "026",
+            "title":"経路をなぞらせた管(TubeGeometry)",
+            "text": "TubeGeometryで経路をなぞらせた管を作る ※TSエラーあり",
+            "blog": ""
         }
     },
     "footer": {

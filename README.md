@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- TorusKnotGeometryで円環（結び目）を作る [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- TubeGeometryで経路をなぞらせた管を作る ※TSエラーあり [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
