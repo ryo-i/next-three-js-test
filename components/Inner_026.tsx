@@ -66,7 +66,7 @@ function Inner() {
 
     // Basic
     // @ts-ignore
-    class CustomSinCurve extends THREE.Curve {　// TSエラーあり
+    class CustomSinCurve1 extends THREE.Curve {　// ※TSエラーあり
       scale: number;
       t: number;
 
@@ -82,40 +82,75 @@ function Inner() {
       }
     }
 
-    const path = new CustomSinCurve(4);
-    const tubularSegments = 20;  // ui: tubularSegments
-    const radius = 1;  // ui: radius
-    const radialSegments = 8;  // ui: radialSegments
-    const closed = false;  // ui: closed
+    const path1 = new CustomSinCurve1(4);
+
     const geometry1 = new THREE.TubeGeometry(
       // @ts-ignore
-      path, // TSエラーあり
-      tubularSegments,
-      radius,
-      radialSegments,
-      closed
+      path1, // CustomSinCurve ※TSエラーあり
+      20, // ui: tubularSegments,
+      1, // ui: radius,
+      8, // ui: radialSegments,
+      false // ui: closed
     );
 
 
     // Expansion
-    const geometry2 = new THREE.TorusKnotGeometry(
-      3.5, // ui: radius,
-      1.5, // ui: tubeRadius,
-      64, // ui: tubularSegments,
-      8, // ui: radialSegments,
-      3, // ui: p,
-      15 // ui: q
+    // @ts-ignore
+    class CustomSinCurve2 extends THREE.Curve {　// ※TSエラーあり
+      scale: number;
+      t: number;
+
+      constructor(scale) {
+        super();
+        this.scale = scale;
+      }
+      getPoint(t) {
+        const tx = t * 3 - 1.5;
+        const ty = Math.sin(2 * Math.PI * t);
+        const tz = 0;
+        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
+      }
+    }
+
+    const path2 = new CustomSinCurve2(4);
+
+    const geometry2 = new THREE.TubeGeometry(
+      // @ts-ignore
+      path2, // CustomSinCurve ※TSエラーあり
+      40, // ui: tubularSegments,
+      2, // ui: radius,
+      18, // ui: radialSegments,
+      false // ui: closed
     );
 
 
     // Custom
-    const geometry3 = new THREE.TorusKnotGeometry(
-      3.5, // ui: radius,
-      1.5, // ui: tubeRadius,
-      64, // ui: tubularSegments,
-      8, // ui: radialSegments,
-      15, // ui: p,
-      3 // ui: q
+    // @ts-ignore
+    class CustomSinCurve3 extends THREE.Curve {　// ※TSエラーあり
+      scale: number;
+      t: number;
+
+      constructor(scale) {
+        super();
+        this.scale = scale;
+      }
+      getPoint(t) {
+        const tx = t * 2.5 - 1.8;
+        const ty = Math.sin(2.3 * Math.PI * t);
+        const tz = 0;
+        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
+      }
+    }
+
+    const path3 = new CustomSinCurve3(4);
+
+    const geometry3 = new THREE.TubeGeometry(
+      // @ts-ignore
+      path3, // CustomSinCurve ※TSエラーあり
+      15, // ui: tubularSegments,
+      1, // ui: radius,
+      3, // ui: radialSegments,
+      false // ui: closed
     );
 
 
@@ -131,8 +166,8 @@ function Inner() {
 
     const primitives = [
       makeInstance(geometry1, 'green',  -15),
-      makeInstance(geometry1, 'yellow', 0),
-      makeInstance(geometry1, 'red',  15),
+      makeInstance(geometry2, 'yellow', 0),
+      makeInstance(geometry3, 'red',  15),
     ];
 
     function render(time) {
