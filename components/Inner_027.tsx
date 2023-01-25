@@ -42,6 +42,7 @@ function Inner() {
 
     // three.js
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xAAAAAA);
 
     const fov = 35;
     const aspect = canvasSize / canvasSize;
@@ -64,62 +65,27 @@ function Inner() {
     const y = -5;
 
     // Basic
-    // @ts-ignore
-    class CustomSinCurve1 extends THREE.Curve {　// ※TSエラーあり
-      scale: number;
-      t: number;
-
-      constructor(scale) {
-        super();
-        this.scale = scale;
-      }
-      getPoint(t) {
-        const tx = t * 3 - 1.5;
-        const ty = Math.sin(2 * Math.PI * t);
-        const tz = 0;
-        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
-      }
-    }
-
-    const path1 = new CustomSinCurve1(4);
-
-    const geometry1 = new THREE.TubeGeometry(
-      // @ts-ignore
-      path1, // CustomSinCurve ※TSエラーあり
-      20, // ui: tubularSegments,
-      1, // ui: radius,
-      8, // ui: radialSegments,
-      false // ui: closed
+    const boxGeometry = new THREE.BoxGeometry(
+      8,  // size,
+      8,  // size,
+      8,  // size,
+      2,  // widthSegments,
+      2,  // heightSegments,
+      2  // depthSegments
     );
+    const geometry1 = new THREE.EdgesGeometry(boxGeometry);
 
 
     // Expansion
-    // @ts-ignore
-    class CustomSinCurve2 extends THREE.Curve {　// ※TSエラーあり
-      scale: number;
-      t: number;
+    const sphereGeometry = new THREE.SphereGeometry(
+      7, // radius,
+      6, // widthSegments,
+      3 // heightSegments
+    );
 
-      constructor(scale) {
-        super();
-        this.scale = scale;
-      }
-      getPoint(t) {
-        const tx = t * 3 - 1.5;
-        const ty = Math.sin(2 * Math.PI * t);
-        const tz = 0;
-        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
-      }
-    }
-
-    const path2 = new CustomSinCurve2(4);
-
-    const geometry2 = new THREE.TubeGeometry(
-      // @ts-ignore
-      path2, // CustomSinCurve ※TSエラーあり
-      40, // ui: tubularSegments,
-      2, // ui: radius,
-      18, // ui: radialSegments,
-      false // ui: closed
+    const geometry2 = new THREE.EdgesGeometry(
+      sphereGeometry,
+      1 // ui: thresholdAngle
     );
 
 
@@ -134,8 +100,8 @@ function Inner() {
         this.scale = scale;
       }
       getPoint(t) {
-        const tx = t * 2.5 - 1.8;
-        const ty = Math.sin(2.3 * Math.PI * t);
+        const tx = t * 3 - 1.5;
+        const ty = Math.sin(2 * Math.PI * t);
         const tz = 0;
         return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
       }
@@ -143,19 +109,24 @@ function Inner() {
 
     const path3 = new CustomSinCurve3(4);
 
-    const geometry3 = new THREE.TubeGeometry(
+    const tubeGeometry = new THREE.TubeGeometry(
       // @ts-ignore
       path3, // CustomSinCurve ※TSエラーあり
-      15, // ui: tubularSegments,
+      20, // ui: tubularSegments,
       1, // ui: radius,
-      3, // ui: radialSegments,
+      8, // ui: radialSegments,
       false // ui: closed
     );
 
+    const geometry3 = new THREE.EdgesGeometry(
+      tubeGeometry,
+      1 // ui: thresholdAngle
+    );
 
-    function makeInstance(geometry, color, x) {
-      const material = new THREE.MeshPhongMaterial({color});
-      const primitive = new THREE.Mesh(geometry, material);
+
+    function makeInstance(geometry, x) {
+      const material = new THREE.LineBasicMaterial({color: 0xFFFFFF});
+      const primitive = new THREE.LineSegments(geometry, material);
 
       scene.add(primitive);
       primitive.position.x = x;
@@ -164,9 +135,9 @@ function Inner() {
     }
 
     const primitives = [
-      makeInstance(geometry1, 'green',  -15),
-      makeInstance(geometry2, 'yellow', 0),
-      makeInstance(geometry3, 'red',  15),
+      makeInstance(geometry1, -15),
+      makeInstance(geometry2, 0),
+      makeInstance(geometry3, 15)
     ];
 
     function render(time) {

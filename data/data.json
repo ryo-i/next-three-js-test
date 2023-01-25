@@ -164,7 +164,13 @@
         "test026": {
             "id": "026",
             "title":"経路をなぞらせた管(TubeGeometry)",
-            "text": "TubeGeometryで経路をなぞらせた管を作る ※TSエラーあり",
+            "text": "TubeGeometryで経路をなぞらせた管を作る",
+            "blog": ""
+        },
+        "test027": {
+            "id": "027",
+            "title":"エッジを表示(EdgesGeometry)",
+            "text": "EdgesGeometryでエッジを表示する（ヘルパーオブジェクト）",
             "blog": ""
         }
     },
