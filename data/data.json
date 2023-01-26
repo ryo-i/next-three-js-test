@@ -172,6 +172,12 @@
             "title":"エッジを表示(EdgesGeometry)",
             "text": "EdgesGeometryでエッジを表示する（ヘルパーオブジェクト）",
             "blog": ""
+        },
+        "test028": {
+            "id": "028",
+            "title":"ワイヤーフレームを表示(WireframeGeometry)",
+            "text": "WireframeGeometryでワイヤーフレームを表示する（ヘルパーオブジェクト）",
+            "blog": ""
         }
     },
     "footer": {
