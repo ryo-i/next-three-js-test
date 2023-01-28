@@ -178,6 +178,12 @@
             "title":"ワイヤーフレームを表示(WireframeGeometry)",
             "text": "WireframeGeometryでワイヤーフレームを表示する（ヘルパーオブジェクト）",
             "blog": ""
+        },
+        "test029": {
+            "id": "029",
+            "title":"各頂点の点を描画(PointsMaterial)",
+            "text": "PointsMaterialで各頂点の点を描画する",
+            "blog": ""
         }
     },
     "footer": {
