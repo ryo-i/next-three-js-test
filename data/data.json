@@ -190,6 +190,12 @@
             "title":"シーングラフ",
             "text": "ノードの階層関係を設定する",
             "blog": ""
+        },
+        "test031": {
+            "id": "031",
+            "title":"マテリアル(Basic,Lambert,Phong)",
+            "text": "MeshBasicMaterialは陰影なし、MeshLambertMaterialはマット調、MeshPhongMaterialは光沢あり",
+            "blog": ""
         }
     },
     "footer": {

@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- シーングラフ：ノードの階層関係を設定する [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
+- マテリアル(Basic,Lambert,Phong) [#8](https://github.com/ryo-i/next-three-js-test/issues/8)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
