@@ -196,6 +196,12 @@
             "title":"マテリアル(Basic,Lambert,Phong)",
             "text": "MeshBasicMaterialは陰影なし、MeshLambertMaterialはマット調、MeshPhongMaterialは光沢あり",
             "blog": ""
+        },
+        "test032": {
+            "id": "032",
+            "title":"マテリアル(MeshToonMaterial)",
+            "text": "MeshToonMaterialは2Dアニメ調(MeshPhongMaterialとの比較)",
+            "blog": ""
         }
     },
     "footer": {
