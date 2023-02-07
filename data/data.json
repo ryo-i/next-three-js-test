@@ -202,6 +202,12 @@
             "title":"マテリアル(MeshToonMaterial)",
             "text": "MeshToonMaterialは2Dアニメ調(MeshPhongMaterialとの比較)",
             "blog": ""
+        },
+        "test033": {
+            "id": "033",
+            "title":"マテリアル(Standard, Physical)",
+            "text": "MeshStandardMaterialは反射の粗さ&金属っぽさ,MeshPhysicalMaterialはさらに光沢層と光沢層の粗さ(MeshPhongMaterialとの比較)",
+            "blog": ""
         }
     },
     "footer": {
