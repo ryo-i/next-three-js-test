@@ -208,6 +208,12 @@
             "title":"マテリアル(Standard, Physical)",
             "text": "MeshStandardMaterialは反射の粗さ&金属っぽさ,MeshPhysicalMaterialはさらに光沢層と光沢層の粗さ(MeshPhongMaterialとの比較)",
             "blog": ""
+        },
+        "test034": {
+            "id": "034",
+            "title":"マテリアル(Dept, Normal)",
+            "text": "MeshDepthMaterialはカメラに近いほど白・遠いほど黒(ほとんど違いがない)、MeshNormalMaterialは法線(表面の方向)によって色が変わる(ライトがなくても表示される)",
+            "blog": ""
         }
     },
     "footer": {

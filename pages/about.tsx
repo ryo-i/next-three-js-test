@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>マテリアル(Standard, Physical) <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
+                    <li>マテリアル(Dept, Normal) <a href="https://github.com/ryo-i/next-app-started/issues/8">#8</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>
