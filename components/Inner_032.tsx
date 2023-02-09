@@ -61,9 +61,6 @@ function Inner() {
     const light = new THREE.DirectionalLight( 0xffffbb, 1 );
     scene.add( light );
 
-    const x = -2.5;
-    const y = -5;
-
     const geometry = new THREE.TorusGeometry(
       7, // ui: radius,
       3, // ui: tubeRadius,
