@@ -220,6 +220,12 @@
             "title":"テクスチャー(TextureLoader)",
             "text": "TextureLoaderで画像ファイルを読み込みマテリアルに貼り付ける(同じ画像で異なるジオメトリの比較)",
             "blog": ""
+        },
+        "test036": {
+            "id": "036",
+            "title": "点をランダムに配置(PointsMaterial)",
+            "text": "以前、LineBasicMaterialで線をランダムに引いた形をベースにPointsMaterialで点をランダムに配置",
+            "blog": ""
         }
     },
     "footer": {
