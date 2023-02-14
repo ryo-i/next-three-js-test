@@ -44,19 +44,19 @@ function Inner() {
     // three.js
     const scene = new THREE.Scene();
 
-    const fov = 35;
-    const aspect = canvasSize / canvasSize;
-    const near = 0.1;
-    const far = 1000;
-    const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.z = 80;
-
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
     if (figureElm.current.firstChild) {
       figureElm.current.removeChild( figureElm.current.firstChild );
     }
     figureElm.current.appendChild( renderer.domElement );
+
+    const fov = 35;
+    const aspect = canvasSize / canvasSize;
+    const near = 0.1;
+    const far = 1000;
+    const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+    camera.position.z = 80;
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.target.set(0, 5, 0);
