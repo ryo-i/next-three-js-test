@@ -46,6 +46,7 @@ function Inner() {
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
+
     if (figureElm.current.firstChild) {
       figureElm.current.removeChild( figureElm.current.firstChild );
     }

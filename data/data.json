@@ -232,6 +232,12 @@
             "title": "カメラ位置の制御(OrbitControls)",
             "text": "OrbitControlsでカメラ位置を動的に制御できるようにする",
             "blog": ""
+        },
+        "test038": {
+            "id": "038",
+            "title": "点のランダム配置＆カメラ位置制御",
+            "text": "PointsMaterialの点ランダム配置＆OrbitControlsのカメラ位置制御",
+            "blog": ""
         }
     },
     "footer": {
