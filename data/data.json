@@ -238,6 +238,12 @@
             "title": "点のランダム配置＆カメラ位置制御",
             "text": "PointsMaterialの点ランダム配置＆OrbitControlsのカメラ位置制御",
             "blog": ""
+        },
+        "test039": {
+            "id": "039",
+            "title": "ライトの制御",
+            "text": "ライトをいろいろ制御する予定",
+            "blog": ""
         }
     },
     "footer": {
