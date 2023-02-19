@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- リピート画像テクスチャーの床を作成 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- ライトを環境光源(AmbientLight)に変更、カラーピッカー追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

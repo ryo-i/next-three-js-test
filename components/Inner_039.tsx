@@ -13,6 +13,7 @@ const Figure = styled.figure`
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
+  const [mainHex, setMainHex] = useState('#ffffff');
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -22,6 +23,17 @@ function Inner() {
       setCanvasSize(900);
     }
   }
+
+
+  const changeColorPicker = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const getName:string = String(e.target.name);
+    const getValue: string = String(e.target.value);
+
+    if (getName === 'mainHex') {
+      setMainHex(getValue);
+    }
+  };
+
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -64,10 +76,11 @@ function Inner() {
     controls.target.set(0, 5, 0);
     controls.update();
 
-    // const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
-    const light = new THREE.DirectionalLight( 0xffffff, 1 );
-    scene.add( light );
-
+    // Light
+    const color = mainHex;
+    const intensity = 1;
+    const light = new THREE.AmbientLight(color, intensity);
+    scene.add(light);
 
     // Texture
     const planeSize = 50;
@@ -151,12 +164,18 @@ function Inner() {
     }
     requestAnimationFrame(render);
     console.log('canvasSize', canvasSize)
-  }, [canvasSize]);
+  }, [canvasSize, mainHex]);
 
 
   // JSX
   return (
-    <Figure ref={figureElm}></Figure>
+    <>
+      <Figure ref={figureElm}></Figure>
+      <dl>
+        <dt>Light Color</dt>
+        <dd><label><input type="color" name="mainHex" value={mainHex} onChange={changeColorPicker} /> {mainHex}</label></dd>
+      </dl>
+    </>
   );
 }
 
