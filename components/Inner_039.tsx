@@ -10,6 +10,32 @@ const Figure = styled.figure`
   }
 `;
 
+const Dl = styled.dl`
+  display: block;
+  dd {
+    font-size: 16px;
+  }
+  input[type='color'] {
+    margin: 0 0.25em 0 0;
+    padding: 0;
+    border: none;
+    background: none;
+    appearance: none;
+    width: 1em;
+    height: 1em;
+    ::-webkit-color-swatch {
+      border: #ddd 1px solid;
+    }
+    ::-webkit-color-swatch-wrapper {
+      margin: 0;
+      padding: 0;
+      width: 1em;
+      height: 1em;
+      border: none;
+    }
+  }
+`;
+
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
@@ -171,10 +197,15 @@ function Inner() {
   return (
     <>
       <Figure ref={figureElm}></Figure>
-      <dl>
+      <Dl>
         <dt>Light Color</dt>
-        <dd><label><input type="color" name="mainHex" value={mainHex} onChange={changeColorPicker} /> {mainHex}</label></dd>
-      </dl>
+        <dd>
+          <label>
+            <input type="color" name="mainHex" value={mainHex} onChange={changeColorPicker} />
+            {mainHex}
+          </label>
+        </dd>
+      </Dl>
     </>
   );
 }
