@@ -16,7 +16,7 @@ const Dl = styled.dl`
     font-size: 16px;
   }
   input[type='color'] {
-    margin: 0 0.25em 0 0;
+    margin: 0 0.5em 0 0;
     padding: 0;
     border: none;
     background: none;
@@ -25,6 +25,7 @@ const Dl = styled.dl`
     height: 1em;
     ::-webkit-color-swatch {
       border: #ddd 1px solid;
+      border-radius: none;
     }
     ::-webkit-color-swatch-wrapper {
       margin: 0;
@@ -198,7 +199,7 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-        <dt>Light Color</dt>
+        <dt>ライトの色変更</dt>
         <dd>
           <label>
             <input type="color" name="mainHex" value={mainHex} onChange={changeColorPicker} />
