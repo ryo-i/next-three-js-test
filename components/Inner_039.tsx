@@ -25,7 +25,7 @@ const Dl = styled.dl`
     height: 1em;
     ::-webkit-color-swatch {
       border: #ddd 1px solid;
-      border-radius: none;
+      border-radius: 0;
     }
     ::-webkit-color-swatch-wrapper {
       margin: 0;
