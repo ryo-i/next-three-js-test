@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>input colorのCSSを調節3<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
+                    <li>半球光源(HemisphereLight)<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>

@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- input colorのCSSを調節3 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- 半球光源(HemisphereLight) [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
