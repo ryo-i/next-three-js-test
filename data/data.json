@@ -250,6 +250,12 @@
             "title": "半球光源(HemisphereLight)",
             "text": "半球光源は陰影がつく。空と地面のライトの色を設定できる",
             "blog": ""
+        },
+        "test041": {
+            "id": "041",
+            "title": "平行光源(DirectionalLight)",
+            "text": "平行光源は太陽のような光",
+            "blog": ""
         }
     },
     "footer": {
