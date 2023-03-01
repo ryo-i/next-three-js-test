@@ -45,6 +45,12 @@ const Dl = styled.dl`
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
   const [sunHex, setSunHex] = useState('#FFFFFF');
+  const [positionX, setPositionX] = useState(0);
+  const [positionY, setPositionY] = useState(10);
+  const [positionZ, setPositionZ] = useState(0);
+  const [targetPositionX, setTargetPositionX] = useState(-5);
+  const [targetPositionY, setTargetPositionY] = useState(0);
+  const [targetPositionZ, setTargetPositionZ] = useState(0);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -65,6 +71,31 @@ function Inner() {
     }
   };
 
+  const changeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const getName: string = String(e.target.name);
+    const getValue: number = Number(e.target.value);
+
+    switch (getName){
+      case 'positionX':
+        setPositionX(getValue);
+        break;
+      case 'positionY':
+        setPositionY(getValue);
+        break;
+      case 'positionZ':
+        setPositionZ(getValue);
+        break;
+      case 'targetPositionX':
+        setTargetPositionX(getValue);
+        break;
+      case 'targetPositionY':
+        setTargetPositionY(getValue);
+        break;
+      case 'targetPositionZ':
+        setTargetPositionZ(getValue);
+        break;
+    }
+  };
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -111,6 +142,8 @@ function Inner() {
     const color = sunHex;
     const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
+    light.position.set(positionX, positionY, positionZ);
+    light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     scene.add(light);
 
     // Texture
@@ -180,14 +213,14 @@ function Inner() {
     function render(time) {
       time *= 0.0005;  // convert time to seconds
 
-      primitives.forEach((primitive, ndx) => {
-        const speed = 1 + ndx * .1;
-        const rot = time * speed;
-        primitive.rotation.x = rot;
-        primitive.rotation.y = rot;
-      });
+      // primitives.forEach((primitive, ndx) => {
+      //   const speed = 1 + ndx * .1;
+      //   const rot = time * speed;
+      //   primitive.rotation.x = rot;
+      //   primitive.rotation.y = rot;
+      // });
 
-      floorMesh.rotation.z += 0.002;
+      // floorMesh.rotation.z += 0.002;
 
       renderer.render(scene, camera);
 
@@ -195,7 +228,13 @@ function Inner() {
     }
     requestAnimationFrame(render);
     console.log('canvasSize', canvasSize)
-  }, [canvasSize, sunHex]);
+  },
+    [
+      canvasSize, sunHex,
+      positionX, positionY, positionZ,
+      targetPositionX, targetPositionY, targetPositionZ
+    ]
+  );
 
 
   // JSX
@@ -210,6 +249,46 @@ function Inner() {
               <label>
                 <input type="color" name="sunHex" value={sunHex} onChange={changeColorPicker} />
             sunColor: {sunHex}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>position</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="positionX" min="-10" max="10" step="0.1" value={positionX} onChange={changeRange} /> x: {positionX}
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="range" name="positionY" min="-10" max="10" step="0.1" value={positionY} onChange={changeRange} /> y: {positionY}
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="range" name="positionZ" min="-10" max="10" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>target.position</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="targetPositionX" min="-10" max="10" step="0.1" value={targetPositionX} onChange={changeRange} /> x: {targetPositionX}
+              </label>
+            </li>
+                        <li>
+              <label>
+                <input type="range" name="targetPositionY" min="-10" max="10" step="0.1" value={targetPositionY} onChange={changeRange} /> y: {targetPositionY}
+              </label>
+            </li>
+            <li>
+              <label>
+                <input type="range" name="targetPositionZ" min="-10" max="10" step="0.1" value={targetPositionZ} onChange={changeRange} /> z: {targetPositionZ}
               </label>
             </li>
           </ul>

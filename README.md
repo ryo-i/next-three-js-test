@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 平行光源(DirectionalLight) [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- ライト位置、ターゲット位置の変更を追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

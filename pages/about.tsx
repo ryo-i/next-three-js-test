@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>平行光源(DirectionalLight)<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
+                    <li>ライト位置、ターゲット位置の変更を追加<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>
