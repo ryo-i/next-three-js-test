@@ -145,6 +145,7 @@ function Inner() {
     light.position.set(positionX, positionY, positionZ);
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     scene.add(light);
+    scene.add(light.target);
 
     // Texture
     const planeSize = 50;
@@ -242,13 +243,13 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-        <dt>ライトの色変更</dt>
+        <dt>Lite color</dt>
         <dd>
           <ul>
             <li>
               <label>
                 <input type="color" name="sunHex" value={sunHex} onChange={changeColorPicker} />
-            sunColor: {sunHex}
+                color: {sunHex}
               </label>
             </li>
           </ul>
