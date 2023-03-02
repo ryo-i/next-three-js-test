@@ -46,7 +46,7 @@ function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
   const [sunHex, setSunHex] = useState('#FFFFFF');
   const [positionX, setPositionX] = useState(0);
-  const [positionY, setPositionY] = useState(10);
+  const [positionY, setPositionY] = useState(20);
   const [positionZ, setPositionZ] = useState(0);
   const [targetPositionX, setTargetPositionX] = useState(-5);
   const [targetPositionY, setTargetPositionY] = useState(0);
@@ -133,6 +133,8 @@ function Inner() {
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.y = 15;
     camera.position.z = 70;
+    // const cameraHelper = new THREE.CameraHelper( camera );
+    // scene.add( cameraHelper );
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.target.set(0, 5, 0);
@@ -146,6 +148,14 @@ function Inner() {
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     scene.add(light);
     scene.add(light.target);
+    const ligntHelper = new THREE.DirectionalLightHelper( light, 5 );
+    scene.add( ligntHelper );
+
+    const updateLight = () => {
+      light.target.updateMatrixWorld();
+      ligntHelper.update();
+    }
+    updateLight();
 
     // Texture
     const planeSize = 50;
@@ -243,33 +253,22 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-        <dt>Lite color</dt>
-        <dd>
-          <ul>
-            <li>
-              <label>
-                <input type="color" name="sunHex" value={sunHex} onChange={changeColorPicker} />
-                color: {sunHex}
-              </label>
-            </li>
-          </ul>
-        </dd>
         <dt>position</dt>
         <dd>
           <ul>
             <li>
               <label>
-                <input type="range" name="positionX" min="-10" max="10" step="0.1" value={positionX} onChange={changeRange} /> x: {positionX}
+                <input type="range" name="positionX" min="-20" max="20" step="0.1" value={positionX} onChange={changeRange} /> x: {positionX}
               </label>
             </li>
             <li>
               <label>
-                <input type="range" name="positionY" min="-10" max="10" step="0.1" value={positionY} onChange={changeRange} /> y: {positionY}
+                <input type="range" name="positionY" min="-20" max="20" step="0.1" value={positionY} onChange={changeRange} /> y: {positionY}
               </label>
             </li>
             <li>
               <label>
-                <input type="range" name="positionZ" min="-10" max="10" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
+                <input type="range" name="positionZ" min="-20" max="20" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
               </label>
             </li>
           </ul>
@@ -279,17 +278,28 @@ function Inner() {
           <ul>
             <li>
               <label>
-                <input type="range" name="targetPositionX" min="-10" max="10" step="0.1" value={targetPositionX} onChange={changeRange} /> x: {targetPositionX}
+                <input type="range" name="targetPositionX" min="-20" max="20" step="0.1" value={targetPositionX} onChange={changeRange} /> x: {targetPositionX}
               </label>
             </li>
                         <li>
               <label>
-                <input type="range" name="targetPositionY" min="-10" max="10" step="0.1" value={targetPositionY} onChange={changeRange} /> y: {targetPositionY}
+                <input type="range" name="targetPositionY" min="-20" max="20" step="0.1" value={targetPositionY} onChange={changeRange} /> y: {targetPositionY}
               </label>
             </li>
             <li>
               <label>
-                <input type="range" name="targetPositionZ" min="-10" max="10" step="0.1" value={targetPositionZ} onChange={changeRange} /> z: {targetPositionZ}
+                <input type="range" name="targetPositionZ" min="-20" max="20" step="0.1" value={targetPositionZ} onChange={changeRange} /> z: {targetPositionZ}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>Lite color</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="color" name="sunHex" value={sunHex} onChange={changeColorPicker} />
+                color: {sunHex}
               </label>
             </li>
           </ul>
