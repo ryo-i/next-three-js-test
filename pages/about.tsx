@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>lightヘルパーを追加<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
+                    <li>点光源(PointLight)を追加<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
 
                 </ul>

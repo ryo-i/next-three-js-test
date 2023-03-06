@@ -46,13 +46,10 @@ const Dl = styled.dl`
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
-  const [sunHex, setSunHex] = useState('#FFFFFF');
+  const [pointHex, setPointHex] = useState('#FFFFFF');
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(20);
   const [positionZ, setPositionZ] = useState(0);
-  const [targetPositionX, setTargetPositionX] = useState(-5);
-  const [targetPositionY, setTargetPositionY] = useState(0);
-  const [targetPositionZ, setTargetPositionZ] = useState(0);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -68,8 +65,8 @@ function Inner() {
     const getName:string = String(e.target.name);
     const getValue: string = String(e.target.value);
 
-    if (getName === 'sunHex') {
-      setSunHex(getValue);
+    if (getName === 'pointHex') {
+      setPointHex(getValue);
     }
   };
 
@@ -86,15 +83,6 @@ function Inner() {
         break;
       case 'positionZ':
         setPositionZ(getValue);
-        break;
-      case 'targetPositionX':
-        setTargetPositionX(getValue);
-        break;
-      case 'targetPositionY':
-        setTargetPositionY(getValue);
-        break;
-      case 'targetPositionZ':
-        setTargetPositionZ(getValue);
         break;
     }
   };
@@ -143,18 +131,15 @@ function Inner() {
     controls.update();
 
     // Light
-    const color = sunHex;
+    const color = pointHex;
     const intensity = 1;
-    const light = new THREE.DirectionalLight(color, intensity);
+    const light = new THREE.PointLight(color, intensity);
     light.position.set(positionX, positionY, positionZ);
-    light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     scene.add(light);
-    scene.add(light.target);
-    const ligntHelper = new THREE.DirectionalLightHelper( light, 5 );
+    const ligntHelper = new THREE.PointLightHelper( light );
     scene.add( ligntHelper );
 
     const updateLight = () => {
-      light.target.updateMatrixWorld();
       ligntHelper.update();
     }
     updateLight();
@@ -243,9 +228,8 @@ function Inner() {
     console.log('canvasSize', canvasSize)
   },
     [
-      canvasSize, sunHex,
-      positionX, positionY, positionZ,
-      targetPositionX, targetPositionY, targetPositionZ
+      canvasSize, pointHex,
+      positionX, positionY, positionZ
     ]
   );
 
@@ -275,33 +259,13 @@ function Inner() {
             </li>
           </ul>
         </dd>
-        <dt>target.position</dt>
-        <dd>
-          <ul>
-            <li>
-              <label>
-                <input type="range" name="targetPositionX" min="-20" max="20" step="0.1" value={targetPositionX} onChange={changeRange} /> x: {targetPositionX}
-              </label>
-            </li>
-                        <li>
-              <label>
-                <input type="range" name="targetPositionY" min="-20" max="20" step="0.1" value={targetPositionY} onChange={changeRange} /> y: {targetPositionY}
-              </label>
-            </li>
-            <li>
-              <label>
-                <input type="range" name="targetPositionZ" min="-20" max="20" step="0.1" value={targetPositionZ} onChange={changeRange} /> z: {targetPositionZ}
-              </label>
-            </li>
-          </ul>
-        </dd>
         <dt>Lite color</dt>
         <dd>
           <ul>
             <li>
               <label>
-                <input type="color" name="sunHex" value={sunHex} onChange={changeColorPicker} />
-                color: {sunHex}
+                <input type="color" name="pointHex" value={pointHex} onChange={changeColorPicker} />
+                color: {pointHex}
               </label>
             </li>
           </ul>

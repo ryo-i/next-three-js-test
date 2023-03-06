@@ -242,19 +242,25 @@
         "test039": {
             "id": "039",
             "title": "環境光源(AmbientLight)",
-            "text": "環境光源は陰影がベタっぽくなる。ライトの色を変更するカラーピッカーも追加",
+            "text": "AmbientLightは陰影がベタっぽくなるライト。ライトの色を変更するカラーピッカーも追加",
             "blog": ""
         },
         "test040": {
             "id": "040",
             "title": "半球光源(HemisphereLight)",
-            "text": "半球光源は陰影がつく。空と地面のライトの色を設定できる",
+            "text": "HemisphereLightは陰影がつくライト。空と地面のライトの色を設定できる",
             "blog": ""
         },
         "test041": {
             "id": "041",
             "title": "平行光源(DirectionalLight)",
-            "text": "平行光源は太陽のような光",
+            "text": "DirectionalLightは太陽のようなライト",
+            "blog": ""
+        },
+        "test042": {
+            "id": "042",
+            "title": "点光源(PointLight)",
+            "text": "PointLightはある点から全方向に光を放つライト",
             "blog": ""
         }
     },
