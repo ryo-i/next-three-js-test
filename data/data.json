@@ -262,6 +262,12 @@
             "title": "点光源(PointLight)",
             "text": "PointLightはある点から全方向に光を放つライト",
             "blog": ""
+        },
+        "test043": {
+            "id": "043",
+            "title": "集中光線(SpotLight)",
+            "text": "SpotLightは円錐体のライト",
+            "blog": ""
         }
     },
     "footer": {
