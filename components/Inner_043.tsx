@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef }  from 'react';
 import styled from 'styled-components';
 import * as THREE from 'three/src/Three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { listenerCount } from 'process';
 
 // CSS in JS
 const Figure = styled.figure`
@@ -50,11 +49,12 @@ function Inner() {
   const [mainHex, setMainHex] = useState('#FFFFFF');
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(20);
-  const [positionZ, setPositionZ] = useState(0);
+  const [positionZ, setPositionZ] = useState(10);
   const [targetPositionX, setTargetPositionX] = useState(-5);
   const [targetPositionY, setTargetPositionY] = useState(0);
   const [targetPositionZ, setTargetPositionZ] = useState(0);
-  const [penumbra, setPenumbra] = useState(5);
+  const [angle, setAngle] = useState(45);
+  const [penumbra, setPenumbra] = useState(0.75);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -98,6 +98,9 @@ function Inner() {
       case 'targetPositionZ':
         setTargetPositionZ(getValue);
         break;
+      case 'angle':
+          setAngle(getValue);
+          break;
       case 'penumbra':
         setPenumbra(getValue);
         break;
@@ -153,6 +156,7 @@ function Inner() {
     const light = new THREE.SpotLight(color, intensity);
     light.position.set(positionX, positionY, positionZ);
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
+    light.angle = angle * ( Math.PI / 180 );
     light.penumbra = penumbra;
     scene.add(light);
     scene.add(light.target);
@@ -253,7 +257,7 @@ function Inner() {
       canvasSize, mainHex,
       positionX, positionY, positionZ,
       targetPositionX, targetPositionY, targetPositionZ,
-      penumbra
+      angle, penumbra
     ]
   );
 
@@ -307,7 +311,9 @@ function Inner() {
         <dd>
           <ul>
             <li>
-              ※作成中
+              <label>
+                <input type="range" name="angle" min="0" max="90" step="0.1" value={angle} onChange={changeRange} /> {angle}
+              </label>
             </li>
           </ul>
         </dd>
@@ -316,7 +322,7 @@ function Inner() {
           <ul>
             <li>
               <label>
-              <input type="range" name="penumbra" min="0" max="1" step="0.1" value={penumbra} onChange={changeRange} /> penumbra: {penumbra}
+              <input type="range" name="penumbra" min="0" max="1" step="0.1" value={penumbra} onChange={changeRange} /> {penumbra}
               </label>
             </li>
           </ul>

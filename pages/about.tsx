@@ -58,9 +58,8 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>集中光線(SpotLight)作成中<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
+                    <li>集中光線(SpotLight)にangleを追加<a href="https://github.com/ryo-i/next-app-started/issues/9">#9</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
-
                 </ul>
             </section>
             <section>

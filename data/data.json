@@ -266,7 +266,7 @@
         "test043": {
             "id": "043",
             "title": "集中光線(SpotLight)",
-            "text": "SpotLightは円錐体のライト",
+            "text": "SpotLightは円錐体のライト。angleで円錐の角度、penumbraで内側のフェードを設定",
             "blog": ""
         }
     },
