@@ -268,6 +268,12 @@
             "title": "集中光線(SpotLight)",
             "text": "SpotLightは円錐体のライト。angleで円錐の角度、penumbraで内側のフェードを設定",
             "blog": ""
+        },
+        "test044": {
+            "id": "044",
+            "title": "矩形光源(RectAreaLight)",
+            "text": "RectAreaLight長い蛍光灯(長方形)や曇り空のライト。",
+            "blog": ""
         }
     },
     "footer": {
