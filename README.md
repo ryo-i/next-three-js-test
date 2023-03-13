@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 矩形光源(RectAreaLight)を追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- 矩形光源にintensity,width,height変更を追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

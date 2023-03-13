@@ -52,6 +52,9 @@ function Inner() {
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(20);
   const [positionZ, setPositionZ] = useState(0);
+  const [intensity, setIntensity] = useState(5);
+  const [width, setWidth] = useState(40);
+  const [height, setHeight] = useState(10);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -85,6 +88,15 @@ function Inner() {
         break;
       case 'positionZ':
         setPositionZ(getValue);
+        break;
+      case 'intensity':
+        setIntensity(getValue);
+        break;
+      case 'width':
+        setWidth(getValue);
+        break;
+      case 'height':
+        setHeight(getValue);
         break;
     }
   };
@@ -134,23 +146,13 @@ function Inner() {
     controls.update();
 
     // Light
-    const color = mainHex;
-    const intensity = 5;
-    const width = 40;
-    const height = 10;
-    const light = new THREE.RectAreaLight(color, intensity, width, height);
+    const light = new THREE.RectAreaLight(mainHex, intensity, width, height);
     light.position.set(positionX, positionY, positionZ);
     light.rotation.x = THREE.MathUtils.degToRad(-90);
     scene.add(light);
     const ligntHelper = new RectAreaLightHelper(light);
     ligntHelper.color = 0xFFFFFF;
     scene.add( ligntHelper );
-
-    // const updateLight = () => {
-    //   light.target.updateMatrixWorld();
-    //   ligntHelper.update();
-    // }
-    // updateLight();
 
     // Texture
     const planeSize = 50;
@@ -238,6 +240,7 @@ function Inner() {
     [
       canvasSize, mainHex,
       positionX, positionY, positionZ,
+      intensity, width, height
     ]
   );
 
@@ -263,6 +266,36 @@ function Inner() {
             <li>
               <label>
                 <input type="range" name="positionZ" min="-20" max="20" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>intensity</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="intensity" min="0" max="5" step="0.1" value={intensity} onChange={changeRange} /> {intensity}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>width</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="width" min="0" max="40" step="0.1" value={width} onChange={changeRange} /> {width}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>height</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="height" min="0" max="40" step="0.1" value={height} onChange={changeRange} /> {height}
               </label>
             </li>
           </ul>
