@@ -251,7 +251,7 @@ function Inner() {
       requestAnimationFrame(render);
     }
     requestAnimationFrame(render);
-    console.log('canvasSize', canvasSize)
+    // console.log('canvasSize', canvasSize)
   },
     [
       canvasSize, mainHex,

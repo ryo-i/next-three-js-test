@@ -49,7 +49,9 @@ function Inner() {
   const [pointHex, setPointHex] = useState('#FFFFFF');
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(20);
-  const [positionZ, setPositionZ] = useState(0);
+  const [positionZ, setPositionZ] = useState(5);
+  const [power, setPower] = useState(4000);
+  const [decay, setDecay] = useState(1.5);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -84,6 +86,12 @@ function Inner() {
       case 'positionZ':
         setPositionZ(getValue);
         break;
+      case 'power':
+        setPower(getValue);
+        break;
+      case 'decay':
+        setDecay(getValue);
+        break;
     }
   };
 
@@ -109,6 +117,7 @@ function Inner() {
     const scene = new THREE.Scene();
 
     const renderer = new THREE.WebGLRenderer();
+    renderer.physicallyCorrectLights = true;
     renderer.setSize( canvasSize, canvasSize );
 
     if (figureElm.current.firstChild) {
@@ -135,6 +144,9 @@ function Inner() {
     const intensity = 1;
     const light = new THREE.PointLight(color, intensity);
     light.position.set(positionX, positionY, positionZ);
+    light.power = power;
+    light.decay = decay;
+    light.distance = Infinity;
     scene.add(light);
     const ligntHelper = new THREE.PointLightHelper( light );
     scene.add( ligntHelper );
@@ -225,11 +237,12 @@ function Inner() {
       requestAnimationFrame(render);
     }
     requestAnimationFrame(render);
-    console.log('canvasSize', canvasSize)
+    // console.log('canvasSize', canvasSize)
   },
     [
       canvasSize, pointHex,
-      positionX, positionY, positionZ
+      positionX, positionY, positionZ,
+      power, decay
     ]
   );
 
@@ -255,6 +268,26 @@ function Inner() {
             <li>
               <label>
                 <input type="range" name="positionZ" min="-20" max="20" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>power</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="power" min="0" max="6000" step="0.1" value={power} onChange={changeRange} /> {power}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>decay</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="decay" min="0" max="4" step="0.1" value={decay} onChange={changeRange} /> {decay}
               </label>
             </li>
           </ul>
