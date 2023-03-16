@@ -55,6 +55,8 @@ function Inner() {
   const [targetPositionZ, setTargetPositionZ] = useState(0);
   const [angle, setAngle] = useState(45);
   const [penumbra, setPenumbra] = useState(0.75);
+  const [power, setPower] = useState(4000);
+  const [decay, setDecay] = useState(2);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -104,6 +106,12 @@ function Inner() {
       case 'penumbra':
         setPenumbra(getValue);
         break;
+      case 'power':
+        setPower(getValue);
+        break;
+      case 'decay':
+        setDecay(getValue);
+        break;
     }
   };
 
@@ -129,6 +137,7 @@ function Inner() {
     const scene = new THREE.Scene();
 
     const renderer = new THREE.WebGLRenderer();
+    renderer.physicallyCorrectLights = true;
     renderer.setSize( canvasSize, canvasSize );
 
     if (figureElm.current.firstChild) {
@@ -158,6 +167,9 @@ function Inner() {
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     light.angle = angle * ( Math.PI / 180 );
     light.penumbra = penumbra;
+    light.power = power;
+    light.decay = decay;
+    // light.distance = Infinity;
     scene.add(light);
     scene.add(light.target);
     const ligntHelper = new THREE.SpotLightHelper( light, 3 );
@@ -257,7 +269,7 @@ function Inner() {
       canvasSize, mainHex,
       positionX, positionY, positionZ,
       targetPositionX, targetPositionY, targetPositionZ,
-      angle, penumbra
+      angle, penumbra, power, decay
     ]
   );
 
@@ -323,6 +335,26 @@ function Inner() {
             <li>
               <label>
               <input type="range" name="penumbra" min="0" max="1" step="0.1" value={penumbra} onChange={changeRange} /> {penumbra}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>power</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="power" min="0" max="6000" step="0.1" value={power} onChange={changeRange} /> {power}
+              </label>
+            </li>
+          </ul>
+        </dd>
+        <dt>decay</dt>
+        <dd>
+          <ul>
+            <li>
+              <label>
+                <input type="range" name="decay" min="0" max="4" step="0.1" value={decay} onChange={changeRange} /> {decay}
               </label>
             </li>
           </ul>
