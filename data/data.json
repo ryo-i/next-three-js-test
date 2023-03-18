@@ -272,7 +272,13 @@
         "test044": {
             "id": "044",
             "title": "矩形光源(RectAreaLight)",
-            "text": "RectAreaLight長い蛍光灯(長方形)や曇り空のライト。",
+            "text": "RectAreaLightは長い蛍光灯(長方形)や曇り空のライト。",
+            "blog": ""
+        },
+        "test045": {
+            "id": "045",
+            "title": "透視投影カメラ(PerspectiveCamera)",
+            "text": "PerspectiveCameraは錐台の形で遠近感があるカメラ。",
             "blog": ""
         }
     },
