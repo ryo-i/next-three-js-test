@@ -49,6 +49,12 @@ function Inner() {
   const [fov, setFov] = useState(45);
   const [near, setNear] = useState(0.1);
   const [far, setFar] = useState(1000);
+  const [positionX, setPositionX] = useState(0);
+  const [positionY, setPositionY] = useState(15);
+  const [positionZ, setPositionZ] = useState(70);
+  const [targetX, setTargetX] = useState(0);
+  const [targetY, setTargetY] = useState(5);
+  const [targetZ, setTargetZ] = useState(0);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -73,6 +79,24 @@ function Inner() {
         break;
       case 'far':
         setFar(getValue);
+        break;
+      case 'positionX':
+        setPositionX(getValue);
+        break;
+      case 'positionY':
+        setPositionY(getValue);
+        break;
+      case 'positionZ':
+        setPositionZ(getValue);
+        break;
+      case 'targetX':
+        setTargetX(getValue);
+        break;
+      case 'targetY':
+        setTargetY(getValue);
+        break;
+      case 'targetZ':
+        setTargetZ(getValue);
         break;
     }
   };
@@ -112,11 +136,12 @@ function Inner() {
     // const near = 0.1;
     // const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.y = 15;
-    camera.position.z = 70;
+    camera.position.x = positionX;
+    camera.position.y = positionY;
+    camera.position.z = positionZ;
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
-    controls.target.set(0, 5, 0);
+    controls.target.set(targetX, targetY, targetZ);
     controls.update();
 
     // Light
@@ -207,7 +232,12 @@ function Inner() {
     }
     requestAnimationFrame(render);
     // console.log('canvasSize', canvasSize)
-  }, [canvasSize, fov, near, far]);
+  }, [
+    canvasSize,
+    fov, near, far,
+    positionX, positionY, positionZ,
+    targetX, targetY, targetZ
+  ]);
 
 
   // JSX
@@ -241,6 +271,46 @@ function Inner() {
               <li>
                 <label>
                   <input type="range" name="far" min="0.1" max="1000" step="0.1" value={far} onChange={changeRange} /> {far}
+                </label>
+              </li>
+            </ul>
+          </dd>
+          <dt>position</dt>
+          <dd>
+            <ul>
+              <li>
+                <label>
+                  <input type="range" name="positionX" min="-100" max="100" step="0.1" value={positionX} onChange={changeRange} /> x: {positionX}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="range" name="positionY" min="-100" max="100" step="0.1" value={positionY} onChange={changeRange} /> y: {positionY}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="range" name="positionZ" min="-100" max="100" step="0.1" value={positionZ} onChange={changeRange} /> z: {positionZ}
+                </label>
+              </li>
+            </ul>
+          </dd>
+          <dt>target</dt>
+          <dd>
+            <ul>
+              <li>
+                <label>
+                  <input type="range" name="targetX" min="-100" max="100" step="0.1" value={targetX} onChange={changeRange} /> x: {targetX}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="range" name="targetY" min="-100" max="100" step="0.1" value={targetY} onChange={changeRange} /> y: {targetY}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="range" name="targetZ" min="-100" max="100" step="0.1" value={targetZ} onChange={changeRange} /> z: {targetZ}
                 </label>
               </li>
             </ul>
