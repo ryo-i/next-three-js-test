@@ -46,11 +46,11 @@ const Dl = styled.dl`
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
-  const [fov, setFov] = useState(45);
+  const [zoom, setZoom] = useState(3);
   const [near, setNear] = useState(0.1);
   const [far, setFar] = useState(1000);
-  const [positionX, setPositionX] = useState(0);
-  const [positionY, setPositionY] = useState(15);
+  const [positionX, setPositionX] = useState(70);
+  const [positionY, setPositionY] = useState(100);
   const [positionZ, setPositionZ] = useState(70);
   const [targetX, setTargetX] = useState(0);
   const [targetY, setTargetY] = useState(5);
@@ -71,8 +71,8 @@ function Inner() {
     const getValue: number = Number(e.target.value);
 
     switch (getName){
-      case 'fov':
-        setFov(getValue);
+      case 'zoom':
+        setZoom(getValue);
         break;
       case 'near':
         setNear(getValue);
@@ -131,11 +131,13 @@ function Inner() {
     }
     figureElm.current.appendChild( renderer.domElement );
 
-    const aspect = canvasSize / canvasSize;
-    const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+    const size = 120;
+    const camera = new THREE.OrthographicCamera(-size, size, size, -size, near, far);
+    camera.zoom = zoom;
     camera.position.x = positionX;
     camera.position.y = positionY;
     camera.position.z = positionZ;
+    camera.updateProjectionMatrix();
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.target.set(targetX, targetY, targetZ);
@@ -231,7 +233,7 @@ function Inner() {
     // console.log('canvasSize', canvasSize)
   }, [
     canvasSize,
-    fov, near, far,
+    zoom, near, far,
     positionX, positionY, positionZ,
     targetX, targetY, targetZ
   ]);
@@ -242,12 +244,12 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-        <dt>fov</dt>
+        <dt>zoom</dt>
           <dd>
             <ul>
               <li>
                 <label>
-                  <input type="range" name="fov" min="1" max="180" step="0.1" value={fov} onChange={changeRange} /> {fov}
+                  <input type="range" name="zoom" min="0.1" max="10" step="0.1" value={zoom} onChange={changeRange} /> {zoom}
                 </label>
               </li>
             </ul>

@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 透視投影カメラにposition, targetを追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- 平行投影カメラ(OrthographicCamera)を追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

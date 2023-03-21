@@ -280,6 +280,12 @@
             "title": "透視投影カメラ(PerspectiveCamera)",
             "text": "PerspectiveCameraは錐台の形で遠近感があるカメラ。",
             "blog": ""
+        },
+        "test046": {
+            "id": "046",
+            "title": "平行投影カメラ(OrthographicCamera)",
+            "text": "OrthographicCameraはボックス形で遠近感がないカメラ。",
+            "blog": ""
         }
     },
     "footer": {
