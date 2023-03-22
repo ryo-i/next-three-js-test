@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 平行投影カメラ(OrthographicCamera)を追加 [#9](https://github.com/ryo-i/next-three-js-test/issues/9)
+- custom-buffergeometry(1.Cube)を追加 [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

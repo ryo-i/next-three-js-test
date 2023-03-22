@@ -286,6 +286,12 @@
             "title": "平行投影カメラ(OrthographicCamera)",
             "text": "OrthographicCameraはボックス形で遠近感がないカメラ。",
             "blog": ""
+        },
+        "test047": {
+            "id": "047",
+            "title": "custom-buffergeometry(1.Cube)",
+            "text": "BufferGeometryでキューブを作る。左がBoxGeometryで右がBufferGeometry。",
+            "blog": ""
         }
     },
     "footer": {
