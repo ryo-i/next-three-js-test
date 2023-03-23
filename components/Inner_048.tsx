@@ -115,58 +115,44 @@ function Inner() {
     const repeats = planeSize / 2;
     texture.repeat.set(repeats, repeats);
 
-    // Box Geometry
-    const geometry1 = new THREE.BoxGeometry( 2, 2, 2 );
-
     // Custom BufferGeometry
     const vertices = [
       // front
       { pos: [-1, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
       { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
       { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
-
-      { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
-      { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
+      // { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], }, // 3番目と重複のため削除（以下同様）
+      // { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], }, // 2番目と重複のため削除（以下同様）
       { pos: [ 1,  1,  1], norm: [ 0,  0,  1], uv: [1, 1], },
+
       // right
       { pos: [ 1, -1,  1], norm: [ 1,  0,  0], uv: [0, 0], },
       { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
       { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
-
-      { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
-      { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
       { pos: [ 1,  1, -1], norm: [ 1,  0,  0], uv: [1, 1], },
+
       // back
       { pos: [ 1, -1, -1], norm: [ 0,  0, -1], uv: [0, 0], },
       { pos: [-1, -1, -1], norm: [ 0,  0, -1], uv: [1, 0], },
       { pos: [ 1,  1, -1], norm: [ 0,  0, -1], uv: [0, 1], },
-
-      { pos: [ 1,  1, -1], norm: [ 0,  0, -1], uv: [0, 1], },
-      { pos: [-1, -1, -1], norm: [ 0,  0, -1], uv: [1, 0], },
       { pos: [-1,  1, -1], norm: [ 0,  0, -1], uv: [1, 1], },
+
       // left
       { pos: [-1, -1, -1], norm: [-1,  0,  0], uv: [0, 0], },
       { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
       { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
-
-      { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
-      { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
       { pos: [-1,  1,  1], norm: [-1,  0,  0], uv: [1, 1], },
+
       // top
       { pos: [ 1,  1, -1], norm: [ 0,  1,  0], uv: [0, 0], },
       { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
       { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
-
-      { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
-      { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
       { pos: [-1,  1,  1], norm: [ 0,  1,  0], uv: [1, 1], },
+
       // bottom
       { pos: [ 1, -1,  1], norm: [ 0, -1,  0], uv: [0, 0], },
       { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
       { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
-
-      { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
-      { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
       { pos: [-1, -1, -1], norm: [ 0, -1,  0], uv: [1, 1], },
     ];
 
@@ -182,34 +168,34 @@ function Inner() {
     console.log('normals', normals);
     console.log('uvs', uvs);
 
-    const geometry2 = new THREE.BufferGeometry();
+    const geometry = new THREE.BufferGeometry();
     const positionNumComponents = 3;
     const normalNumComponents = 3;
     const uvNumComponents = 2;
-    geometry2.setAttribute(
+    geometry.setAttribute(
       'position',
       new THREE.BufferAttribute(new Float32Array(positions), positionNumComponents)
     );
-    geometry2.setAttribute(
+    geometry.setAttribute(
       'normal',
       new THREE.BufferAttribute(new Float32Array(normals), normalNumComponents)
     );
-    geometry2.setAttribute(
+    geometry.setAttribute(
       'uv',
       new THREE.BufferAttribute(new Float32Array(uvs), uvNumComponents)
     );
+    geometry.setIndex([
+      0,  1,  2,   2,  1,  3,  // front
+      4,  5,  6,   6,  5,  7,  // right
+      8,  9, 10,  10,  9, 11,  // back
+     12, 13, 14,  14, 13, 15,  // left
+     16, 17, 18,  18, 17, 19,  // top
+     20, 21, 22,  22, 21, 23,  // bottom
+   ]);
 
 
     // Material
-    const material1 = new THREE.MeshPhongMaterial({
-      color: 0xff33f4,    // red (can also use a CSS color string here)
-      // flatShading: true,
-      shininess: 100,
-      emissive: 0x222222,
-      specular: 0xFFFFFF
-    });
-
-    const material2 = new THREE.MeshPhongMaterial({
+    const material = new THREE.MeshPhongMaterial({
       color: 0x049ef4,    // red (can also use a CSS color string here)
       // flatShading: true,
       shininess: 100,
@@ -228,8 +214,7 @@ function Inner() {
     }
 
     const primitives = [
-      makeInstance(geometry1, material1,  -2),
-      makeInstance(geometry2, material2, 2)
+      makeInstance(geometry, material, 0)
     ];
 
     function render(time) {

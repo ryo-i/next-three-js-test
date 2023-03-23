@@ -289,8 +289,14 @@
         },
         "test047": {
             "id": "047",
-            "title": "custom-buffergeometry(1.Cube)",
+            "title": "BufferGeometry(1.Cubeを作る)",
             "text": "BufferGeometryでキューブを作る。左がBoxGeometryで右がBufferGeometry。",
+            "blog": ""
+        },
+        "test048": {
+            "id": "048",
+            "title": "BufferGeometry(2.重複データ削除)",
+            "text": "データの重複部分を削除。setIndexで順序を指定。",
             "blog": ""
         }
     },
