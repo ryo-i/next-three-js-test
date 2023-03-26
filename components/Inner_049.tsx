@@ -111,8 +111,6 @@ function Inner() {
       { pos: [-1, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
       { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
       { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
-      // { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], }, // 3番目と重複のため削除（以下同様）
-      // { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], }, // 2番目と重複のため削除（以下同様）
       { pos: [ 1,  1,  1], norm: [ 0,  0,  1], uv: [1, 1], },
 
       // right
@@ -146,33 +144,41 @@ function Inner() {
       { pos: [-1, -1, -1], norm: [ 0, -1,  0], uv: [1, 1], },
     ];
 
-    const positions = [];
-    const normals = [];
-    const uvs = [];
+    const numVertices = vertices.length;
+    const positionNumComponents = 3;
+    const normalNumComponents = 3;
+    const uvNumComponents = 2;
+    const positions = new Float32Array(numVertices * positionNumComponents);
+    const normals = new Float32Array(numVertices * normalNumComponents);
+    const uvs = new Float32Array(numVertices * uvNumComponents);
+    let posNdx = 0;
+    let nrmNdx = 0;
+    let uvNdx = 0;
+
     for (const vertex of vertices) {
-      positions.push(...vertex.pos);
-      normals.push(...vertex.norm);
-      uvs.push(...vertex.uv);
+      positions.set(vertex.pos, posNdx);
+      normals.set(vertex.norm, nrmNdx);
+      uvs.set(vertex.uv, uvNdx);
+      posNdx += positionNumComponents;
+      nrmNdx += normalNumComponents;
+      uvNdx += uvNumComponents;
     }
     console.log('positions', positions);
     console.log('normals', normals);
     console.log('uvs', uvs);
 
     const geometry = new THREE.BufferGeometry();
-    const positionNumComponents = 3;
-    const normalNumComponents = 3;
-    const uvNumComponents = 2;
     geometry.setAttribute(
       'position',
-      new THREE.BufferAttribute(new Float32Array(positions), positionNumComponents)
+      new THREE.BufferAttribute(positions, positionNumComponents)
     );
     geometry.setAttribute(
       'normal',
-      new THREE.BufferAttribute(new Float32Array(normals), normalNumComponents)
+      new THREE.BufferAttribute(normals, normalNumComponents)
     );
     geometry.setAttribute(
       'uv',
-      new THREE.BufferAttribute(new Float32Array(uvs), uvNumComponents)
+      new THREE.BufferAttribute(uvs, uvNumComponents)
     );
     geometry.setIndex([
       0,  1,  2,   2,  1,  3,  // front

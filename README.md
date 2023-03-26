@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- BufferGeometry(2.重複データ削除) [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
+- BufferGeometry: 3.TypedArraysを使う [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
