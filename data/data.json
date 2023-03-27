@@ -304,6 +304,12 @@
             "title": "BufferGeometry: 3.TypedArraysを使う",
             "text": "ネイティブの配列を使う代わりにTypedArraysを使う方法に変更",
             "blog": ""
+        },
+        "test050": {
+            "id": "050",
+            "title": "BufferGeometry: 4.四角形が出たり入ったりする球体",
+            "text": "プログラムが走っている状態のvertexをTypedArrayで編集",
+            "blog": ""
         }
     },
     "footer": {

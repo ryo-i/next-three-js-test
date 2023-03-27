@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- BufferGeometry: 3.TypedArraysを使う [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
+- BBufferGeometry: 4.四角形が出たり入ったりする球体 [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
