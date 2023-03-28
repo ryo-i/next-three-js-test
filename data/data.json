@@ -310,6 +310,12 @@
             "title": "BufferGeometry: 4.四角形が出たり入ったりする球体",
             "text": "プログラムが走っている状態のvertexをTypedArrayで編集",
             "blog": ""
+        },
+        "test051": {
+            "id": "051",
+            "title": "BufferGeometry: 5.球体のセグメントを動的に変更",
+            "text": "球体の引数segmentsAround, segmentsDownを動的に変更できるようにする",
+            "blog": ""
         }
     },
     "footer": {

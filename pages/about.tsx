@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>BufferGeometry: 4.四角形が出たり入ったりする球体<a href="https://github.com/ryo-i/next-app-started/issues/10">#10</a></li>
+                    <li>BufferGeometry: 5.球体のセグメントを動的に変更<a href="https://github.com/ryo-i/next-app-started/issues/10">#10</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
                 </ul>
             </section>
