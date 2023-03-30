@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- BufferGeometry: 5.球体のセグメントを動的に変更 [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
+- BufferGeometry: 6.color設定 [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

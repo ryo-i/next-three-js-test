@@ -316,6 +316,12 @@
             "title": "BufferGeometry: 5.球体のセグメントを動的に変更",
             "text": "球体の引数segmentsAround, segmentsDownを動的に変更できるようにする",
             "blog": ""
+        },
+        "test052": {
+            "id": "052",
+            "title": "BufferGeometry: 6.color設定",
+            "text": "ドキュメントにcolor設定はなかったが、サンプルにはあったので参考にする",
+            "blog": ""
         }
     },
     "footer": {
