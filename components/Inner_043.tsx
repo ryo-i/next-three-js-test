@@ -137,7 +137,8 @@ function Inner() {
     const scene = new THREE.Scene();
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.physicallyCorrectLights = true;
+    // @ts-ignore
+    renderer.physicallyCorrectLights = true; // Error physicallyCorrectLights
     renderer.setSize( canvasSize, canvasSize );
 
     if (figureElm.current.firstChild) {
@@ -162,7 +163,8 @@ function Inner() {
     // Light
     const color = mainHex;
     const intensity = 1;
-    const light = new THREE.SpotLight(color, intensity);
+    // @ts-ignore
+    const light = new THREE.SpotLight(color, intensity); // Error color
     light.position.set(positionX, positionY, positionZ);
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     light.angle = angle * ( Math.PI / 180 );

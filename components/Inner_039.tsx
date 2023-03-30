@@ -107,7 +107,7 @@ function Inner() {
     const color = mainHex;
     const intensity = 1;
     // @ts-ignore
-    const light = new THREE.AmbientLight(color, intensity); // Argument of type 'string' is not assignable to parameter of type 'ColorRepresentation'.
+    const light = new THREE.AmbientLight(color, intensity); // Argument of type 'string' is not assignable to parameter of type 'ColorRepresentation'. (Test_039-044)
     scene.add(light);
 
     // Texture

@@ -146,7 +146,8 @@ function Inner() {
     controls.update();
 
     // Light
-    const light = new THREE.RectAreaLight(mainHex, intensity, width, height);
+    // @ts-ignore
+    const light = new THREE.RectAreaLight(mainHex, intensity, width, height); // Error mainHex
     light.position.set(positionX, positionY, positionZ);
     light.rotation.x = THREE.MathUtils.degToRad(-90);
     scene.add(light);

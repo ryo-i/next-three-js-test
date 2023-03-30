@@ -117,7 +117,8 @@ function Inner() {
     const scene = new THREE.Scene();
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.physicallyCorrectLights = true;
+    // @ts-ignore
+    renderer.physicallyCorrectLights = true; // Property 'physicallyCorrectLights' does not exist on type 'WebGLRenderer'.
     renderer.setSize( canvasSize, canvasSize );
 
     if (figureElm.current.firstChild) {
@@ -142,7 +143,8 @@ function Inner() {
     // Light
     const color = pointHex;
     const intensity = 1;
-    const light = new THREE.PointLight(color, intensity);
+    // @ts-ignore
+    const light = new THREE.PointLight(color, intensity); // Error color
     light.position.set(positionX, positionY, positionZ);
     light.power = power;
     light.decay = decay;

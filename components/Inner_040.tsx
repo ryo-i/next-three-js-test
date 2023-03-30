@@ -114,7 +114,8 @@ function Inner() {
     const skyColor = skyHex;
     const groundColor = groundHex;
     const intensity = 1;
-    const light = new THREE.HemisphereLight(skyColor, groundColor, intensity);
+    // @ts-ignore
+    const light = new THREE.HemisphereLight(skyColor, groundColor, intensity); // Error skyColor
     scene.add(light);
 
     // Texture

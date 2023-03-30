@@ -145,7 +145,8 @@ function Inner() {
     // Light
     const color = sunHex;
     const intensity = 1;
-    const light = new THREE.DirectionalLight(color, intensity);
+    // @ts-ignore
+    const light = new THREE.DirectionalLight(color, intensity); // Error color
     light.position.set(positionX, positionY, positionZ);
     light.target.position.set(targetPositionX, targetPositionY, targetPositionZ);
     scene.add(light);
