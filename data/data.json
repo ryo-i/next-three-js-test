@@ -322,6 +322,12 @@
             "title": "BufferGeometry: 6.color設定",
             "text": "ドキュメントにcolor設定はなかったが、サンプルにはあったので参考にする",
             "blog": ""
+        },
+        "test053": {
+            "id": "053",
+            "title": "BufferGeometry: 7.ランダムな形状",
+            "text": "038のMeshPhongMaterialをPointsMaterialに変更し、ランダムな形状を作る",
+            "blog": ""
         }
     },
     "footer": {

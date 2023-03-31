@@ -169,8 +169,8 @@ function Inner() {
           ndx += 4;
         }
       }
-      // console.log('positions', positions);
-      // console.log('indices', indices);
+      console.log('positions', positions);
+      console.log('indices', indices);
       return {positions, indices};
     }
 
