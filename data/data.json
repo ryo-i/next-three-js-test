@@ -326,7 +326,7 @@
         "test053": {
             "id": "053",
             "title": "BufferGeometry: 7.ランダムな形状",
-            "text": "038のMeshPhongMaterialをPointsMaterialに変更し、ランダムな形状を作る",
+            "text": "038:点のランダム配置のPointsMaterialをMeshPhongMaterialに変更し、ランダムな形状を作る",
             "blog": ""
         }
     },
