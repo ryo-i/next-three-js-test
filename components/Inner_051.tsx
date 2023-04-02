@@ -249,7 +249,7 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-      <dt>segmentsAround</dt>
+        <dt>segmentsAround</dt>
         <dd>
           <ul>
             <li>
@@ -269,7 +269,6 @@ function Inner() {
             </li>
           </ul>
         </dd>
-
       </Dl>
     </>
   );

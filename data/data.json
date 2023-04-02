@@ -328,6 +328,12 @@
             "title": "BufferGeometry: 7.ランダムな形状",
             "text": "038:点のランダム配置のPointsMaterialをMeshPhongMaterialに変更し、ランダムな形状を作る",
             "blog": ""
+        },
+        "test054": {
+            "id": "054",
+            "title": "BufferGeometry: 8.Cubeの動的変形",
+            "text": "049のCubeの頂点を動的に変更できるようにする",
+            "blog": ""
         }
     },
     "footer": {
