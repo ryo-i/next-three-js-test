@@ -160,8 +160,8 @@ function Inner() {
       // top
       { pos: [ 1,  1, -1], norm: [ 0,  1,  0], uv: [0, 0], },
       { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
-      { pos: point4, norm: [ 0,  1,  0], uv: [0, 1], },
-      { pos: point3, norm: [ 0,  1,  0], uv: [1, 1], },
+      { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
+      { pos: [-1,  1,  1], norm: [ 0,  1,  0], uv: [1, 1], },
 
       // bottom
       { pos: [ 1, -1,  1], norm: [ 0, -1,  0], uv: [0, 0], },
