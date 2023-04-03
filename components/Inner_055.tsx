@@ -46,10 +46,10 @@ const Dl = styled.dl`
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
-  const [point1, setPoint1] = useState([-1, -1,  1]);
-  const [point2, setPoint2] = useState([ 1, -1,  1]);
-  const [point3, setPoint3] = useState([-1,  1,  1]);
-  const [point4, setPoint4] = useState([ 1,  1,  1]);
+  const [angle, setAngle] = useState(0);
+  const [rad, setRad] = useState(0);
+  const [x, setX] = useState(1);
+  const [y, setY] = useState(1);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -60,46 +60,24 @@ function Inner() {
     }
   }
 
+
   const changeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const getName: string = String(e.target.name);
     const getValue: number = Number(e.target.value);
 
     switch (getName){
-      case 'point1x':
-        setPoint1([getValue, point1[1], point1[2]]);
-        break;
-      case 'point1y':
-        setPoint1([point1[0], getValue, point1[2]]);
-        break;
-      case 'point1z':
-        setPoint1([point1[0], point1[1], getValue]);
-        break;
-      case 'point2x':
-        setPoint2([getValue, point2[1], point2[2]]);
-        break;
-      case 'point2y':
-        setPoint2([point2[0], getValue, point2[2]]);
-        break;
-      case 'point2z':
-        setPoint2([point2[0], point2[1], getValue]);
-        break;
-      case 'point3x':
-        setPoint3([getValue, point3[1], point3[2]]);
-        break;
-      case 'point3y':
-        setPoint3([point3[0], getValue, point3[2]]);
-        break;
-      case 'point3z':
-        setPoint3([point3[0], point3[1], getValue]);
-        break;
-      case 'point4x':
-        setPoint4([getValue, point4[1], point4[2]]);
-        break;
-      case 'point4y':
-        setPoint4([point4[0], getValue, point4[2]]);
-        break;
-      case 'point4z':
-        setPoint4([point4[0], point4[1], getValue]);
+      case 'angle':
+        const rad = getValue * (Math.PI / 180);
+        const x = Math.cos(rad);
+        const y = Math.sin(rad);
+        console.log('rad', rad);
+        console.log('x', x);
+        console.log('y', y);
+
+        setAngle(getValue);
+        setRad(rad);
+        setX(x);
+        setY(y);
         break;
     }
   };
@@ -141,7 +119,7 @@ function Inner() {
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 15;
+    camera.position.z = 20;
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.update();
@@ -156,15 +134,15 @@ function Inner() {
     // Custom BufferGeometry
     const vertices = [
       // front
-      { pos: point1, norm: [ 0,  0,  1], uv: [0, 0], },
-      { pos: point2, norm: [ 0,  0,  1], uv: [1, 0], },
-      { pos: point3, norm: [ 0,  0,  1], uv: [0, 1], },
-      { pos: point4, norm: [ 0,  0,  1], uv: [1, 1], },
+      { pos: [-1, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
+      { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
+      { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
+      { pos: [ 1,  1,  1], norm: [ 0,  0,  1], uv: [1, 1], },
 
       // right
-      { pos: point2, norm: [ 1,  0,  0], uv: [0, 0], },
+      { pos: [ 1, -1,  1], norm: [ 1,  0,  0], uv: [0, 0], },
       { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
-      { pos: point4, norm: [ 1,  0,  0], uv: [0, 1], },
+      { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
       { pos: [ 1,  1, -1], norm: [ 1,  0,  0], uv: [1, 1], },
 
       // back
@@ -175,9 +153,9 @@ function Inner() {
 
       // left
       { pos: [-1, -1, -1], norm: [-1,  0,  0], uv: [0, 0], },
-      { pos: point1, norm: [-1,  0,  0], uv: [1, 0], },
+      { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
       { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
-      { pos: point3, norm: [-1,  0,  0], uv: [1, 1], },
+      { pos: [-1,  1,  1], norm: [-1,  0,  0], uv: [1, 1], },
 
       // top
       { pos: [ 1,  1, -1], norm: [ 0,  1,  0], uv: [0, 0], },
@@ -186,8 +164,8 @@ function Inner() {
       { pos: point3, norm: [ 0,  1,  0], uv: [1, 1], },
 
       // bottom
-      { pos: point2, norm: [ 0, -1,  0], uv: [0, 0], },
-      { pos: point1, norm: [ 0, -1,  0], uv: [1, 0], },
+      { pos: [ 1, -1,  1], norm: [ 0, -1,  0], uv: [0, 0], },
+      { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
       { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
       { pos: [-1, -1, -1], norm: [ 0, -1,  0], uv: [1, 1], },
     ];
@@ -211,9 +189,9 @@ function Inner() {
       nrmNdx += normalNumComponents;
       uvNdx += uvNumComponents;
     }
-    console.log('positions', positions);
-    console.log('normals', normals);
-    console.log('uvs', uvs);
+    // console.log('positions', positions);
+    // console.log('normals', normals);
+    // console.log('uvs', uvs);
 
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute(
@@ -279,10 +257,7 @@ function Inner() {
     }
     requestAnimationFrame(render);
     // console.log('canvasSize', canvasSize)
-  }, [
-    canvasSize,
-    point1, point2, point3, point4
-  ]);
+  }, [canvasSize, angle, rad, x, y]);
 
 
   // JSX
@@ -290,52 +265,10 @@ function Inner() {
     <>
       <Figure ref={figureElm}></Figure>
       <Dl>
-        <dt>左上 [{point3[0]}, {point3[1]}, {point3[2]}]</dt>
+        <dt>角度</dt>
         <dd>
           <label>
-            <input type="range" name="point3x" min="-2" max="2" step="0.1" value={point3[0]} onChange={changeRange} /> x: {point3[0]}
-          </label>
-          <label>
-            <input type="range" name="point3y" min="-2" max="2" step="0.1" value={point3[1]} onChange={changeRange} /> y: {point3[1]}
-          </label>
-          <label>
-            <input type="range" name="point3z" min="-2" max="2" step="0.1" value={point3[2]} onChange={changeRange} /> z: {point3[2]}
-          </label>
-        </dd>
-        <dt>右上 [{point4[0]}, {point4[1]}, {point4[2]}]</dt>
-        <dd>
-          <label>
-            <input type="range" name="point4x" min="-2" max="2" step="0.1" value={point4[0]} onChange={changeRange} /> x: {point4[0]}
-          </label>
-          <label>
-            <input type="range" name="point4y" min="-2" max="2" step="0.1" value={point4[1]} onChange={changeRange} /> y: {point4[1]}
-          </label>
-          <label>
-            <input type="range" name="point4z" min="-2" max="2" step="0.1" value={point4[2]} onChange={changeRange} /> z: {point4[2]}
-          </label>
-        </dd>
-        <dt>左下 [{point1[0]}, {point1[1]}, {point1[2]}]</dt>
-        <dd>
-          <label>
-            <input type="range" name="point1x" min="-2" max="2" step="0.1" value={point1[0]} onChange={changeRange} /> x: {point1[0]}
-          </label>
-          <label>
-            <input type="range" name="point1y" min="-2" max="2" step="0.1" value={point1[1]} onChange={changeRange} /> y: {point1[1]}
-          </label>
-          <label>
-            <input type="range" name="point1z" min="-2" max="2" step="0.1" value={point1[2]} onChange={changeRange} /> z: {point1[2]}
-          </label>
-        </dd>
-        <dt>右下 [{point2[0]}, {point2[1]}, {point2[2]}]</dt>
-        <dd>
-          <label>
-            <input type="range" name="point2x" min="-2" max="2" step="0.1" value={point2[0]} onChange={changeRange} /> x: {point2[0]}
-          </label>
-          <label>
-            <input type="range" name="point2y" min="-2" max="2" step="0.1" value={point2[1]} onChange={changeRange} /> y: {point2[1]}
-          </label>
-          <label>
-            <input type="range" name="point2z" min="-2" max="2" step="0.1" value={point2[2]} onChange={changeRange} /> z: {point2[2]}
+            <input type="range" name="angle" min="0" max="180" step="1" value={angle} onChange={changeRange} /> {angle}
           </label>
         </dd>
       </Dl>

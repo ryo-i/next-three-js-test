@@ -334,6 +334,12 @@
             "title": "BufferGeometry: 8.Cubeの動的変形",
             "text": "049のCubeの頂点を動的に変更できるようにする",
             "blog": ""
+        },
+        "test055": {
+            "id": "055",
+            "title": "BufferGeometry: 9.Cubeの上面を開閉",
+            "text": "三角関数を使ってCubeの上面を開閉する",
+            "blog": ""
         }
     },
     "footer": {
