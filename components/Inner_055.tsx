@@ -49,7 +49,7 @@ function Inner() {
   const [angle, setAngle] = useState(0);
   const [rad, setRad] = useState(0);
   const [x, setX] = useState(1);
-  const [y, setY] = useState(1);
+  const [y, setY] = useState(0);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -70,9 +70,9 @@ function Inner() {
         const rad = getValue * (Math.PI / 180);
         const x = Math.cos(rad);
         const y = Math.sin(rad);
-        console.log('rad', rad);
-        console.log('x', x);
-        console.log('y', y);
+        // console.log('rad', rad);
+        // console.log('x', x);
+        // console.log('y', y);
 
         setAngle(getValue);
         setRad(rad);
@@ -112,14 +112,14 @@ function Inner() {
     figureElm.current.appendChild( renderer.domElement );
 
     // Camera
-    const fov = 25;
+    const fov = 15;
     const aspect = canvasSize / canvasSize;
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 20;
+    camera.position.z = 15;
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.update();
@@ -134,40 +134,40 @@ function Inner() {
     // Custom BufferGeometry
     const vertices = [
       // front
-      { pos: [-1, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
+      { pos: [ 0, -1,  1], norm: [ 0,  0,  1], uv: [0, 0], },
       { pos: [ 1, -1,  1], norm: [ 0,  0,  1], uv: [1, 0], },
-      { pos: [-1,  1,  1], norm: [ 0,  0,  1], uv: [0, 1], },
-      { pos: [ 1,  1,  1], norm: [ 0,  0,  1], uv: [1, 1], },
+      { pos: [ 0,  0,  1], norm: [ 0,  0,  1], uv: [0, 1], },
+      { pos: [ 1,  0,  1], norm: [ 0,  0,  1], uv: [1, 1], },
 
       // right
       { pos: [ 1, -1,  1], norm: [ 1,  0,  0], uv: [0, 0], },
-      { pos: [ 1, -1, -1], norm: [ 1,  0,  0], uv: [1, 0], },
-      { pos: [ 1,  1,  1], norm: [ 1,  0,  0], uv: [0, 1], },
-      { pos: [ 1,  1, -1], norm: [ 1,  0,  0], uv: [1, 1], },
+      { pos: [ 1, -1,  0], norm: [ 1,  0,  0], uv: [1, 0], },
+      { pos: [ 1,  0,  1], norm: [ 1,  0,  0], uv: [0, 1], },
+      { pos: [ 1,  0,  0], norm: [ 1,  0,  0], uv: [1, 1], },
 
       // back
-      { pos: [ 1, -1, -1], norm: [ 0,  0, -1], uv: [0, 0], },
-      { pos: [-1, -1, -1], norm: [ 0,  0, -1], uv: [1, 0], },
-      { pos: [ 1,  1, -1], norm: [ 0,  0, -1], uv: [0, 1], },
-      { pos: [-1,  1, -1], norm: [ 0,  0, -1], uv: [1, 1], },
+      { pos: [ 1, -1,  0], norm: [ 0,  0, -1], uv: [0, 0], },
+      { pos: [ 0, -1,  0], norm: [ 0,  0, -1], uv: [1, 0], },
+      { pos: [ 1,  0,  0], norm: [ 0,  0, -1], uv: [0, 1], },
+      { pos: [ 0,  0,  0], norm: [ 0,  0, -1], uv: [1, 1], },
 
       // left
-      { pos: [-1, -1, -1], norm: [-1,  0,  0], uv: [0, 0], },
-      { pos: [-1, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
-      { pos: [-1,  1, -1], norm: [-1,  0,  0], uv: [0, 1], },
-      { pos: [-1,  1,  1], norm: [-1,  0,  0], uv: [1, 1], },
+      { pos: [ 0, -1,  0], norm: [-1,  0,  0], uv: [0, 0], },
+      { pos: [ 0, -1,  1], norm: [-1,  0,  0], uv: [1, 0], },
+      { pos: [ 0,  0,  0], norm: [-1,  0,  0], uv: [0, 1], },
+      { pos: [ 0,  0,  1], norm: [-1,  0,  0], uv: [1, 1], },
 
       // top
-      { pos: [ 1,  1, -1], norm: [ 0,  1,  0], uv: [0, 0], },
-      { pos: [-1,  1, -1], norm: [ 0,  1,  0], uv: [1, 0], },
-      { pos: [ 1,  1,  1], norm: [ 0,  1,  0], uv: [0, 1], },
-      { pos: [-1,  1,  1], norm: [ 0,  1,  0], uv: [1, 1], },
+      { pos: [ x,  y,  0], norm: [ 0,  1,  0], uv: [0, 0], },
+      { pos: [ 0,  0,  0], norm: [ 0,  1,  0], uv: [1, 0], },
+      { pos: [ x,  y,  1], norm: [ 0,  1,  0], uv: [0, 1], },
+      { pos: [ 0,  0,  1], norm: [ 0,  1,  0], uv: [1, 1], },
 
       // bottom
       { pos: [ 1, -1,  1], norm: [ 0, -1,  0], uv: [0, 0], },
-      { pos: [-1, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
-      { pos: [ 1, -1, -1], norm: [ 0, -1,  0], uv: [0, 1], },
-      { pos: [-1, -1, -1], norm: [ 0, -1,  0], uv: [1, 1], },
+      { pos: [ 0, -1,  1], norm: [ 0, -1,  0], uv: [1, 0], },
+      { pos: [ 1, -1,  0], norm: [ 0, -1,  0], uv: [0, 1], },
+      { pos: [ 0, -1,  0], norm: [ 0, -1,  0], uv: [1, 1], },
     ];
 
     const numVertices = vertices.length;
@@ -230,15 +230,15 @@ function Inner() {
 
       scene.add(primitive);
       primitive.position.x = x;
-      primitive.position.y = 0;
+      primitive.position.y = 0.5;
       primitive.rotation.x = 0.25;
-      primitive.rotation.y = -0.25;
+      primitive.rotation.y = 0.35;
 
       return primitive;
     }
 
     const primitives = [
-      makeInstance(geometry, material, 0)
+      makeInstance(geometry, material, -.75)
     ];
 
     function render(time) {
@@ -268,7 +268,7 @@ function Inner() {
         <dt>角度</dt>
         <dd>
           <label>
-            <input type="range" name="angle" min="0" max="180" step="1" value={angle} onChange={changeRange} /> {angle}
+            <input type="range" name="angle" min="0" max="90" step="1" value={angle} onChange={changeRange} /> {angle}
           </label>
         </dd>
       </Dl>
