@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- BufferGeometry: 9.Cubeの上面を開閉（完成） [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
+- クリック座標を取得し、consoleに表示 [#10](https://github.com/ryo-i/next-three-js-test/issues/10)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
