@@ -101,16 +101,17 @@ function Inner() {
         const pos = getCanvasRelativePosition(event);
         pickPosition.x = (pos.x / canvas.width ) *  2 - 1;
         pickPosition.y = (pos.y / canvas.height) * -2 + 1;  // note we flip Y
-        console.log('pos.x', pos.x);
-        console.log('pos.y', pos.y);
-        console.log('canvas.width ', canvas.width );
-        console.log('canvas.height', canvas.height);
-        console.log('pickPosition', pickPosition);
+        if (pos.x >= 0 && pos.x <= canvas.width && pos.y >= 0 && pos.y <= canvas.height) {
+          console.log('pos.x', pos.x);
+          console.log('pos.y', pos.y);
+          console.log('canvas.width ', canvas.width );
+          console.log('canvas.height', canvas.height);
+          console.log('pickPosition', pickPosition);
+        }
       }
     }
 
     window.addEventListener('click', setPickPosition);
-
 
     function render(time) {
       time *= 0.0005;  // convert time to seconds
