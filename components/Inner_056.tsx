@@ -14,6 +14,11 @@ const Figure = styled.figure`
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
+  // const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
+  const [positionX, setPositionX] = useState(0);
+  const [positionY, setPositionY] = useState(0);
+  const [pickPositionX, setPickPositionX] = useState(0);
+  const [pickPositionY, setPickPositionY] = useState(0);
   const figureElm = useRef(null);
 
   const changeCanvasSize = (canvasElmWidth) => {
@@ -85,7 +90,6 @@ function Inner() {
     ];
 
     // Pick Event
-    const pickPosition = {x: 0, y: 0};
     const canvas = figureElm.current.firstChild;
 
     function getCanvasRelativePosition(event) {
@@ -97,21 +101,25 @@ function Inner() {
     }
 
     function setPickPosition(event) {
-      if (canvasSize !== 0) {
-        const pos = getCanvasRelativePosition(event);
-        pickPosition.x = (pos.x / canvas.width ) *  2 - 1;
-        pickPosition.y = (pos.y / canvas.height) * -2 + 1;  // note we flip Y
-        if (pos.x >= 0 && pos.x <= canvas.width && pos.y >= 0 && pos.y <= canvas.height) {
-          console.log('pos.x', pos.x);
-          console.log('pos.y', pos.y);
-          console.log('canvas.width ', canvas.width );
-          console.log('canvas.height', canvas.height);
-          console.log('pickPosition', pickPosition);
-        }
+      const pos = getCanvasRelativePosition(event);
+      const isInsideCanvas = pos.x >= 0 && pos.x <= canvas.width && pos.y >= 0 && pos.y <= canvas.height;
+      const pickPosition = {
+        x: (pos.x / canvas.width ) *  2 - 1,
+        y: (pos.y / canvas.height) * -2 + 1, // note we flip Y
+      };
+
+      if (isInsideCanvas) {
+        setPositionX(pos.x);
+        setPositionY(pos.y);
+        setPickPositionX(pickPosition.x);
+        setPickPositionY(pickPosition.y);
       }
     }
 
-    window.addEventListener('click', setPickPosition);
+    if (canvasSize !== 0) {
+      window.addEventListener('click', setPickPosition);
+    }
+
 
     function render(time) {
       time *= 0.0005;  // convert time to seconds
@@ -129,12 +137,24 @@ function Inner() {
     }
     requestAnimationFrame(render);
 
-  }, [canvasSize]);
+  }, [canvasSize, positionX, positionY, pickPositionX, pickPositionY
+  ]);
 
 
   // JSX
   return (
-    <Figure ref={figureElm}></Figure>
+    <>
+      <Figure ref={figureElm}></Figure>
+      <ul>
+        <li>canvas.width: {canvasSize}</li>
+        <li>canvas.height: {canvasSize}</li>
+        <li>position.x: {positionX}</li>
+        <li>position.y: {positionY}</li>
+        <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
+        <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
+      </ul>
+    </>
+
   );
 }
 
