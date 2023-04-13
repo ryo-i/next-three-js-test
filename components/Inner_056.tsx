@@ -11,10 +11,15 @@ const Figure = styled.figure`
   }
 `;
 
+// let isStartCamera = true;
+
 // Component
 function Inner() {
   const [canvasSize, setCanvasSize] = useState(0);
-  // const [position, setPosition] = useState<{ x: number, y: number }>({ x: 0, y: 0 });
+  const [cameraPosition, setCameraPosition] = useState(new THREE.Vector3(0, 0, 50));
+  const [cameraPositionX, setCameraPositionX] = useState(0);
+  const [cameraPositionY, setCameraPositionY] = useState(0);
+  const [cameraPositionZ, setCameraPositionZ] = useState(50);
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(0);
   const [pickPositionX, setPickPositionX] = useState(0);
@@ -60,10 +65,29 @@ function Inner() {
     const near = 0.1;
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-    camera.position.z = 50;
+    camera.position.copy(cameraPosition);
 
     const controls = new OrbitControls(camera, figureElm.current.firstChild);
     controls.update();
+
+    function changeCameraPositon (e) {
+      setCameraPosition(camera.position.clone());
+      const cameraPositionX = camera.position.x;
+      const cameraPositionY = camera.position.y;
+      const cameraPositionZ = camera.position.z;
+      setCameraPositionX(cameraPositionX);
+      setCameraPositionY(cameraPositionY);
+      setCameraPositionZ(cameraPositionZ);
+      // console.log('camera.position', camera.position);
+
+      camera.position.x = cameraPositionX;
+      camera.position.y = cameraPositionY;
+      camera.position.z = cameraPositionX;
+
+      window.removeEventListener('mouseup', changeCameraPositon);
+    }
+
+    window.addEventListener('mouseup', changeCameraPositon);
 
     // Light
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -79,6 +103,7 @@ function Inner() {
       scene.add(cube);
 
       cube.position.x = x;
+      // console.log('cube', cube)
 
       return cube;
     }
@@ -137,7 +162,9 @@ function Inner() {
     }
     requestAnimationFrame(render);
 
-  }, [canvasSize, positionX, positionY, pickPositionX, pickPositionY
+  }, [canvasSize,
+    cameraPositionX, cameraPositionY, cameraPositionZ,
+    positionX, positionY, pickPositionX, pickPositionY
   ]);
 
 
@@ -152,6 +179,9 @@ function Inner() {
         <li>position.y: {positionY}</li>
         <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
         <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
+        <li>cameraPosition.x: {cameraPositionX.toFixed(2)}</li>
+        <li>cameraPosition.y: {cameraPositionY.toFixed(2)}</li>
+        <li>cameraPosition.z: {cameraPositionZ.toFixed(2)}</li>
       </ul>
     </>
 

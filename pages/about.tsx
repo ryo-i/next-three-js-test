@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>クリック座標を取得して画面に表示（完成）<a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
+                    <li>クリックしてもカメラ位置がリセットされないように修正 <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
                 </ul>
             </section>
