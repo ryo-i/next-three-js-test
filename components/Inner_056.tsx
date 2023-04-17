@@ -67,27 +67,31 @@ function Inner() {
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.copy(cameraPosition);
 
-    const controls = new OrbitControls(camera, figureElm.current.firstChild);
-    controls.update();
+    // const controls = new OrbitControls(camera, figureElm.current.firstChild);
+    // controls.update();
 
-    function changeCameraPositon (e) {
-      setCameraPosition(camera.position.clone());
-      const cameraPositionX = camera.position.x;
-      const cameraPositionY = camera.position.y;
-      const cameraPositionZ = camera.position.z;
-      setCameraPositionX(cameraPositionX);
-      setCameraPositionY(cameraPositionY);
-      setCameraPositionZ(cameraPositionZ);
-      // console.log('camera.position', camera.position);
+    // function changeCameraPositon (e) {
+    //   setCameraPosition(camera.position.clone());
+    //   const cameraPositionX = camera.position.x;
+    //   const cameraPositionY = camera.position.y;
+    //   const cameraPositionZ = camera.position.z;
+    //   setCameraPositionX(cameraPositionX);
+    //   setCameraPositionY(cameraPositionY);
+    //   setCameraPositionZ(cameraPositionZ);
+    //   // console.log('camera.position', camera.position);
 
-      camera.position.x = cameraPositionX;
-      camera.position.y = cameraPositionY;
-      camera.position.z = cameraPositionX;
+    //   camera.position.x = cameraPositionX;
+    //   camera.position.y = cameraPositionY;
+    //   camera.position.z = cameraPositionZ;
 
-      window.removeEventListener('mouseup', changeCameraPositon);
-    }
+    //   console.log('changeCameraPositon');
 
-    window.addEventListener('mouseup', changeCameraPositon);
+    //   window.removeEventListener('pointerup', changeCameraPositon);
+    // }
+
+    // if (canvasSize !== 0) {
+    //   window.addEventListener('pointerup', changeCameraPositon);
+    // }
 
     // Light
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -133,13 +137,18 @@ function Inner() {
         y: (pos.y / canvas.height) * -2 + 1, // note we flip Y
       };
 
+      console.log('setPickPosition');
+
       if (isInsideCanvas) {
         setPositionX(pos.x);
         setPositionY(pos.y);
         setPickPositionX(pickPosition.x);
         setPickPositionY(pickPosition.y);
       }
+
+      window.removeEventListener('click', setPickPosition);
     }
+
 
     if (canvasSize !== 0) {
       window.addEventListener('click', setPickPosition);
@@ -179,9 +188,11 @@ function Inner() {
         <li>position.y: {positionY}</li>
         <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
         <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
-        <li>cameraPosition.x: {cameraPositionX.toFixed(2)}</li>
-        <li>cameraPosition.y: {cameraPositionY.toFixed(2)}</li>
-        <li>cameraPosition.z: {cameraPositionZ.toFixed(2)}</li>
+        {
+          // <li>cameraPosition.x: {cameraPositionX.toFixed(2)}</li>
+          // <li>cameraPosition.y: {cameraPositionY.toFixed(2)}</li>
+          // <li>cameraPosition.z: {cameraPositionZ.toFixed(2)}</li>
+        }
       </ul>
     </>
 

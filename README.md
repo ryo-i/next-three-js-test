@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- クリックしてもカメラ位置がリセットされないように修正 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- いったんカメラ位置を固定に変更 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
