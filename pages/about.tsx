@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>クリック座標取得をReactのonClickに <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
+                    <li>クリック時にcanvas内かの判定を削除 <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
                     <li>トップのindexを新着順に変更 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
                 </ul>
             </section>

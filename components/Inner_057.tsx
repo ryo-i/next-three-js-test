@@ -119,18 +119,15 @@ function Inner() {
 
   function setPickPosition(event) {
     const pos = getCanvasRelativePosition(event);
-    const isInsideCanvas = pos.x >= 0 && pos.x <= canvas.width && pos.y >= 0 && pos.y <= canvas.height;
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
       y: (pos.y / canvas.height) * -2 + 1, // note we flip Y
     };
 
-    if (isInsideCanvas) {
-      setPositionX(pos.x);
-      setPositionY(pos.y);
-      setPickPositionX(pickPosition.x);
-      setPickPositionY(pickPosition.y);
-    }
+    setPositionX(pos.x);
+    setPositionY(pos.y);
+    setPickPositionX(pickPosition.x);
+    setPickPositionY(pickPosition.y);
 
     console.log('setPickPosition');
   }
