@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- いったんカメラ位置を固定に変更 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- クリック座標取得をReactのonClickに [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

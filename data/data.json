@@ -346,6 +346,12 @@
             "title": "クリック座標を取得",
             "text": "クリック座標を取得して画面に表示する",
             "blog": ""
+        },
+        "test057": {
+            "id": "057",
+            "title": "クリック座標取得をReactのonClickに",
+            "text": "clickイベントをReactのonClickイベントに変更。canvasをクリックしたときだけ動く。",
+            "blog": ""
         }
     },
     "footer": {
