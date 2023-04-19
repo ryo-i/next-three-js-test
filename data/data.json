@@ -352,6 +352,12 @@
             "title": "クリック座標取得をReactのonClickに",
             "text": "clickイベントをReactのonClickイベントに変更。canvasをクリックしたときだけ動く。",
             "blog": ""
+        },
+        "test058": {
+            "id": "058",
+            "title": "クリックでCubeの色が変わる(作成中)",
+            "text": "Raycasterを使う...",
+            "blog": ""
         }
     },
     "footer": {
