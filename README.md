@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- クリック時にcanvas内かの判定を削除 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- クリックしたオブジェクトをconsoleに表示 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

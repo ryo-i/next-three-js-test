@@ -15,12 +15,16 @@ const Figure = styled.figure`
 function Inner() {
   const [canvas, setCanvas] = useState(null);
   const [canvasSize, setCanvasSize] = useState(0);
+  const [scene, setScene] = useState(null);
+  const [camera, setCamera] = useState(null);
   const [cameraPosition, setCameraPosition] = useState(new THREE.Vector3(0, 0, 50));
   const [positionX, setPositionX] = useState(0);
   const [positionY, setPositionY] = useState(0);
   const [pickPositionX, setPickPositionX] = useState(0);
   const [pickPositionY, setPickPositionY] = useState(0);
   const figureElm = useRef(null);
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
 
   const changeCanvasSize = (canvasElmWidth) => {
     if (canvasElmWidth < 900) {
@@ -46,6 +50,7 @@ function Inner() {
   useEffect(() => {
     // three.js
     const scene = new THREE.Scene();
+    setScene(scene);
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
@@ -63,6 +68,7 @@ function Inner() {
     const far = 1000;
     const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
     camera.position.copy(cameraPosition);
+    setCamera(camera);
 
     // Light
     const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
@@ -129,7 +135,16 @@ function Inner() {
     setPickPositionX(pickPosition.x);
     setPickPositionY(pickPosition.y);
 
-    console.log('setPickPosition');
+    pointer.x = pickPosition.x;
+	  pointer.y = pickPosition.y;
+
+    raycaster.setFromCamera( pointer, camera );
+    const intersects = raycaster.intersectObjects( scene.children );
+
+    for ( let i = 0; i < intersects.length; i ++ ) {
+      console.log('intersects[i]', intersects[i]);
+      // intersects[ i ].object.material.color.set( 0xff0000 );
+    }
   }
 
   // JSX
