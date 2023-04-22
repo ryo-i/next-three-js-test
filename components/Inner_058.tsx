@@ -71,28 +71,35 @@ function Inner() {
     setCamera(camera);
 
     // Light
-    const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    const light = new THREE.HemisphereLight( 0xffffff, 0x080820, 1 );
     scene.add( light );
 
     // Geometry
     const geometry = new THREE.BoxGeometry( 6, 6, 6 );
 
-    function makeInstance(geometry, color, x) {
+    function makeInstance(geometry, color, x, y) {
       const material = new THREE.MeshPhongMaterial({color});
 
       const cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
 
       cube.position.x = x;
+      cube.position.y = y;
       // console.log('cube', cube)
 
       return cube;
     }
 
     const cubes = [
-      makeInstance(geometry, 'green',  -10),
-      makeInstance(geometry, 'yellow', 0),
-      makeInstance(geometry, 'red',  10),
+      makeInstance(geometry, 0xffffff, -10, 10),
+      makeInstance(geometry, 0xffffff, 0, 10),
+      makeInstance(geometry, 0xffffff, 10, 10),
+      makeInstance(geometry, 0xffffff, -10, 0),
+      makeInstance(geometry, 0xffffff, 0, 0),
+      makeInstance(geometry, 0xffffff, 10, 0),
+      makeInstance(geometry, 0xffffff, -10, -10),
+      makeInstance(geometry, 0xffffff, 0, -10),
+      makeInstance(geometry, 0xffffff, 10, -10),
     ];
 
     function render(time) {
@@ -111,9 +118,7 @@ function Inner() {
     }
     requestAnimationFrame(render);
 
-  }, [canvasSize,
-    positionX, positionY, pickPositionX, pickPositionY
-  ]);
+  }, [canvasSize]);
 
   function getCanvasRelativePosition(event) {
     const rect = canvas.getBoundingClientRect();
@@ -143,7 +148,8 @@ function Inner() {
 
     for ( let i = 0; i < intersects.length; i ++ ) {
       console.log('intersects[i]', intersects[i]);
-      // intersects[ i ].object.material.color.set( 0xff0000 );
+      // @ts-ignore
+      intersects[i].object.material.color.set(0xff0000);
     }
   }
 

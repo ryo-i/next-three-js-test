@@ -355,8 +355,8 @@
         },
         "test058": {
             "id": "058",
-            "title": "クリックでCubeの色が変わる(作成中)",
-            "text": "Raycasterを使う...",
+            "title": "クリックでCubeの色が変わる",
+            "text": "白いCubeを押すとそのCubeだけ赤になる",
             "blog": ""
         }
     },
