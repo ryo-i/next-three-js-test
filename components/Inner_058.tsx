@@ -25,6 +25,7 @@ function Inner() {
   const figureElm = useRef(null);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
+  const cubeColors = [0xffffff, 0xff0000];
 
   const changeCanvasSize = (canvasElmWidth) => {
     if (canvasElmWidth < 900) {
@@ -78,7 +79,7 @@ function Inner() {
     const geometry = new THREE.BoxGeometry( 6, 6, 6 );
 
     function makeInstance(geometry, color, x, y) {
-      const material = new THREE.MeshPhongMaterial({color});
+      const material = new THREE.MeshPhongMaterial({color: color});
 
       const cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
@@ -91,15 +92,15 @@ function Inner() {
     }
 
     const cubes = [
-      makeInstance(geometry, 0xffffff, -10, 10),
-      makeInstance(geometry, 0xffffff, 0, 10),
-      makeInstance(geometry, 0xffffff, 10, 10),
-      makeInstance(geometry, 0xffffff, -10, 0),
-      makeInstance(geometry, 0xffffff, 0, 0),
-      makeInstance(geometry, 0xffffff, 10, 0),
-      makeInstance(geometry, 0xffffff, -10, -10),
-      makeInstance(geometry, 0xffffff, 0, -10),
-      makeInstance(geometry, 0xffffff, 10, -10),
+      makeInstance(geometry, cubeColors[0], -10, 10),
+      makeInstance(geometry, cubeColors[0], 0, 10),
+      makeInstance(geometry, cubeColors[0], 10, 10),
+      makeInstance(geometry, cubeColors[0], -10, 0),
+      makeInstance(geometry, cubeColors[0], 0, 0),
+      makeInstance(geometry, cubeColors[0], 10, 0),
+      makeInstance(geometry, cubeColors[0], -10, -10),
+      makeInstance(geometry, cubeColors[0], 0, -10),
+      makeInstance(geometry, cubeColors[0], 10, -10),
     ];
 
     function render(time) {
@@ -147,9 +148,15 @@ function Inner() {
     const intersects = raycaster.intersectObjects( scene.children );
 
     for ( let i = 0; i < intersects.length; i ++ ) {
-      console.log('intersects[i]', intersects[i]);
       // @ts-ignore
-      intersects[i].object.material.color.set(0xff0000);
+      const color = intersects[i].object.material.color;
+      const hex = color.getHex();
+
+      if (hex === cubeColors[1]) {
+        color.set(cubeColors[0]);
+      } else if (hex ===  cubeColors[0]) {
+        color.set(cubeColors[1]);
+      }
     }
   }
 
