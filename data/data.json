@@ -358,6 +358,12 @@
             "title": "クリックでCubeの色が変わる",
             "text": "Cubeを押すとそのCubeの色が赤と白に切り替わる",
             "blog": ""
+        },
+        "test059": {
+            "id": "059",
+            "title": "ホバー&スワイプでCubeの色が変わる",
+            "text": "Cubeをに触れるとそのCubeの色が赤になる",
+            "blog": ""
         }
     },
     "footer": {

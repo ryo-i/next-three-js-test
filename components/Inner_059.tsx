@@ -153,7 +153,7 @@ function Inner() {
       const hex = color.getHex();
 
       if (hex === cubeColors[1]) {
-        color.set(cubeColors[0]);
+        // color.set(cubeColors[0]);
       } else if (hex ===  cubeColors[0]) {
         color.set(cubeColors[1]);
       }
@@ -163,7 +163,12 @@ function Inner() {
   // JSX
   return (
     <>
-      <Figure ref={figureElm} onClick={setPickPosition}></Figure>
+      <Figure ref={figureElm}
+        onMouseMove={setPickPosition}
+        onTouchMove={(event) =>
+          setPickPosition(event.touches[0])
+        }
+      ></Figure>
       <ul>
         <li>canvas.width: {canvasSize}</li>
         <li>canvas.height: {canvasSize}</li>
