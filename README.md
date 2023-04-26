@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Cubeを押すとそのCubeの色が赤と白に切り替わる [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- Cubeを押すと色が変わる＆カメラ位置移動 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - トップのindexを新着順に変更 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
