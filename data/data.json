@@ -368,7 +368,7 @@
         "test060": {
             "id": "060",
             "title": "Cubeを押すと色が変わる＆カメラ位置移動",
-            "text": "Cubeをに触れるとそのCubeの色が赤になる",
+            "text": "onPointerDownイベントで色変更することでカメラ移動のOrbitControlsと併用できた",
             "blog": ""
         }
     },

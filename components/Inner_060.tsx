@@ -13,6 +13,19 @@ const Figure = styled.figure`
 
 // Component
 function Inner() {
+  const cubeColors = [0xffffff, 0xff0000];
+  const initColorValue = [
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] },
+    { uuid: 0, color: cubeColors[0] }
+  ];
+
   const [canvas, setCanvas] = useState(null);
   const [canvasSize, setCanvasSize] = useState(0);
   const [scene, setScene] = useState(null);
@@ -24,7 +37,7 @@ function Inner() {
   const [positionY, setPositionY] = useState(0);
   const [pickPositionX, setPickPositionX] = useState(0);
   const [pickPositionY, setPickPositionY] = useState(0);
-  const cubeColors = [0xffffff, 0xff0000];
+  const [cubeValue, setCubeValue] = useState(initColorValue);
   const figureElm = useRef(null);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
@@ -78,6 +91,7 @@ function Inner() {
     // Geometry
     const geometry = new THREE.BoxGeometry( 6, 6, 6 );
 
+    const resultCubeValue = [];
     function makeInstance(geometry, color, x, y) {
       const material = new THREE.MeshPhongMaterial({color: color});
 
@@ -86,23 +100,27 @@ function Inner() {
 
       cube.position.x = x;
       cube.position.y = y;
-      // console.log('cube', cube)
+
+      resultCubeValue.push({
+        uuid: cube.uuid,
+        color: color
+      });
+      setCubeValue(resultCubeValue);
 
       return cube;
     }
 
     const cubes = [
-      makeInstance(geometry, cubeColors[0], -10, 10),
-      makeInstance(geometry, cubeColors[0], 0, 10),
-      makeInstance(geometry, cubeColors[0], 10, 10),
-      makeInstance(geometry, cubeColors[0], -10, 0),
-      makeInstance(geometry, cubeColors[0], 0, 0),
-      makeInstance(geometry, cubeColors[0], 10, 0),
-      makeInstance(geometry, cubeColors[0], -10, -10),
-      makeInstance(geometry, cubeColors[0], 0, -10),
-      makeInstance(geometry, cubeColors[0], 10, -10),
+      makeInstance(geometry, cubeValue[0].color, -10, 10),
+      makeInstance(geometry, cubeValue[1].color, 0, 10),
+      makeInstance(geometry, cubeValue[2].color, 10, 10),
+      makeInstance(geometry, cubeValue[3].color, -10, 0),
+      makeInstance(geometry, cubeValue[4].color, 0, 0),
+      makeInstance(geometry, cubeValue[5].color, 10, 0),
+      makeInstance(geometry, cubeValue[6].color, -10, -10),
+      makeInstance(geometry, cubeValue[7].color, 0, -10),
+      makeInstance(geometry, cubeValue[8].color, 10, -10),
     ];
-
 
     const term = 300;
     let timer = 0;
@@ -114,8 +132,6 @@ function Inner() {
         const canvasElmWidth = figureElm.current.clientWidth;
         // console.log('canvasElmWidth(resize)', canvasElmWidth);
         changeCanvasSize(canvasElmWidth);
-
-        console.log('camera.position', camera.position)
 
         setCameraPositionX(camera.position.x);
         setCameraPositionY(camera.position.y);
@@ -155,6 +171,22 @@ function Inner() {
     };
   }
 
+  function changeColor(uuid, color) {
+    const resultCubeValue = cubeValue;
+    for (let i = 0; i < resultCubeValue.length; i++){
+      // @ts-ignore
+      if (resultCubeValue[i].uuid === uuid) {
+        resultCubeValue.splice( i, 1, {
+          // @ts-ignore
+          uuid: uuid,
+          color: color
+        });
+      }
+    }
+    // console.log('resultCubeValue', resultCubeValue);
+    setCubeValue(resultCubeValue);
+  }
+
   function setPickPosition(event) {
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
@@ -176,12 +208,15 @@ function Inner() {
     for ( let i = 0; i < intersects.length; i ++ ) {
       // @ts-ignore
       const color = intersects[i].object.material.color;
+      const uuid = intersects[i].object.uuid;
       const hex = color.getHex();
 
       if (hex === cubeColors[1]) {
         color.set(cubeColors[0]);
+        changeColor(uuid, cubeColors[0]);
       } else if (hex === cubeColors[0]) {
         color.set(cubeColors[1]);
+        changeColor(uuid, cubeColors[1]);
       }
     }
   }
