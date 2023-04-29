@@ -37,8 +37,9 @@ function Inner() {
   const [positionY, setPositionY] = useState(0);
   const [pickPositionX, setPickPositionX] = useState(0);
   const [pickPositionY, setPickPositionY] = useState(0);
-  const [isPointerDown, setIsPointerDown] = useState(false);
-  const [isPointerMove, setIsPointerMove] = useState(false);
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
   const [cubeValue, setCubeValue] = useState(initColorValue);
   const figureElm = useRef(null);
   const raycaster = new THREE.Raycaster();
@@ -228,31 +229,26 @@ function Inner() {
   return (
     <>
       <Figure ref={figureElm}
-        onPointerDown={() => {
-          setIsPointerDown(true);
+        onPointerDown={(event) => {
+          setStartTime(event.timeStamp);
         }}
         onPointerUp={(event) => {
-          if (!isPointerMove) {
+          setEndTime(event.timeStamp);
+          const elapsedTime = event.timeStamp - startTime;
+          setElapsedTime(elapsedTime);
+          if (elapsedTime < 200) {
             getPickPosition(event);
-          }
-          setIsPointerDown(false);
-          setIsPointerMove(false);
-        }}
-        onPointerMove={() => {
-          if (isPointerDown) {
-            setTimeout(() => {
-              setIsPointerMove(true);
-            }, 300);
           }
         }}
       ></Figure>
       <ul>
-        <li>isPointerMove: {String(isPointerMove)}</li>
-        <li>isPointerDown: {String(isPointerDown)}</li>
+        <li>startTime: {startTime.toFixed(2)}</li>
+        <li>endTime: {endTime.toFixed(2)}</li>
+        <li>elapsedTime: {elapsedTime.toFixed(2)}</li>
         <li>canvas.width: {canvasSize}</li>
         <li>canvas.height: {canvasSize}</li>
-        <li>position.x: {positionX}</li>
-        <li>position.y: {positionY}</li>
+        <li>position.x: {positionX.toFixed(2)}</li>
+        <li>position.y: {positionY.toFixed(2)}</li>
         <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
         <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
       </ul>
