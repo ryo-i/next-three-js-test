@@ -240,7 +240,9 @@ function Inner() {
         }}
         onPointerMove={() => {
           if (isPointerDown) {
-            setIsPointerMove(true);
+            setTimeout(() => {
+              setIsPointerMove(true);
+            }, 300);
           }
         }}
       ></Figure>
