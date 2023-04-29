@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- カメラ移動でCubeの色が変わらないように修正 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- isPointerMoveとisPointerDownを画面に表示 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - ブラウザのリサイズ後も色変更の状態を保持 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

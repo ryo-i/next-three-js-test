@@ -190,6 +190,7 @@ function Inner() {
   }
 
   function getPickPosition(event) {
+    console.log('event', event);
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
@@ -244,6 +245,8 @@ function Inner() {
         }}
       ></Figure>
       <ul>
+        <li>isPointerMove: {String(isPointerMove)}</li>
+        <li>isPointerDown: {String(isPointerDown)}</li>
         <li>canvas.width: {canvasSize}</li>
         <li>canvas.height: {canvasSize}</li>
         <li>position.x: {positionX}</li>
