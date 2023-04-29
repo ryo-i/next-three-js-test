@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ブラウザのリサイズ後も色変更の状態を保持 <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
+                    <li>カメラ移動でCubeの色が変わらないように修正 <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
                     <li>色切り替えをonPointerDownに変更する。 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
                 </ul>
             </section>

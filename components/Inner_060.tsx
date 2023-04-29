@@ -37,6 +37,8 @@ function Inner() {
   const [positionY, setPositionY] = useState(0);
   const [pickPositionX, setPickPositionX] = useState(0);
   const [pickPositionY, setPickPositionY] = useState(0);
+  const [isPointerDown, setIsPointerDown] = useState(false);
+  const [isPointerMove, setIsPointerMove] = useState(false);
   const [cubeValue, setCubeValue] = useState(initColorValue);
   const figureElm = useRef(null);
   const raycaster = new THREE.Raycaster();
@@ -187,7 +189,7 @@ function Inner() {
     setCubeValue(resultCubeValue);
   }
 
-  function setPickPosition(event) {
+  function getPickPosition(event) {
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
@@ -224,7 +226,23 @@ function Inner() {
   // JSX
   return (
     <>
-      <Figure ref={figureElm} onPointerDown={setPickPosition}></Figure>
+      <Figure ref={figureElm}
+        onPointerDown={() => {
+          setIsPointerDown(true);
+        }}
+        onPointerUp={(event) => {
+          if (!isPointerMove) {
+            getPickPosition(event);
+          }
+          setIsPointerDown(false);
+          setIsPointerMove(false);
+        }}
+        onPointerMove={() => {
+          if (isPointerDown) {
+            setIsPointerMove(true);
+          }
+        }}
+      ></Figure>
       <ul>
         <li>canvas.width: {canvasSize}</li>
         <li>canvas.height: {canvasSize}</li>

@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Cubeを押すと色が変わる＆カメラ位置移動 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- カメラ移動でCubeの色が変わらないように修正 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - ブラウザのリサイズ後も色変更の状態を保持 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）
