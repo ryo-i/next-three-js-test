@@ -376,6 +376,12 @@
             "title": "ランダムに配置されたCubeを押すと色が変わる",
             "text": "Math.randomでランダムな位置にcubeを配置する",
             "blog": ""
+        },
+        "test062": {
+            "id": "062",
+            "title": "前進してくる12面体を撃ち落とす！",
+            "text": "ジオメトリをDodecahedronGeometryに変更。カメラ移動OrbitControlsを無効に。position.zをカメラの手前まで前進させる。",
+            "blog": ""
         }
     },
     "footer": {
