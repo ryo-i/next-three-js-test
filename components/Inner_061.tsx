@@ -13,18 +13,38 @@ const Figure = styled.figure`
 
 // Component
 function Inner() {
+  const figureElm = useRef(null);
+  const raycaster = new THREE.Raycaster();
+  const pointer = new THREE.Vector2();
   const cubeColors = [0xffffff, 0xff0000];
-  const initColorValue = [
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] },
-    { uuid: 0, color: cubeColors[0] }
-  ];
+
+
+  const getInitColorValue = (length, min, max) => {
+    const array = [];
+    for (let i = 0; i < length; i++) {
+      const rundomNumber = () => Math.floor(Math.random() * (max - min + 1) + min);
+      array.push(
+        {
+          uuid: 0,
+          color: cubeColors[0],
+          x: rundomNumber(),
+          y: rundomNumber(),
+          z: rundomNumber()
+        }
+      );
+    }
+    return array;
+  }
+
+
+  const changeCanvasSize = (canvasElmWidth) => {
+    if (canvasElmWidth < 900) {
+      setCanvasSize(canvasElmWidth);
+    } else {
+      setCanvasSize(900);
+    }
+  }
+
 
   const [canvas, setCanvas] = useState(null);
   const [canvasSize, setCanvasSize] = useState(0);
@@ -40,19 +60,8 @@ function Inner() {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [cubeValue, setCubeValue] = useState(initColorValue);
-  const figureElm = useRef(null);
-  const raycaster = new THREE.Raycaster();
-  const pointer = new THREE.Vector2();
+  const [cubeValue, setCubeValue] = useState(getInitColorValue(20, -30, 30));
 
-
-  const changeCanvasSize = (canvasElmWidth) => {
-    if (canvasElmWidth < 900) {
-      setCanvasSize(canvasElmWidth);
-    } else {
-      setCanvasSize(900);
-    }
-  }
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -76,7 +85,7 @@ function Inner() {
     setCanvas(figureElm.current.firstChild);
 
     // Camera
-    const fov = 35;
+    const fov = 100;
     const aspect = canvasSize / canvasSize;
     const near = 0.1;
     const far = 1000;
@@ -95,7 +104,7 @@ function Inner() {
     const geometry = new THREE.BoxGeometry( 6, 6, 6 );
 
     const resultCubeValue = [];
-    const makeInstance = (geometry, color, x, y) => {
+    const makeInstance = (geometry, color, x, y, z) => {
       const material = new THREE.MeshPhongMaterial({color: color});
 
       const cube = new THREE.Mesh(geometry, material);
@@ -103,27 +112,32 @@ function Inner() {
 
       cube.position.x = x;
       cube.position.y = y;
+      cube.position.z = z;
 
       resultCubeValue.push({
         uuid: cube.uuid,
-        color: color
+        color: color,
+        x: x,
+        y: y,
+        z: z
       });
       setCubeValue(resultCubeValue);
 
       return cube;
     };
 
-    const cubes = [
-      makeInstance(geometry, cubeValue[0].color, -10, 10),
-      makeInstance(geometry, cubeValue[1].color, 0, 10),
-      makeInstance(geometry, cubeValue[2].color, 10, 10),
-      makeInstance(geometry, cubeValue[3].color, -10, 0),
-      makeInstance(geometry, cubeValue[4].color, 0, 0),
-      makeInstance(geometry, cubeValue[5].color, 10, 0),
-      makeInstance(geometry, cubeValue[6].color, -10, -10),
-      makeInstance(geometry, cubeValue[7].color, 0, -10),
-      makeInstance(geometry, cubeValue[8].color, 10, -10),
-    ];
+    const getCubes = () => {
+      const array = [];
+      for (let i = 0; i < cubeValue.length; i++) {
+        const color = cubeValue[i].color;
+        const x = cubeValue[i].x;
+        const y = cubeValue[i].y;
+        const z = cubeValue[i].z;
+        array.push(makeInstance(geometry, color, x, y, z));
+      }
+      return array;
+    };
+
 
     const term = 300;
     let timer = 0;
@@ -141,12 +155,10 @@ function Inner() {
         setCameraPositionZ(camera.position.z);
         camera.position.copy(new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z));
         setCamera(camera);
-
       }, term);
-
     });
 
-
+    const cubes = getCubes();
     const render = (time) => {
       time *= 0.0005;  // convert time to seconds
 
@@ -172,9 +184,9 @@ function Inner() {
       x: (event.clientX - rect.left) * canvas.width  / rect.width,
       y: (event.clientY - rect.top ) * canvas.height / rect.height,
     };
-  };
+  }
 
-  const changeColor = (uuid, color) => {
+  const changeColor = (uuid, color, position) => {
     const resultCubeValue = cubeValue;
     for (let i = 0; i < resultCubeValue.length; i++){
       // @ts-ignore
@@ -182,7 +194,10 @@ function Inner() {
         resultCubeValue.splice( i, 1, {
           // @ts-ignore
           uuid: uuid,
-          color: color
+          color: color,
+          x: position.x,
+          y: position.y,
+          z: position.z
         });
       }
     }
@@ -191,7 +206,7 @@ function Inner() {
   };
 
   const getPickPosition = (event) => {
-    console.log('event', event);
+    // console.log('event', event);
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
@@ -213,17 +228,19 @@ function Inner() {
       // @ts-ignore
       const color = intersects[i].object.material.color;
       const uuid = intersects[i].object.uuid;
+      const position = intersects[i].object.position;
       const hex = color.getHex();
 
       if (hex === cubeColors[1]) {
         color.set(cubeColors[0]);
-        changeColor(uuid, cubeColors[0]);
+        changeColor(uuid, cubeColors[0], position);
       } else if (hex === cubeColors[0]) {
         color.set(cubeColors[1]);
-        changeColor(uuid, cubeColors[1]);
+        changeColor(uuid, cubeColors[1], position);
       }
     }
-  };
+  }
+
 
   // JSX
   return (
@@ -242,15 +259,15 @@ function Inner() {
         }}
       ></Figure>
       <ul>
+        <li>position.x: {positionX.toFixed(2)}</li>
+        <li>position.y: {positionY.toFixed(2)}</li>
+        <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
+        <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
         <li>startTime: {startTime.toFixed(2)}</li>
         <li>endTime: {endTime.toFixed(2)}</li>
         <li>elapsedTime: {elapsedTime.toFixed(2)}</li>
         <li>canvas.width: {canvasSize}</li>
         <li>canvas.height: {canvasSize}</li>
-        <li>position.x: {positionX.toFixed(2)}</li>
-        <li>position.y: {positionY.toFixed(2)}</li>
-        <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
-        <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
       </ul>
     </>
   );

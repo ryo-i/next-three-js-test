@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- onPointerDownとonPointerUpの経過時間で判定 [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
+- ランダムに配置されたCubeを押すと色が変わる [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
 - ブラウザのリサイズ後も色変更の状態を保持 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
 
 ## 詳細（ブログ）

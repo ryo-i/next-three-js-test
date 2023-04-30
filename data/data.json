@@ -370,6 +370,12 @@
             "title": "Cubeを押すと色が変わる＆カメラ位置移動",
             "text": "onPointerDownイベントで色変更することでカメラ移動のOrbitControlsと併用できた",
             "blog": ""
+        },
+        "test061": {
+            "id": "061",
+            "title": "ランダムに配置されたCubeを押すと色が変わる",
+            "text": "Math.randomでランダムな位置にcubeを配置する",
+            "blog": ""
         }
     },
     "footer": {
