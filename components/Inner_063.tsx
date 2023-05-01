@@ -8,6 +8,29 @@ const Figure = styled.figure`
   canvas {
     box-shadow: 0 0 15px 2px rgb(0 0 0 / 10%);
   }
+  .screen {
+    position: relative;
+
+    .number {
+      position: absolute;
+      color: red;
+    }
+
+  }
+`;
+
+const Screen = styled.div`
+  position: relative;
+  .number {
+    position: absolute;
+    font-weight: bold;
+    color: #fff;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    line-height: 1em;
+    pointer-events: none;
+  }
 `;
 
 
@@ -62,6 +85,8 @@ function Inner() {
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [objectValue, setObjectValue] = useState(getInitColorValue(20, -30, 30));
+  const [toralNumber, setTotalNumber] = useState(20);
+  const [hitNumber, setHitNumber] = useState(0);
 
 
   useEffect(() => {
@@ -243,9 +268,11 @@ function Inner() {
       if (hex === objectColors[1]) {
         color.set(objectColors[0]);
         changeColor(uuid, objectColors[0], position);
+        setHitNumber(hitNumber - 1);
       } else if (hex === objectColors[0]) {
         color.set(objectColors[1]);
         changeColor(uuid, objectColors[1], position);
+        setHitNumber(hitNumber + 1);
       }
     }
   }
@@ -253,7 +280,7 @@ function Inner() {
 
   // JSX
   return (
-    <>
+    <Screen className="screen">
       <Figure ref={figureElm}
         onPointerDown={(event) => {
           setStartTime(event.timeStamp);
@@ -266,19 +293,10 @@ function Inner() {
             getPickPosition(event);
           }
         }}
-      ></Figure>
-      <ul>
-        <li>position.x: {positionX.toFixed(2)}</li>
-        <li>position.y: {positionY.toFixed(2)}</li>
-        <li>pickPosition.x: {pickPositionX.toFixed(2)}</li>
-        <li>pickPosition.y: {pickPositionY.toFixed(2)}</li>
-        <li>startTime: {startTime.toFixed(2)}</li>
-        <li>endTime: {endTime.toFixed(2)}</li>
-        <li>elapsedTime: {elapsedTime.toFixed(2)}</li>
-        <li>canvas.width: {canvasSize}</li>
-        <li>canvas.height: {canvasSize}</li>
-      </ul>
-    </>
+      >
+      </Figure>
+      <p className="number">{hitNumber} / {toralNumber}</p>
+    </Screen>
   );
 }
 
