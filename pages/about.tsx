@@ -58,8 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>トータル数とヒット数を表示する <a href="https://github.com/ryo-i/next-app-started/issues/11">#11</a></li>
-                    <li>色切り替えをonPointerDownに変更する。 <a href="https://github.com/ryo-i/next-app-started/issues/3">#3</a></li>
+                    <li>ヒット数のカウントで生じる誤差をなくす <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>

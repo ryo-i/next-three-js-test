@@ -8,8 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- トータル数とヒット数を表示する [#11](https://github.com/ryo-i/next-three-js-test/issues/11)
-- ブラウザのリサイズ後も色変更の状態を保持 [#3](https://github.com/ryo-i/next-three-js-test/issues/3)
+- ヒット数のカウントで生じる誤差をなくす [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

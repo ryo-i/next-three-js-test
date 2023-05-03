@@ -41,6 +41,10 @@ function Inner() {
   const pointer = new THREE.Vector2();
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
+  const toralNumber = 20;
+  const minRandomNumber = -30;
+  const maxrandomNumber = 30;
+
 
 
   const getInitColorValue = (length, min, max) => {
@@ -84,8 +88,7 @@ function Inner() {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [objectValue, setObjectValue] = useState(getInitColorValue(20, -30, 30));
-  const [toralNumber, setTotalNumber] = useState(20);
+  const [objectValue, setObjectValue] = useState(getInitColorValue(toralNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
 
 
@@ -235,8 +238,14 @@ function Inner() {
         });
       }
     }
-    // console.log('resultObjectValue', resultObjectValue);
+
+    let redObjectValue = resultObjectValue.filter((objectValue) => {
+      return objectValue.color === 16711680;
+    });
+
     setObjectValue(resultObjectValue);
+    setHitNumber(redObjectValue.length);
+
   };
 
   const getPickPosition = (event) => {
@@ -268,11 +277,9 @@ function Inner() {
       if (hex === objectColors[1]) {
         color.set(objectColors[0]);
         changeColor(uuid, objectColors[0], position);
-        setHitNumber(hitNumber - 1);
       } else if (hex === objectColors[0]) {
         color.set(objectColors[1]);
         changeColor(uuid, objectColors[1], position);
-        setHitNumber(hitNumber + 1);
       }
     }
   }
