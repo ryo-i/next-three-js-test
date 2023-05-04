@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ヒット数のカウントで生じる誤差をなくす <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>クリア画面&リプレイボタン表示 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>
