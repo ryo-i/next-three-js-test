@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- スタート画面も追加 & CSSを修正 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- リプレイ後にヒット数のカウントがリセットされるよう修正 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

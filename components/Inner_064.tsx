@@ -341,6 +341,7 @@ function Inner() {
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
+    setHitNumber(0);
   }
 
 
