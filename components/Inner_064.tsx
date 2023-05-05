@@ -268,6 +268,14 @@ function Inner() {
   };
 
 
+  const getRedObjectValue = (objectValue) => {
+    const result = objectValue.filter((objectValue) => {
+      return objectValue.color === 16711680;
+    });
+    return result;
+  }
+
+
   const changeColor = (uuid, color, position) => {
     const resultObjectValue = objectValue;
     for (let i = 0; i < resultObjectValue.length; i++){
@@ -284,10 +292,7 @@ function Inner() {
       }
     }
 
-    let redObjectValue = resultObjectValue.filter((objectValue) => {
-      return objectValue.color === 16711680;
-    });
-
+    const redObjectValue = getRedObjectValue(resultObjectValue);
     if (redObjectValue.length === toralNumber) {
       setIsClear(true);
     }
@@ -357,7 +362,12 @@ function Inner() {
           const elapsedTime = event.timeStamp - startTime;
           setElapsedTime(elapsedTime);
           if (elapsedTime < 200) {
-            getPickPosition(event);
+            const redObjectValue = getRedObjectValue(objectValue);
+            if (redObjectValue.length === toralNumber) {
+              setIsClear(true);
+            } else {
+              getPickPosition(event);
+            }
           }
         }}
       >
