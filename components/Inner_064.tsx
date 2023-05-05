@@ -21,6 +21,7 @@ const Figure = styled.figure`
 
 const Screen = styled.div`
   position: relative;
+  text-shadow: 0 0 20px rgba(0,0,0,0.2);
   .number, .situation {
     position: absolute;
     font-weight: bold;
@@ -34,30 +35,42 @@ const Screen = styled.div`
     pointer-events: none;
   }
   .situation {
+    margin: 0;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color: #fff;
+    color: #fff200;
     text-align: center;
-    .clear {
-      margin: 0 0 10px;
+    .title {
+      margin: 0 0 15px;
       line-height: 1em;
-      font-size: 30px;
+      font-size: 35px;
+      font-weight: bold;
+
       pointer-events: none;
     }
-    .replay {
+    .play {
       padding: 5px;
       color: #fff;
-      background: rgba(255,255,255,0.2);
+      text-shadow: 0 0 5px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.3);
       border: 1px solid #fff;
       border-radius: 5px;
+      animation: flashing 1.5s linear infinite;
       &:hover {
         cursor: pointer;
         opacity: 0.8;
       }
     }
   }
-
+  @keyframes flashing {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
 `;
 
 
@@ -71,7 +84,6 @@ function Inner() {
   const toralNumber = 20;
   const minRandomNumber = -30;
   const maxrandomNumber = 30;
-  const situations = ['start', 'clear'];
 
 
   const getInitColorValue = (length, min, max) => {
@@ -117,6 +129,7 @@ function Inner() {
   const [elapsedTime, setElapsedTime] = useState(0);
   const [objectValue, setObjectValue] = useState(getInitColorValue(toralNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
+  const [isPlay, setIsPlay] = useState(false);
   const [isClear, setIsClear] = useState(false);
   const [isReplay, setIsReplay] = useState(false);
 
@@ -237,13 +250,13 @@ function Inner() {
 
       renderer.render(scene, camera);
 
-      setIsReplay(false);
+      if (isReplay) setIsReplay(false);
 
       requestAnimationFrame(render);
     };
     requestAnimationFrame(render);
 
-  }, [canvasSize, isReplay]);
+  }, [canvasSize, isReplay, isPlay]);
 
 
   const getCanvasRelativePosition = (event) => {
@@ -285,9 +298,7 @@ function Inner() {
 
 
   const getPickPosition = (event) => {
-    if (isClear) {
-      return;
-    }
+    if (isClear || !isPlay) return;
 
     // console.log('event', event);
     const pos = getCanvasRelativePosition(event);
@@ -325,10 +336,11 @@ function Inner() {
   };
 
 
-  const doReplay = () => {
+  const doPlay = () => {
     setObjectValue(getInitColorValue(toralNumber, minRandomNumber, maxrandomNumber));
-    setIsClear(false);
-    setIsReplay(true);
+    if (isClear) setIsClear(false);
+    if (!isPlay) setIsPlay(true);
+    if (!isReplay) setIsReplay(true);
   }
 
 
@@ -350,12 +362,19 @@ function Inner() {
       >
       </Figure>
       <p className="number">{hitNumber} / {toralNumber}</p>
-      { isClear &&
-        <div className="situation">
-          <p className="clear">CLEAR!</p>
-          <button className="replay" onPointerDown={doReplay}>Replay?</button>
-        </div>
-      }
+      <section className="situation">
+        { !isPlay &&
+          <>
+            <h2 className="title">Dodecaheron</h2>
+            <button className="play" onPointerDown={doPlay}>Game Start</button>
+          </>
+        } { isClear &&
+          <>
+            <h2 className="title">CLEAR!</h2>
+            <button className="play" onPointerDown={doPlay}>Replay?</button>
+          </>
+        }
+      </section>
     </Screen>
   );
 }
