@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- canvasを押した時にヒット数の判定を追加 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- cssアニメkeyframesの書き換え [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

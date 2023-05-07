@@ -1,9 +1,48 @@
 import React, { useState, useEffect, useRef }  from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import * as THREE from 'three/src/Three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // CSS in JS
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const flashing = keyframes`
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+`;
+
 const Figure = styled.figure`
   canvas {
     box-shadow: 0 0 15px 2px rgb(0 0 0 / 10%);
@@ -41,12 +80,16 @@ const Screen = styled.div`
     transform: translate(-50%,-50%);
     color: #fff200;
     text-align: center;
+    /* animation: ${rotate} 2s linear infinite;
+    animation: ${fadeIn} .1s ease-in-out;
+    &.hide {
+      animation: ${fadeOut} .1s ease-in-out;
+    } */
     .title {
       margin: 0 0 15px;
       line-height: 1em;
       font-size: 35px;
       font-weight: bold;
-
       pointer-events: none;
     }
     .play {
@@ -56,19 +99,11 @@ const Screen = styled.div`
       background: rgba(255,255,255,0.3);
       border: 1px solid #fff;
       border-radius: 5px;
-      animation: flashing 1.5s linear infinite;
+      animation: ${flashing} 1.5s linear infinite;
       &:hover {
         cursor: pointer;
         opacity: 0.8;
       }
-    }
-  }
-  @keyframes flashing {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.6;
     }
   }
 `;
@@ -373,18 +408,17 @@ function Inner() {
       >
       </Figure>
       <p className="number">{hitNumber} / {toralNumber}</p>
-      <section className="situation">
-        { !isPlay &&
-          <>
-            <h2 className="title">Dodecaheron</h2>
-            <button className="play" onPointerDown={doPlay}>Game Start</button>
-          </>
-        } { isClear &&
-          <>
-            <h2 className="title">CLEAR!</h2>
-            <button className="play" onPointerDown={doPlay}>Replay?</button>
-          </>
-        }
+      <section className={
+          isPlay ? 'situation hide' : 'situation'
+        }>
+        <h2 className="title">
+          {!isPlay && 'Dodecaheron'}
+          {isClear && 'Game Start'}
+        </h2>
+        <button className="play" onPointerDown={doPlay}>
+          {!isPlay && 'Game Start'}
+          {isClear && 'Replay?'}
+        </button>
       </section>
     </Screen>
   );
