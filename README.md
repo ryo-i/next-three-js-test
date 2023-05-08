@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cssアニメkeyframesの書き換え [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- フェードイン、フェードアウトの設定をいったん削除 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

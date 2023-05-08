@@ -4,42 +4,12 @@ import * as THREE from 'three/src/Three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // CSS in JS
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
-
-const fadeOut = keyframes`
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
 const flashing = keyframes`
   0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.5;
   }
 `;
 
@@ -80,11 +50,6 @@ const Screen = styled.div`
     transform: translate(-50%,-50%);
     color: #fff200;
     text-align: center;
-    /* animation: ${rotate} 2s linear infinite;
-    animation: ${fadeIn} .1s ease-in-out;
-    &.hide {
-      animation: ${fadeOut} .1s ease-in-out;
-    } */
     .title {
       margin: 0 0 15px;
       line-height: 1em;
@@ -105,6 +70,9 @@ const Screen = styled.div`
         opacity: 0.8;
       }
     }
+  }
+  .hide {
+    display: none;
   }
 `;
 
@@ -408,17 +376,18 @@ function Inner() {
       >
       </Figure>
       <p className="number">{hitNumber} / {toralNumber}</p>
-      <section className={
-          isPlay ? 'situation hide' : 'situation'
-        }>
-        <h2 className="title">
-          {!isPlay && 'Dodecaheron'}
-          {isClear && 'Game Start'}
-        </h2>
-        <button className="play" onPointerDown={doPlay}>
-          {!isPlay && 'Game Start'}
-          {isClear && 'Replay?'}
-        </button>
+      <section className="situation">
+        { !isPlay &&
+          <>
+            <h2 className="title">Dodecaheron</h2>
+            <button className="play" onPointerDown={doPlay}>Game Start</button>
+          </>
+        } { isClear &&
+          <>
+            <h2 className="title">CLEAR!</h2>
+            <button className="play" onPointerDown={doPlay}>Replay?</button>
+          </>
+        }
       </section>
     </Screen>
   );
