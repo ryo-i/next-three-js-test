@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- フェードイン、フェードアウトの設定をいったん削除 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- カウントアップ実装中（クリアしてもカウントが止まらない） [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>フェードイン、フェードアウトの設定をいったん削除 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>カウントアップ実装中（クリアしてもカウントが止まらない） <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>

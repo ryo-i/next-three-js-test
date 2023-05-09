@@ -31,17 +31,23 @@ const Figure = styled.figure`
 const Screen = styled.div`
   position: relative;
   text-shadow: 0 0 20px rgba(0,0,0,0.2);
-  .number, .situation {
+  .number, .timer, .situation {
     position: absolute;
     font-weight: bold;
   }
-  .number {
+  .number, .timer {
     margin: 0;
     line-height: 1em;
     color: #fff;
     top: 10px;
-    left: 10px;
     pointer-events: none;
+  }
+  .number {
+    left: 10px;
+  }
+  .timer {
+    left: 50%;
+    transform: translateX(-50%);
   }
   .situation {
     margin: 0;
@@ -87,6 +93,7 @@ function Inner() {
   const totalNumber = 20;
   const minRandomNumber = -30;
   const maxrandomNumber = 30;
+  let timerId;
 
 
   const getInitColorValue = (length, min, max) => {
@@ -135,6 +142,7 @@ function Inner() {
   const [isPlay, setIsPlay] = useState(false);
   const [isClear, setIsClear] = useState(false);
   const [isReplay, setIsReplay] = useState(false);
+  const [countTimer, setCountTimer] = useState(0);
 
 
   useEffect(() => {
@@ -229,6 +237,7 @@ function Inner() {
         setCameraPositionZ(camera.position.z);
         camera.position.copy(new THREE.Vector3(camera.position.x, camera.position.y, camera.position.z));
         setCamera(camera);
+
       }, term);
     });
 
@@ -282,10 +291,8 @@ function Inner() {
   const changeColor = (uuid, color, position) => {
     const resultObjectValue = objectValue;
     for (let i = 0; i < resultObjectValue.length; i++){
-      // @ts-ignore
       if (resultObjectValue[i].uuid === uuid) {
         resultObjectValue.splice( i, 1, {
-          // @ts-ignore
           uuid: uuid,
           color: color,
           x: position.x,
@@ -297,6 +304,8 @@ function Inner() {
 
     const redObjectValue = getRedObjectValue(resultObjectValue);
     if (redObjectValue.length === totalNumber) {
+      console.log('timerId-2', timerId);
+      clearInterval(timerId);
       setIsClear(true);
     }
 
@@ -343,6 +352,14 @@ function Inner() {
     }
   };
 
+  const countUp = () => {
+    let counter = 0;
+    timerId = setInterval(() => {
+      counter += 0.01;
+      setCountTimer(counter);
+    }, 10);
+    console.log('timerId-1', timerId)
+  }
 
   const doPlay = () => {
     setObjectValue(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
@@ -350,6 +367,7 @@ function Inner() {
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
     setHitNumber(0);
+    countUp();
   }
 
 
@@ -376,6 +394,7 @@ function Inner() {
       >
       </Figure>
       <p className="number">{hitNumber} / {totalNumber}</p>
+      <p className="timer">{countTimer.toFixed(2)}</p>
       <section className="situation">
         { !isPlay &&
           <>
