@@ -93,7 +93,6 @@ function Inner() {
   const totalNumber = 20;
   const minRandomNumber = -30;
   const maxrandomNumber = 30;
-  let timerId;
 
 
   const getInitColorValue = (length, min, max) => {
@@ -143,6 +142,7 @@ function Inner() {
   const [isClear, setIsClear] = useState(false);
   const [isReplay, setIsReplay] = useState(false);
   const [countTimer, setCountTimer] = useState(0);
+  const [timerId, setTimerId] = useState(null);
 
 
   useEffect(() => {
@@ -271,6 +271,24 @@ function Inner() {
   }, [canvasSize, isReplay, isPlay]);
 
 
+  const countUp = () => {
+    let counter = 0;
+    setTimerId(
+      setInterval(() => {
+      counter += 0.01;
+      setCountTimer(counter);
+      }, 10)
+    );
+  };
+
+
+  useEffect(() => {
+    if (hitNumber === totalNumber) {
+      clearInterval(timerId);
+    }
+  }, [hitNumber]);
+
+
   const getCanvasRelativePosition = (event) => {
     const rect = canvas.getBoundingClientRect();
     return {
@@ -304,8 +322,6 @@ function Inner() {
 
     const redObjectValue = getRedObjectValue(resultObjectValue);
     if (redObjectValue.length === totalNumber) {
-      console.log('timerId-2', timerId);
-      clearInterval(timerId);
       setIsClear(true);
     }
 
@@ -352,14 +368,6 @@ function Inner() {
     }
   };
 
-  const countUp = () => {
-    let counter = 0;
-    timerId = setInterval(() => {
-      counter += 0.01;
-      setCountTimer(counter);
-    }, 10);
-    console.log('timerId-1', timerId)
-  }
 
   const doPlay = () => {
     setObjectValue(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
