@@ -156,6 +156,12 @@ function Inner() {
     // three.js
     const scene = new THREE.Scene();
     setScene(scene);
+    {
+      const color = 0x000000;
+      const near = 200;
+      const far = 300;
+      scene.fog = new THREE.Fog(color, near, far);
+    }
 
     const renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setSize( canvasSize, canvasSize );
