@@ -13,18 +13,34 @@ const flashing = keyframes`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+`;
+
 const Figure = styled.figure`
   canvas {
     box-shadow: 0 0 15px 2px rgb(0 0 0 / 10%);
   }
   .screen {
     position: relative;
-
     .number {
       position: absolute;
       color: red;
     }
-
   }
 `;
 
@@ -63,7 +79,7 @@ const Screen = styled.div`
       font-weight: bold;
       pointer-events: none;
     }
-    .play {
+    .playButton {
       padding: 5px;
       color: #fff;
       text-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -77,8 +93,13 @@ const Screen = styled.div`
       }
     }
   }
-  .hide {
-    display: none;
+  .fadein {
+    animation: ${fadeIn} 0.5s linear;
+  }
+  .fadeout {
+    opacity: 0;
+    pointer-events: none;
+    animation: ${fadeOut} 0.3s linear;
   }
 `;
 
@@ -93,6 +114,8 @@ function Inner() {
   const totalNumber = 20;
   const minRandomNumber = -30;
   const maxrandomNumber = 30;
+  const titleTexts = ['Dodecaheron', 'Clear!'];
+  const playButtonTexts = ['Game Start', 'replay?'];
 
 
   const getInitColorValue = (length, min, max) => {
@@ -143,6 +166,8 @@ function Inner() {
   const [isReplay, setIsReplay] = useState(false);
   const [countTimer, setCountTimer] = useState(0);
   const [timerId, setTimerId] = useState(null);
+  const [title, setTitle] = useState(titleTexts[0]);
+  const [playButton, setPlayButton] = useState(playButtonTexts[0]);
 
 
   useEffect(() => {
@@ -329,6 +354,8 @@ function Inner() {
     const redObjectValue = getRedObjectValue(resultObjectValue);
     if (redObjectValue.length === totalNumber) {
       setIsClear(true);
+      setTitle(titleTexts[1]);
+      setPlayButton(playButtonTexts[1]);
     }
 
     setObjectValue(resultObjectValue);
@@ -409,18 +436,9 @@ function Inner() {
       </Figure>
       <p className="number">{hitNumber} / {totalNumber}</p>
       <p className="timer">{countTimer.toFixed(2)}</p>
-      <section className="situation">
-        { !isPlay &&
-          <>
-            <h2 className="title">Dodecaheron</h2>
-            <button className="play" onPointerDown={doPlay}>Game Start</button>
-          </>
-        } { isClear &&
-          <>
-            <h2 className="title">CLEAR!</h2>
-            <button className="play" onPointerDown={doPlay}>Replay?</button>
-          </>
-        }
+      <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
+        <h2 className="title">{title}</h2>
+        <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
       </section>
     </Screen>
   );
