@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>スタート&クリア画面にフェードを適用 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>ゲーム名変更を変更（Dodecaheron→Dodecahedron） <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>

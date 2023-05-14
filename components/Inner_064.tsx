@@ -379,7 +379,7 @@ function Inner() {
       <section className="situation">
         { !isPlay &&
           <>
-            <h2 className="title">Dodecaheron</h2>
+            <h2 className="title">Dodecahedron</h2>
             <button className="play" onPointerDown={doPlay}>Game Start</button>
           </>
         } { isClear &&

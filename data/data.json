@@ -379,26 +379,32 @@
         },
         "test062": {
             "id": "062",
-            "title": "ゲーム-1(Dodecaheron)：前進してくる12面体を撃ち落とす！",
+            "title": "ゲーム-1(Dodecahedron)：前進してくる12面体を撃ち落とす！",
             "text": "ジオメトリをDodecahedronGeometryに変更。カメラ移動OrbitControlsを無効に。position.zをカメラの手前まで前進させる。",
             "blog": ""
         },
         "test063": {
             "id": "063",
-            "title": "ゲーム-1(Dodecaheron)：トータル数とヒット数を表示する",
+            "title": "ゲーム-1(Dodecahedron)：トータル数とヒット数を表示する",
             "text": "pタグをcanvasの上に配置。12面体のヒット数（赤色）とトータル数を表示する。",
             "blog": ""
         },
         "test064": {
             "id": "064",
-            "title": "ゲーム-1(Dodecaheron)：スタート画面とクリア画面を追加",
+            "title": "ゲーム-1(Dodecahedron)：スタート画面とクリア画面を追加",
             "text": "スタート画面とクリア画面は射撃無効。リプレイで色と配置をリセット。",
             "blog": ""
         },
         "test065": {
             "id": "065",
-            "title": "ゲーム-1(Dodecaheron)：タイマーカウントを追加",
+            "title": "ゲーム-1(Dodecahedron)：タイマーカウントを追加",
             "text": "スタートでカウント開始。クリアで停止。リプレイでリセット＆リスタート。",
+            "blog": ""
+        },
+        "test066": {
+            "id": "066",
+            "title": "ゲーム-1(Dodecahedron)：モード設定を追加",
+            "text": "Easy, Normal, Heardモード",
             "blog": ""
         }
     },
