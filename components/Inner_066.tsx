@@ -293,7 +293,8 @@ function Inner() {
           // object.position.z = -30;
           object.position.z = objectValue[ndx].z;
         } else {
-          object.position.z = positionZ + speed;
+          object.position.z = positionZ + 1;
+          // object.position.z = positionZ + speed;
           // console.log('object.position.z', object.position.z)
         }
       });

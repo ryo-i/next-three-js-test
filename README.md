@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- スピードだけ遅くする [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- スピードだけ元に戻す [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 
