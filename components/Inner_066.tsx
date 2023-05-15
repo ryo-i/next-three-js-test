@@ -163,7 +163,7 @@ function Inner() {
   const [totalNumber, setTotalNumber] =  useState(totalNumbers[2]);
   const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[2]);
   const [maxrandomNumber, setMaxrandomNumber] = useState(maxrandomNumbers[2]);
-  const [speed, setSpeed] = useState(speeds[2]);
+  const [speed, setSpeed] = useState(speeds[0]);
   const [objectValue, setObjectValue] = useState(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);

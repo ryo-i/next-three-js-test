@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
--  モード設定値追加→100個にしてみる [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- スピードだけ遅くする [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 
