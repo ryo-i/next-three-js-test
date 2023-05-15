@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ゲーム名変更を変更（Dodecaheron→Dodecahedron） <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>モード設定値追加→100個にしてみる <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>

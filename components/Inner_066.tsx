@@ -111,9 +111,10 @@ function Inner() {
   const pointer = new THREE.Vector2();
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
-  const totalNumber = 20;
-  const minRandomNumber = -30;
-  const maxrandomNumber = 30;
+  const totalNumbers =  [20, 50, 100];
+  const minRandomNumbers = [-30, -40, -50];
+  const maxrandomNumbers = [30, 40, 50];
+  const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
 
@@ -159,6 +160,10 @@ function Inner() {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [totalNumber, setTotalNumber] =  useState(totalNumbers[2]);
+  const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[2]);
+  const [maxrandomNumber, setMaxrandomNumber] = useState(maxrandomNumbers[2]);
+  const [speed, setSpeed] = useState(speeds[2]);
   const [objectValue, setObjectValue] = useState(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
@@ -168,7 +173,6 @@ function Inner() {
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
-
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -272,6 +276,7 @@ function Inner() {
       }, term);
     });
 
+    // Animation
     const objects = getObjects();
     const render = (time) => {
       time *= 0.0005;  // convert time to seconds
@@ -285,9 +290,11 @@ function Inner() {
         const positionZ = object.position.z;
 
         if (positionZ > initCameraPositionZ) {
+          // object.position.z = -30;
           object.position.z = objectValue[ndx].z;
         } else {
-          object.position.z = positionZ + 1;
+          object.position.z = positionZ + speed;
+          // console.log('object.position.z', object.position.z)
         }
       });
 
@@ -297,6 +304,7 @@ function Inner() {
 
       requestAnimationFrame(render);
     };
+    console.log('speed', speed); // test
     requestAnimationFrame(render);
 
   }, [canvasSize, isReplay, isPlay]);
