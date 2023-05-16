@@ -59,11 +59,11 @@ const Screen = styled.div`
     pointer-events: none;
   }
   .number {
-    left: 10px;
-  }
-  .timer {
     left: 50%;
     transform: translateX(-50%);
+  }
+  .timer {
+    left: 10px;
   }
   .situation {
     margin: 0;
@@ -73,16 +73,18 @@ const Screen = styled.div`
     color: #fff200;
     text-align: center;
     .title {
-      margin: 0 0 15px;
+      margin: 0 0 20px;
       line-height: 1em;
       font-size: 35px;
       font-weight: bold;
       pointer-events: none;
     }
-    .playButton {
-      padding: 5px;
+    .playButton, .settings {
       color: #fff;
       text-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .playButton {
+      padding: 5px;
       background: rgba(255,255,255,0.3);
       border: 1px solid #fff;
       border-radius: 5px;
@@ -91,6 +93,11 @@ const Screen = styled.div`
         cursor: pointer;
         opacity: 0.8;
       }
+    }
+    .settings {
+      margin: 20px 0 0;
+      font-size: 12px;
+      font-weight: normal;
     }
   }
   .fadein {
@@ -111,9 +118,9 @@ function Inner() {
   const pointer = new THREE.Vector2();
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
-  const totalNumbers =  [20, 50, 100];
-  const minRandomNumbers = [-30, -40, -50];
-  const maxrandomNumbers = [30, 40, 50];
+  const blockNumbers =  [20, 50, 100];
+  const minRandomNumbers = [-30, -40, -60];
+  const maxRandomNumbers = [30, 40, 60];
   const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
@@ -160,11 +167,11 @@ function Inner() {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const [totalNumber, setTotalNumber] =  useState(totalNumbers[2]);
-  const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[2]);
-  const [maxrandomNumber, setMaxrandomNumber] = useState(maxrandomNumbers[2]);
+  const [blockNumber, setBlockNumber] =  useState(10);
+  const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[0]);
+  const [maxrandomNumber, setMaxRandomNumber] = useState(maxRandomNumbers[0]);
   const [speed, setSpeed] = useState(speeds[0]);
-  const [objectValue, setObjectValue] = useState(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
+  const [objectValue, setObjectValue] = useState(getInitColorValue(blockNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
   const [isClear, setIsClear] = useState(false);
@@ -323,7 +330,7 @@ function Inner() {
 
 
   useEffect(() => {
-    if (hitNumber === totalNumber) {
+    if (hitNumber === blockNumber) {
       clearInterval(timerId);
     }
   }, [hitNumber]);
@@ -361,7 +368,7 @@ function Inner() {
     }
 
     const redObjectValue = getRedObjectValue(resultObjectValue);
-    if (redObjectValue.length === totalNumber) {
+    if (redObjectValue.length === blockNumber) {
       setIsClear(true);
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
@@ -412,13 +419,35 @@ function Inner() {
 
 
   const doPlay = () => {
-    setObjectValue(getInitColorValue(totalNumber, minRandomNumber, maxrandomNumber));
+    setObjectValue(getInitColorValue(blockNumber, minRandomNumber, maxrandomNumber));
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
     setHitNumber(0);
     countUp();
   }
+
+
+  const changeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const getName: string = String(e.target.name);
+    const getValue: number = Number(e.target.value);
+
+    switch (getName){
+      case 'blockNumber':
+        setBlockNumber(getValue);
+        if (getValue <= blockNumbers[0]) {
+          setMinRandomNumber(minRandomNumbers[0]);
+          setMaxRandomNumber(maxRandomNumbers[0]);
+        } else if (getValue <= blockNumbers[1]) {
+          setMinRandomNumber(minRandomNumbers[1]);
+          setMaxRandomNumber(maxRandomNumbers[1]);
+        } else if (getValue <= blockNumbers[2]) {
+          setMinRandomNumber(minRandomNumbers[2]);
+          setMaxRandomNumber(maxRandomNumbers[0]);
+        }
+        break;
+    }
+  };
 
 
   // JSX
@@ -434,7 +463,7 @@ function Inner() {
           setElapsedTime(elapsedTime);
           if (elapsedTime < 200) {
             const redObjectValue = getRedObjectValue(objectValue);
-            if (redObjectValue.length === totalNumber) {
+            if (redObjectValue.length === blockNumber) {
               setIsClear(true);
             } else {
               getPickPosition(event);
@@ -443,11 +472,17 @@ function Inner() {
         }}
       >
       </Figure>
-      <p className="number">{hitNumber} / {totalNumber}</p>
+      <p className="number">{hitNumber} / {blockNumber}</p>
       <p className="timer">{countTimer.toFixed(2)}</p>
       <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
         <h2 className="title">{title}</h2>
         <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
+        <div className="settings">
+          <label>
+            Bloc kNumber:  {blockNumber}<br />
+            <input type="range" name="blockNumber" min="10" max="100" step="10" value={blockNumber} onChange={changeRange} />
+          </label>
+        </div>
       </section>
     </Screen>
   );

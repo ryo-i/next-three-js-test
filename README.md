@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- スピードだけ元に戻す [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- スタート画面、クリア画面でブロック数を変えられるようにした [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 
