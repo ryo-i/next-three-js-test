@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 設定微調整＆誤字訂正 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- 設定微調整2 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

@@ -118,9 +118,9 @@ function Inner() {
   const pointer = new THREE.Vector2();
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
-  const blockNumbers =  [30, 60, 100];
-  const minRandomNumbers = [-30, -40, -60];
-  const maxRandomNumbers = [30, 40, 60];
+  const blockNumbers =  [20, 40, 60, 80, 100];
+  const minRandomNumbers = [-30, -35, -40, -50, -60];
+  const maxRandomNumbers = [30, 35, 40, 50, 60];
   const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
@@ -444,6 +444,12 @@ function Inner() {
         } else if (getValue <= blockNumbers[2]) {
           setMinRandomNumber(minRandomNumbers[2]);
           setMaxRandomNumber(maxRandomNumbers[2]);
+        } else if (getValue <= blockNumbers[3]) {
+          setMinRandomNumber(minRandomNumbers[3]);
+          setMaxRandomNumber(maxRandomNumbers[3]);
+        } else if (getValue <= blockNumbers[4]) {
+          setMinRandomNumber(minRandomNumbers[4]);
+          setMaxRandomNumber(maxRandomNumbers[4]);
         }
         break;
     }
