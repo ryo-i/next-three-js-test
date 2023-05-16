@@ -118,7 +118,7 @@ function Inner() {
   const pointer = new THREE.Vector2();
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
-  const blockNumbers =  [20, 50, 100];
+  const blockNumbers =  [30, 60, 100];
   const minRandomNumbers = [-30, -40, -60];
   const maxRandomNumbers = [30, 40, 60];
   const speeds = [1, 5, 10];
@@ -443,7 +443,7 @@ function Inner() {
           setMaxRandomNumber(maxRandomNumbers[1]);
         } else if (getValue <= blockNumbers[2]) {
           setMinRandomNumber(minRandomNumbers[2]);
-          setMaxRandomNumber(maxRandomNumbers[0]);
+          setMaxRandomNumber(maxRandomNumbers[2]);
         }
         break;
     }
@@ -479,7 +479,7 @@ function Inner() {
         <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
         <div className="settings">
           <label>
-            Bloc kNumber:  {blockNumber}<br />
+            Block Number:  {blockNumber}<br />
             <input type="range" name="blockNumber" min="10" max="100" step="10" value={blockNumber} onChange={changeRange} />
           </label>
         </div>

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>スタート画面、クリア画面でブロック数を変えられるようにした <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>設定微調整＆誤字訂正 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>
