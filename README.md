@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- タイマークリアの位置を移動 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
+- タイマークリアの位置移動を067にも適用 [#12](https://github.com/ryo-i/next-three-js-test/issues/12)
 
 ## 詳細（ブログ）
 

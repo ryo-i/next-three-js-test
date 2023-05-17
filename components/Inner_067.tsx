@@ -330,13 +330,6 @@ function Inner() {
   };
 
 
-  useEffect(() => {
-    if (hitNumber === blockNumber) {
-      clearInterval(timerId);
-    }
-  }, [hitNumber]);
-
-
   const getCanvasRelativePosition = (event) => {
     const rect = canvas.getBoundingClientRect();
     return {
@@ -370,6 +363,7 @@ function Inner() {
 
     const redObjectValue = getRedObjectValue(resultObjectValue);
     if (redObjectValue.length === blockNumber) {
+      clearInterval(timerId);
       setIsClear(true);
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
