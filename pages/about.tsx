@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ブロック数変更時もスタート・クリア画面上のブロック数を保持 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>タイマークリアの位置を移動 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
                 </ul>
             </section>
             <section>
