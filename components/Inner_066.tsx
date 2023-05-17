@@ -168,6 +168,7 @@ function Inner() {
   const [endTime, setEndTime] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [blockNumber, setBlockNumber] =  useState(10);
+  const [nextBlockNumber, setNextBlockNumber] =  useState(10);
   const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[0]);
   const [maxrandomNumber, setMaxRandomNumber] = useState(maxRandomNumbers[0]);
   const [speed, setSpeed] = useState(speeds[0]);
@@ -419,7 +420,8 @@ function Inner() {
 
 
   const doPlay = () => {
-    setObjectValue(getInitColorValue(blockNumber, minRandomNumber, maxrandomNumber));
+    setBlockNumber(nextBlockNumber);
+    setObjectValue(getInitColorValue(nextBlockNumber, minRandomNumber, maxrandomNumber));
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
@@ -434,7 +436,7 @@ function Inner() {
 
     switch (getName){
       case 'blockNumber':
-        setBlockNumber(getValue);
+        setNextBlockNumber(getValue);
         if (getValue <= blockNumbers[0]) {
           setMinRandomNumber(minRandomNumbers[0]);
           setMaxRandomNumber(maxRandomNumbers[0]);
@@ -485,8 +487,8 @@ function Inner() {
         <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
         <div className="settings">
           <label>
-            Block Number:  {blockNumber}<br />
-            <input type="range" name="blockNumber" min="10" max="100" step="10" value={blockNumber} onChange={changeRange} />
+            Blocks:  {nextBlockNumber}<br />
+            <input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} />
           </label>
         </div>
       </section>
