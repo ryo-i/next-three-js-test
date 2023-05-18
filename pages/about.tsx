@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>タイマークリアの位置移動を067にも適用 <a href="https://github.com/ryo-i/next-app-started/issues/12">#12</a></li>
+                    <li>Tone.jsをimportしてプレイボタンで音を出す <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

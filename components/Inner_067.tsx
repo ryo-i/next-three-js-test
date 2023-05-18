@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef }  from 'react';
 import styled, { keyframes } from 'styled-components';
 import * as THREE from 'three/src/Three';
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import * as Tone from 'tone'
 
 // CSS in JS
 const flashing = keyframes`
@@ -124,6 +125,7 @@ function Inner() {
   const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
+  const synth = new Tone.Synth().toDestination();
 
 
   const getInitColorValue = (length, min, max) => {
@@ -421,6 +423,8 @@ function Inner() {
     if (!isReplay) setIsReplay(true);
     setHitNumber(0);
     countUp();
+
+    synth.triggerAttackRelease("C4", "8n");
   }
 
 
