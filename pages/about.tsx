@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>Tone.jsをimportしてプレイボタンで音を出す <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>プレイボタン音の再生設定を変更テスト <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

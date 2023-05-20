@@ -111,6 +111,8 @@ const Screen = styled.div`
   }
 `;
 
+const synth = new Tone.Synth().toDestination();
+console.log('synth', synth);
 
 // Component
 function Inner() {
@@ -125,7 +127,6 @@ function Inner() {
   const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
-  const synth = new Tone.Synth().toDestination();
 
 
   const getInitColorValue = (length, min, max) => {
@@ -315,7 +316,6 @@ function Inner() {
 
       requestAnimationFrame(render);
     };
-    console.log('speed', speed); // test
     requestAnimationFrame(render);
 
   }, [canvasSize, isReplay, isPlay]);
@@ -424,7 +424,10 @@ function Inner() {
     setHitNumber(0);
     countUp();
 
+    Tone.start();
+    synth.triggerRelease();
     synth.triggerAttackRelease("C4", "8n");
+    console.log('sound!');
   }
 
 

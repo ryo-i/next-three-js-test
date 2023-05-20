@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Tone.jsをimportしてプレイボタンで音を出す [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- プレイボタン音の再生設定を変更テスト [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
