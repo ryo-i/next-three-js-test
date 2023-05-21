@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- プレイボタン音の再生設定を変更テスト [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- Soundボタン追加＆音再生設定変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

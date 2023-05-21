@@ -74,7 +74,7 @@ const Screen = styled.div`
     color: #fff200;
     text-align: center;
     .title {
-      margin: 0 0 20px;
+      margin: 0 0 30px;
       line-height: 1em;
       font-size: 35px;
       font-weight: bold;
@@ -99,6 +99,9 @@ const Screen = styled.div`
       margin: 20px 0 0;
       font-size: 12px;
       font-weight: normal;
+      dl {
+        margin: 0;
+      }
     }
   }
   .fadein {
@@ -112,7 +115,7 @@ const Screen = styled.div`
 `;
 
 const synth = new Tone.Synth().toDestination();
-console.log('synth', synth);
+// console.log('synth', synth);
 
 // Component
 function Inner() {
@@ -127,6 +130,7 @@ function Inner() {
   const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
+  const soundTexts = ['On', 'Off'];
 
 
   const getInitColorValue = (length, min, max) => {
@@ -184,6 +188,7 @@ function Inner() {
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
+  const [sound, setSound] = useState(soundTexts[1]);
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -414,6 +419,18 @@ function Inner() {
     }
   };
 
+  const doSoundPlay = () => {
+    try {
+      Tone.start();
+      synth.triggerRelease();
+      const now = Tone.now()
+      synth.triggerAttackRelease("C4", "8n", now)
+      console.log('sound!', synth.triggerAttackRelease);
+    } catch (error) {
+      console.log('error', error);
+    }
+  }
+
 
   const doPlay = () => {
     setBlockNumber(nextBlockNumber);
@@ -424,10 +441,7 @@ function Inner() {
     setHitNumber(0);
     countUp();
 
-    Tone.start();
-    synth.triggerRelease();
-    synth.triggerAttackRelease("C4", "8n");
-    console.log('sound!');
+    if (sound === soundTexts[0]) doSoundPlay();
   }
 
 
@@ -458,6 +472,16 @@ function Inner() {
     }
   };
 
+  const changeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const getName: string = String(e.target.name);
+    const getValue: string = String(e.target.value);
+
+    switch (getName){
+      case 'sound':
+        setSound(getValue);
+        break;
+    }
+  };
 
   // JSX
   return (
@@ -487,10 +511,21 @@ function Inner() {
         <h2 className="title">{title}</h2>
         <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
         <div className="settings">
-          <label>
-            Blocks:  {nextBlockNumber}<br />
-            <input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} />
-          </label>
+          <dl>
+            <dt>Blocks:  {nextBlockNumber}</dt>
+            <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
+          </dl>
+          <dl>
+            <dt>Sound:  {sound}</dt>
+            <dd>
+            <label>
+              <input type="radio" name="sound" value="On" onChange={changeRadio} />On
+            </label>
+            <label>
+              <input type="radio" name="sound" value="Off" defaultChecked={true} onChange={changeRadio} />Off
+            </label>
+            </dd>
+          </dl>
         </div>
       </section>
     </Screen>
