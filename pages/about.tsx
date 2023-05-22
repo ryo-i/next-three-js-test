@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>Soundボタン追加＆音再生設定変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>スタート音、クリア音、ヒット音を追加 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

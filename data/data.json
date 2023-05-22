@@ -409,8 +409,8 @@
         },
         "test067": {
             "id": "067",
-            "title": "ゲーム-1(Dodecahedron)：音の追加（作成中）",
-            "text": "",
+            "title": "ゲーム-1(Dodecahedron)：音の追加",
+            "text": "スタート音、クリア音、ヒット音を追加",
             "blog": ""
         }
     },

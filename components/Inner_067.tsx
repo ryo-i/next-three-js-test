@@ -114,7 +114,7 @@ const Screen = styled.div`
   }
 `;
 
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.PolySynth().toDestination();
 // console.log('synth', synth);
 
 // Component
@@ -326,6 +326,37 @@ function Inner() {
   }, [canvasSize, isReplay, isPlay]);
 
 
+  const doStartSound = () => {
+    if (sound === soundTexts[1]) return;
+
+    const now = Tone.now();
+    synth.triggerAttackRelease("C6", "8n", now);
+    synth.triggerAttackRelease("G5", "8n", now + 0.1);
+    synth.triggerAttackRelease("C5", "8n", now + 0.2);
+  }
+
+  const doHitSound = (objectColor) => {
+    if (sound === soundTexts[1]) return;
+
+    const now = Tone.now();
+    if (objectColor === objectColors[0]) {
+      synth.triggerAttackRelease("G3", "8n", now);
+    } else if (objectColor === objectColors[1]) {
+      synth.triggerAttackRelease("G5", "8n", now);
+    }
+  }
+
+
+  const doClearSound = () => {
+    if (sound === soundTexts[1]) return;
+
+    const now = Tone.now();
+    synth.triggerAttackRelease("C5", "8n", now);
+    synth.triggerAttackRelease("G5", "8n", now + 0.1);
+    synth.triggerAttackRelease("C6", "8n", now + 0.2);
+  }
+
+
   const countUp = () => {
     let counter = 0;
     setTimerId(
@@ -374,6 +405,7 @@ function Inner() {
       setIsClear(true);
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
+      doClearSound();
     }
 
     setObjectValue(resultObjectValue);
@@ -412,24 +444,16 @@ function Inner() {
       if (hex === objectColors[1]) {
         color.set(objectColors[0]);
         changeColor(uuid, objectColors[0], position);
+        doHitSound(objectColors[0]);
       } else if (hex === objectColors[0]) {
         color.set(objectColors[1]);
         changeColor(uuid, objectColors[1], position);
+        doHitSound(objectColors[1]);
       }
     }
   };
 
-  const doSoundPlay = () => {
-    try {
-      Tone.start();
-      synth.triggerRelease();
-      const now = Tone.now()
-      synth.triggerAttackRelease("C4", "8n", now)
-      console.log('sound!', synth.triggerAttackRelease);
-    } catch (error) {
-      console.log('error', error);
-    }
-  }
+
 
 
   const doPlay = () => {
@@ -441,7 +465,7 @@ function Inner() {
     setHitNumber(0);
     countUp();
 
-    if (sound === soundTexts[0]) doSoundPlay();
+    doStartSound();
   }
 
 
@@ -478,7 +502,8 @@ function Inner() {
 
     switch (getName){
       case 'sound':
-        setSound(getValue);
+        setSound(getValue)
+        Tone.start();
         break;
     }
   };
