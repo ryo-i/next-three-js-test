@@ -85,7 +85,8 @@ const Screen = styled.div`
       text-shadow: 0 0 5px rgba(0,0,0,0.2);
     }
     .playButton {
-      padding: 5px;
+      padding: 10px;
+      font-size: 16px;
       background: rgba(255,255,255,0.3);
       border: 1px solid #fff;
       border-radius: 5px;
@@ -97,10 +98,16 @@ const Screen = styled.div`
     }
     .settings {
       margin: 20px 0 0;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: normal;
       dl {
         margin: 0;
+        dt {
+          font-weight: normal;
+        }
+        dd {
+          margin: 0;
+        }
       }
     }
   }
@@ -189,6 +196,7 @@ function Inner() {
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
   const [sound, setSound] = useState(soundTexts[1]);
+  // const [soundVolume, setSoundVolume] = useState(5);
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -454,8 +462,6 @@ function Inner() {
   };
 
 
-
-
   const doPlay = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitColorValue(nextBlockNumber, minRandomNumber, maxrandomNumber));
@@ -550,6 +556,10 @@ function Inner() {
               <input type="radio" name="sound" value="Off" defaultChecked={true} onChange={changeRadio} />Off
             </label>
             </dd>
+            {
+              // ボリューム作成中
+              // <dd><input type="range" name="soundVolume" min="0" max="10" step="1" value={soundVolume} onChange={changeRange} /></dd>
+            }
           </dl>
         </div>
       </section>
