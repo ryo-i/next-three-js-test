@@ -33,6 +33,7 @@ const fadeOut = keyframes`
 `;
 
 const Figure = styled.figure`
+  margin: 0;
   canvas {
     box-shadow: 0 0 15px 2px rgb(0 0 0 / 10%);
   }
@@ -108,6 +109,21 @@ const Screen = styled.div`
         dd {
           margin: 0;
         }
+      }
+    }
+  }
+  .controller {
+    padding: 5px;
+    background: #333;
+    color: #fff;
+    dl, dt, dd {
+      width: auto;
+    }
+    dl {
+      margin: 0 auto;
+      display: flex;
+      dd {
+        margin: 0 5px 0 0;
       }
     }
   }
@@ -195,13 +211,14 @@ function Inner() {
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
-  const [sound, setSound] = useState(soundTexts[1]);
-  // const [soundVolume, setSoundVolume] = useState(5);
+  const [sound, setSound] = useState(soundTexts[0]);
+  const [soundVolume, setSoundVolume] = useState(-30);
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
     // console.log('canvasElmWidth(load)', canvasElmWidth);
     changeCanvasSize(canvasElmWidth);
+    synth.volume.value = soundVolume;
   }, [0]);
 
 
@@ -499,6 +516,11 @@ function Inner() {
           setMaxRandomNumber(maxRandomNumbers[4]);
         }
         break;
+      case 'soundVolume':
+        setSoundVolume(getValue);
+        synth.volume.value = getValue;
+        console.log('soundVolume', getValue)
+        break;
     }
   };
 
@@ -546,8 +568,11 @@ function Inner() {
             <dt>Blocks:  {nextBlockNumber}</dt>
             <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
           </dl>
+        </div>
+      </section>
+      <div className="controller">
           <dl>
-            <dt>Sound:  {sound}</dt>
+            <dt>♪</dt>
             <dd>
             <label>
               <input type="radio" name="sound" value="On" onChange={changeRadio} />On
@@ -556,13 +581,9 @@ function Inner() {
               <input type="radio" name="sound" value="Off" defaultChecked={true} onChange={changeRadio} />Off
             </label>
             </dd>
-            {
-              // ボリューム作成中
-              // <dd><input type="range" name="soundVolume" min="0" max="10" step="1" value={soundVolume} onChange={changeRange} /></dd>
-            }
+            <dd><input type="range" name="soundVolume" min="-60" max="0" step="1" value={soundVolume} onChange={changeRange} /></dd>
           </dl>
         </div>
-      </section>
     </Screen>
   );
 }
