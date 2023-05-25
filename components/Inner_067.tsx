@@ -116,14 +116,17 @@ const Screen = styled.div`
     padding: 5px;
     background: #333;
     color: #fff;
-    dl, dt, dd {
-      width: auto;
-    }
-    dl {
-      margin: 0 auto;
-      display: flex;
-      dd {
-        margin: 0 5px 0 0;
+    display: flex;
+    .sound {
+      &Button {
+        padding: 0 6px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        &.Off {
+          color: #999;
+        }
       }
     }
   }
@@ -154,6 +157,7 @@ function Inner() {
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
   const soundTexts = ['On', 'Off'];
+  const soundVolumes = [-60, 0];
 
 
   const getInitColorValue = (length, min, max) => {
@@ -211,14 +215,13 @@ function Inner() {
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
-  const [sound, setSound] = useState(soundTexts[0]);
-  const [soundVolume, setSoundVolume] = useState(-30);
+  const [sound, setSound] = useState(soundTexts[1]);
+  const [soundVolume, setSoundVolume] = useState(soundVolumes[0]);
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
     // console.log('canvasElmWidth(load)', canvasElmWidth);
     changeCanvasSize(canvasElmWidth);
-    synth.volume.value = soundVolume;
   }, [0]);
 
 
@@ -354,6 +357,7 @@ function Inner() {
   const doStartSound = () => {
     if (sound === soundTexts[1]) return;
 
+    synth.volume.value = soundVolume;
     const now = Tone.now();
     synth.triggerAttackRelease("C6", "8n", now);
     synth.triggerAttackRelease("G5", "8n", now + 0.1);
@@ -491,6 +495,14 @@ function Inner() {
     doStartSound();
   }
 
+  const doMute = () => {
+    const isMute = sound === soundTexts[1];
+    if (!isMute) {
+      setSound(soundTexts[1]);
+      setSoundVolume(soundVolumes[0]);
+    }
+  }
+
 
   const changeRange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const getName: string = String(e.target.name);
@@ -517,24 +529,18 @@ function Inner() {
         }
         break;
       case 'soundVolume':
+        if (getValue === soundVolumes[0]) {
+          setSound(soundTexts[1]);
+        } else {
+          setSound(soundTexts[0]);
+        }
+
         setSoundVolume(getValue);
         synth.volume.value = getValue;
-        console.log('soundVolume', getValue)
         break;
     }
   };
 
-  const changeRadio = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const getName: string = String(e.target.name);
-    const getValue: string = String(e.target.value);
-
-    switch (getName){
-      case 'sound':
-        setSound(getValue)
-        Tone.start();
-        break;
-    }
-  };
 
   // JSX
   return (
@@ -571,19 +577,12 @@ function Inner() {
         </div>
       </section>
       <div className="controller">
-          <dl>
-            <dt>♪</dt>
-            <dd>
-            <label>
-              <input type="radio" name="sound" value="On" onChange={changeRadio} />On
-            </label>
-            <label>
-              <input type="radio" name="sound" value="Off" defaultChecked={true} onChange={changeRadio} />Off
-            </label>
-            </dd>
-            <dd><input type="range" name="soundVolume" min="-60" max="0" step="1" value={soundVolume} onChange={changeRange} /></dd>
-          </dl>
+        <div className="player"></div>
+        <div className="sound">
+          <button className={'soundButton ' + sound} onPointerDown={doMute}>♪</button>
+          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} />
         </div>
+      </div>
     </Screen>
   );
 }
