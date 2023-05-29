@@ -113,20 +113,29 @@ const Screen = styled.div`
     }
   }
   .controller {
-    padding: 5px;
+    padding: 10px;
     background: #333;
     color: #fff;
     display: flex;
     .sound {
+      display: flex;
+      align-items: center;
       &Button {
-        padding: 0 6px;
-        background: none;
+        margin: 0 10px 0 0;
+        width: 24px;
+        height: 24px;
+        background: #666;
         border: none;
+        border-radius: 50%;
         color: #fff;
         font-size: 16px;
         &.Off {
-          color: #999;
+          color: #333;
         }
+      }
+      input[name='soundVolume'] {
+        margin: 0;
+        height: 20px;
       }
     }
   }
@@ -217,6 +226,7 @@ function Inner() {
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
   const [sound, setSound] = useState(soundTexts[1]);
   const [soundVolume, setSoundVolume] = useState(soundVolumes[0]);
+  const [currentSoundVolume, setCurrentSoundVolume] = useState(soundVolumes[0]);
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -500,6 +510,9 @@ function Inner() {
     if (!isMute) {
       setSound(soundTexts[1]);
       setSoundVolume(soundVolumes[0]);
+    } else {
+      setSound(soundTexts[0]);
+      setSoundVolume(currentSoundVolume);
     }
   }
 
@@ -529,13 +542,15 @@ function Inner() {
         }
         break;
       case 'soundVolume':
-        if (getValue === soundVolumes[0]) {
+        const isZero = getValue === soundVolumes[0];
+        if (isZero) {
           setSound(soundTexts[1]);
         } else {
           setSound(soundTexts[0]);
         }
 
         setSoundVolume(getValue);
+        setCurrentSoundVolume(getValue);
         synth.volume.value = getValue;
         break;
     }
