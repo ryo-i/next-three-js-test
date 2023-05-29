@@ -506,12 +506,14 @@ function Inner() {
     doStartSound();
   }
 
+
   const doMute = () => {
     const isMute = sound === soundTexts[1];
+    const isZero = currentSoundVolume === soundVolumes[0];
     if (!isMute) {
       setSound(soundTexts[1]);
       setSoundVolume(soundVolumes[0]);
-    } else {
+    } else if (!isZero) {
       setSound(soundTexts[0]);
       setSoundVolume(currentSoundVolume);
     }

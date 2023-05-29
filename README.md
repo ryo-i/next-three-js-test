@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- ミュートOFFで保持したボリュームを復活させる [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- ボリューム0の時のミュートボタンを無効に [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
