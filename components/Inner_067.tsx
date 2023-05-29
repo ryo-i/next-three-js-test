@@ -122,6 +122,7 @@ const Screen = styled.div`
       align-items: center;
       &Button {
         margin: 0 10px 0 0;
+        padding: 0;
         width: 24px;
         height: 24px;
         background: #666;
