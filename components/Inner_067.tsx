@@ -83,12 +83,12 @@ const Screen = styled.div`
     }
     .playButton, .settings {
       color: #fff;
-      text-shadow: 0 0 5px rgba(0,0,0,0.2);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }
     .playButton {
       padding: 10px;
       font-size: 16px;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255, 0, 0, 0.3);
       border: 1px solid #fff;
       border-radius: 5px;
       animation: ${flashing} 1.5s linear infinite;
@@ -134,10 +134,25 @@ const Screen = styled.div`
           color: #333;
         }
       }
-      input[name='soundVolume'] {
-        margin: 0;
-        height: 20px;
-      }
+    }
+  }
+  input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    height: 4px;
+    background: #aaa;
+    border-radius: 2px;
+    border: none;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 12px;
+      width: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: none;
     }
   }
   .fadein {
