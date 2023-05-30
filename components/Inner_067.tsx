@@ -380,8 +380,10 @@ function Inner() {
   }, [canvasSize, isReplay, isPlay]);
 
 
-  const doStartSound = () => {
+  const playStartSound = () => {
     if (sound === soundTexts[1]) return;
+
+    console.log(111);
 
     synth.volume.value = soundVolume;
     const now = Tone.now();
@@ -509,7 +511,7 @@ function Inner() {
   };
 
 
-  const playStartSound = () => {
+  const playStart = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitColorValue(nextBlockNumber, minRandomNumber, maxrandomNumber));
     if (isClear) setIsClear(false);
@@ -518,7 +520,7 @@ function Inner() {
     setHitNumber(0);
     countUp();
 
-    doStartSound();
+    playStartSound();
   }
 
 
@@ -601,7 +603,7 @@ function Inner() {
       <p className="timer">{countTimer.toFixed(2)}</p>
       <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
         <h2 className="title">{title}</h2>
-        <button className="playButton" onPointerDown={playStartSound}>{playButton}</button>
+        <button className="playButton" onPointerDown={playStart}>{playButton}</button>
         <div className="settings">
           <dl>
             <dt>Blocks:  {nextBlockNumber}</dt>

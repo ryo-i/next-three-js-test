@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>関数名がわかりにくかったので修正 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>関数名修正2 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>
