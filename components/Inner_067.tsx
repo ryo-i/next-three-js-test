@@ -390,7 +390,7 @@ function Inner() {
     synth.triggerAttackRelease("C5", "8n", now + 0.2);
   }
 
-  const doHitSound = (objectColor) => {
+  const playHitSound = (objectColor) => {
     if (sound === soundTexts[1]) return;
 
     const now = Tone.now();
@@ -402,7 +402,7 @@ function Inner() {
   }
 
 
-  const doClearSound = () => {
+  const playClearSound = () => {
     if (sound === soundTexts[1]) return;
 
     const now = Tone.now();
@@ -460,7 +460,7 @@ function Inner() {
       setIsClear(true);
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
-      doClearSound();
+      playClearSound();
     }
 
     setObjectValue(resultObjectValue);
@@ -499,17 +499,17 @@ function Inner() {
       if (hex === objectColors[1]) {
         color.set(objectColors[0]);
         changeColor(uuid, objectColors[0], position);
-        doHitSound(objectColors[0]);
+        playHitSound(objectColors[0]);
       } else if (hex === objectColors[0]) {
         color.set(objectColors[1]);
         changeColor(uuid, objectColors[1], position);
-        doHitSound(objectColors[1]);
+        playHitSound(objectColors[1]);
       }
     }
   };
 
 
-  const doPlay = () => {
+  const playStartSound = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitColorValue(nextBlockNumber, minRandomNumber, maxrandomNumber));
     if (isClear) setIsClear(false);
@@ -522,7 +522,7 @@ function Inner() {
   }
 
 
-  const doMute = () => {
+  const toggleMute = () => {
     const isMute = sound === soundTexts[1];
     const isZero = currentSoundVolume === soundVolumes[0];
     if (!isMute) {
@@ -601,7 +601,7 @@ function Inner() {
       <p className="timer">{countTimer.toFixed(2)}</p>
       <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
         <h2 className="title">{title}</h2>
-        <button className="playButton" onPointerDown={doPlay}>{playButton}</button>
+        <button className="playButton" onPointerDown={playStartSound}>{playButton}</button>
         <div className="settings">
           <dl>
             <dt>Blocks:  {nextBlockNumber}</dt>
@@ -612,7 +612,7 @@ function Inner() {
       <div className="controller">
         <div className="player"></div>
         <div className="sound">
-          <button className={'soundButton ' + sound} onPointerDown={doMute}>♪</button>
+          <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
           <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} />
         </div>
       </div>
