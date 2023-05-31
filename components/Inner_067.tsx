@@ -380,16 +380,27 @@ function Inner() {
   }, [canvasSize, isReplay, isPlay]);
 
 
+  const soundStart = () => {
+    console.log('toneState-1', Tone.context.state);
+
+    if (Tone.context.state === 'suspended') {
+      Tone.context.resume();
+      Tone.start();
+      console.log('toneState1-2', Tone.context.state);
+    }
+  };
+
+
   const playStartSound = () => {
     if (sound === soundTexts[1]) return;
-
-    console.log(111);
 
     synth.volume.value = soundVolume;
     const now = Tone.now();
     synth.triggerAttackRelease("C6", "8n", now);
     synth.triggerAttackRelease("G5", "8n", now + 0.1);
     synth.triggerAttackRelease("C5", "8n", now + 0.2);
+
+    console.log('toneState1-3', Tone.context.state);
   }
 
   const playHitSound = (objectColor) => {
@@ -615,7 +626,7 @@ function Inner() {
         <div className="player"></div>
         <div className="sound">
           <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
-          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} />
+          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
         </div>
       </div>
     </Screen>

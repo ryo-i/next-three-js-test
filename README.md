@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 関数名修正2 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- Tone.context.stateの状態チェック [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
