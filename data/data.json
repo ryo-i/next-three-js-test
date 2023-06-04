@@ -412,6 +412,12 @@
             "title": "ゲーム-1(Dodecahedron)：音の追加",
             "text": "スタート音、クリア音、ヒット音、ボリュームボタンを追加",
             "blog": ""
+        },
+        "test068": {
+            "id": "068",
+            "title": "ゲーム-1(Dodecahedron)：ランダムBGM（作成中）",
+            "text": "",
+            "blog": ""
         }
     },
     "footer": {

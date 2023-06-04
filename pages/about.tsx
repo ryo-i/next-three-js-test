@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>Tone.context.stateの状態チェック <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>ヒット音の音程を岩の高さに合わせて変える <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

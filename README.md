@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- Tone.context.stateの状態チェック [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- ヒット音の音程を岩の高さに合わせて変える [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
