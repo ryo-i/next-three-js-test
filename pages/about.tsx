@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>音程を追加（数が合わずundefinedになったため） <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>ランダムBGM追加（リプレイ時にリセットされない） <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

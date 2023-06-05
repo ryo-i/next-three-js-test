@@ -190,9 +190,9 @@ function Inner() {
     'C6'
   ];
   const bassPitchs = [
+    'C1', 'C#1', 'D1', 'D#1', 'E1', 'F1', 'F#1', 'G1', 'G#1', 'A1', 'A#1', 'B1',
     'C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2',
-    'C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3',
-    'C4'
+    'C3'
   ];
 
 
@@ -274,6 +274,7 @@ function Inner() {
   const [sound, setSound] = useState(soundTexts[1]);
   const [soundVolume, setSoundVolume] = useState(soundVolumes[0]);
   const [currentSoundVolume, setCurrentSoundVolume] = useState(soundVolumes[0]);
+  const [rondomBgmNdx, setRondomBgmNdx] = useState(null)
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -397,6 +398,7 @@ function Inner() {
         if (positionZ > initCameraPositionZ) {
           // object.position.z = -30;
           object.position.z = objectValue[ndx].z;
+          if (isPlay) setRondomBgmNdx(ndx);
         } else {
           object.position.z = positionZ + 1;
           // object.position.z = positionZ + speed;
@@ -413,6 +415,11 @@ function Inner() {
     requestAnimationFrame(render);
 
   }, [canvasSize, isReplay, isPlay]);
+
+
+  useEffect(() => {
+    playRundomBGM(rondomBgmNdx);
+  }, [rondomBgmNdx]);
 
 
   const soundStart = () => {
@@ -473,6 +480,21 @@ function Inner() {
     synth.triggerAttackRelease('C6', '8n', now + 0.3);
   }
 
+
+  const playRundomBGM = (ndx) => {
+    if (sound === soundTexts[1]) return;
+
+    const objectColor = objectValue[ndx].color;
+    const melodyPitch = objectValue[ndx].melodyPitch;
+    const bassPitch = objectValue[ndx].bassPitch;
+
+    const now = Tone.now();
+    if (objectColor === objectColors[0]) {
+      synth.triggerAttackRelease(bassPitch, '32n', now);
+    } else if (objectColor === objectColors[1]) {
+      synth.triggerAttackRelease([melodyPitch, bassPitch], '32n', now);
+    }
+  }
 
   const countUp = () => {
     let counter = 0;
