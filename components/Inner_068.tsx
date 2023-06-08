@@ -178,7 +178,6 @@ function Inner() {
   const blockNumbers =  [20, 40, 60, 80, 100];
   const minRandomNumbers = [-30, -35, -40, -50, -60];
   const maxRandomNumbers = [30, 35, 40, 50, 60];
-  const speeds = [1, 5, 10];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
   const soundTexts = ['On', 'Off'];
@@ -261,12 +260,13 @@ function Inner() {
   const [nextBlockNumber, setNextBlockNumber] =  useState(10);
   const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[0]);
   const [maxrandomNumber, setMaxRandomNumber] = useState(maxRandomNumbers[0]);
-  const [speed, setSpeed] = useState(speeds[0]);
+  const [objects, setObjects] = useState(null);
   const [objectValue, setObjectValue] = useState(getInitColorValue(blockNumber, minRandomNumber, maxrandomNumber));
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
   const [isClear, setIsClear] = useState(false);
   const [isReplay, setIsReplay] = useState(false);
+  const [replayNumber, setReplayNumber] = useState(0);
   const [countTimer, setCountTimer] = useState(0);
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
@@ -274,7 +274,8 @@ function Inner() {
   const [sound, setSound] = useState(soundTexts[1]);
   const [soundVolume, setSoundVolume] = useState(soundVolumes[0]);
   const [currentSoundVolume, setCurrentSoundVolume] = useState(soundVolumes[0]);
-  const [rondomBgmNdx, setRondomBgmNdx] = useState(null)
+  const [rondomBgmNdx, setRondomBgmNdx] = useState(null);
+  const [rondomBgmUuid, setRondomBgmUuid] = useState(null)
 
   useEffect(() => {
     const canvasElmWidth = figureElm.current.clientWidth;
@@ -284,6 +285,8 @@ function Inner() {
 
 
   useEffect(() => {
+    if (!canvasSize) return;
+
     // three.js
     const scene = new THREE.Scene();
     setScene(scene);
@@ -348,7 +351,9 @@ function Inner() {
     };
 
     const getObjects = () => {
-      const array = [];
+      if (objects) return objects;
+
+      let array = [];
       for (let i = 0; i < objectValue.length; i++) {
         const color = objectValue[i].color;
         const x = objectValue[i].x;
@@ -358,6 +363,11 @@ function Inner() {
         const bassPitch = objectValue[i].bassPitch;
         array.push(makeInstance(geometry, color, x, y, z, melodyPitch, bassPitch));
       }
+      console.log('array', array)
+      console.log('replayNumber', replayNumber)
+
+      setObjects(array);
+
       return array;
     };
 
@@ -384,6 +394,7 @@ function Inner() {
 
     // Animation
     const objects = getObjects();
+
     const render = (time) => {
       time *= 0.0005;  // convert time to seconds
 
@@ -395,14 +406,14 @@ function Inner() {
 
         const positionZ = object.position.z;
 
-        if (positionZ > initCameraPositionZ) {
-          // object.position.z = -30;
+        if (positionZ === initCameraPositionZ) {
           object.position.z = objectValue[ndx].z;
-          if (isPlay) setRondomBgmNdx(ndx);
+          if (isPlay) {
+            setRondomBgmNdx(ndx);
+            setRondomBgmUuid(object.uuid);
+          }
         } else {
           object.position.z = positionZ + 1;
-          // object.position.z = positionZ + speed;
-          // console.log('object.position.z', object.position.z)
         }
       });
 
@@ -414,11 +425,28 @@ function Inner() {
     };
     requestAnimationFrame(render);
 
-  }, [canvasSize, isReplay, isPlay]);
+  }, [canvasSize, replayNumber]);
 
 
   useEffect(() => {
-    playRundomBGM(rondomBgmNdx);
+    if (!isPlay || !isReplay) return;
+
+    if (objects) {
+      const array = objects;
+      for (let i = 0; i < objects.length; i++) {
+        array[i].position.x = objectValue[i].x;
+        array[i].position.y = objectValue[i].y;
+        array[i].position.z = objectValue[i].z;
+      }
+      setObjects(array);
+    }
+
+    setReplayNumber(replayNumber + 1);
+  }, [isReplay]);
+
+
+  useEffect(() => {
+    playRundomBGM(rondomBgmNdx, rondomBgmUuid);
   }, [rondomBgmNdx]);
 
 
@@ -481,8 +509,9 @@ function Inner() {
   }
 
 
-  const playRundomBGM = (ndx) => {
+  const playRundomBGM = (ndx, uuid) => {
     if (sound === soundTexts[1]) return;
+    if (uuid !== objectValue[ndx].uuid) return;
 
     const objectColor = objectValue[ndx].color;
     const melodyPitch = objectValue[ndx].melodyPitch;
@@ -492,7 +521,8 @@ function Inner() {
     if (objectColor === objectColors[0]) {
       synth.triggerAttackRelease(bassPitch, '32n', now);
     } else if (objectColor === objectColors[1]) {
-      synth.triggerAttackRelease([melodyPitch, bassPitch], '32n', now);
+      synth.triggerAttackRelease(melodyPitch, '32n', now);
+      synth.triggerAttackRelease(bassPitch, '32n', now  + 0.1);
     }
   }
 
