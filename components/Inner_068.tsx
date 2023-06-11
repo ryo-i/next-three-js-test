@@ -98,7 +98,7 @@ const Screen = styled.div`
       }
     }
     .settings {
-      margin: 0 0 20px;
+      margin: 0 0 30px;
       font-size: 11px;
       font-weight: normal;
       dl {
@@ -111,6 +111,9 @@ const Screen = styled.div`
         }
         dd {
           margin: 0;
+          input {
+            width: 200px;
+          }
         }
       }
     }
