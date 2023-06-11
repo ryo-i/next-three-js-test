@@ -225,7 +225,7 @@ function Inner() {
       const pitchNumber = getPitchNumber(min, max, yRundomNumber);
       const melodyPitch = melodyPitchs[pitchNumber];
       const bassPitch = bassPitchs[pitchNumber];
-      const pan = xRundomNumber / max * -1;
+      const pan = xRundomNumber / max;
 
       array.push(
         {
