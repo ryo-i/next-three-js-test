@@ -415,8 +415,8 @@
         },
         "test068": {
             "id": "068",
-            "title": "ゲーム-1(Dodecahedron)：ランダムBGM（作成中）",
-            "text": "",
+            "title": "ゲーム-1(Dodecahedron)：ランダムBGM追加",
+            "text": "音は上下で音程が、左右でパンが、前後でタイミングが変わる",
             "blog": ""
         }
     },

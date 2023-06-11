@@ -98,13 +98,16 @@ const Screen = styled.div`
       }
     }
     .settings {
-      margin: 20px 0 0;
+      margin: 0 0 20px;
       font-size: 11px;
       font-weight: normal;
       dl {
         margin: 0;
         dt {
           font-weight: normal;
+          ::after {
+            content: none;
+          }
         }
         dd {
           margin: 0;
@@ -478,8 +481,6 @@ function Inner() {
 
   const playHitSound = (uuid, objectColor) => {
     if (sound === soundTexts[1]) return;
-
-    // const resultObjectValue = objectValue;
     let melodyPitch = '';
     let bassPitch = '';
 
@@ -496,9 +497,9 @@ function Inner() {
     panner.pan.value = 0;
     const now = Tone.now();
     if (objectColor === objectColors[0]) {
-      synth.triggerAttackRelease(bassPitch, '8n', now);
+      synth.triggerAttackRelease(bassPitch, '4n', now);
     } else if (objectColor === objectColors[1]) {
-      synth.triggerAttackRelease(melodyPitch, '8n', now);
+      synth.triggerAttackRelease(melodyPitch, '4n', now);
     }
   }
 
@@ -525,10 +526,10 @@ function Inner() {
     const now = Tone.now();
 
     if (objectColor === objectColors[0]) {
-      synth.triggerAttackRelease(bassPitch, '32n', now);
+      synth.triggerAttackRelease(bassPitch, '64n', now);
     } else if (objectColor === objectColors[1]) {
-      synth.triggerAttackRelease(melodyPitch, '32n', now);
-      synth.triggerAttackRelease(bassPitch, '32n', now  + 0.1);
+      synth.triggerAttackRelease(melodyPitch, '64n', now);
+      synth.triggerAttackRelease(bassPitch, '64n', now  + 0.1);
       console.log('pan', pan);
     }
   }
@@ -727,13 +728,17 @@ function Inner() {
       <p className="timer">{countTimer.toFixed(2)}</p>
       <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
         <h2 className="title">{title}</h2>
-        <button className="playButton" onPointerDown={playStart}>{playButton}</button>
         <div className="settings">
           <dl>
-            <dt>Blocks:  {nextBlockNumber}</dt>
+            <dt>Blocks: {nextBlockNumber}</dt>
             <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
           </dl>
+          <dl>
+            <dt>Sound:</dt>
+            <dd><input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} /></dd>
+          </dl>
         </div>
+        <button className="playButton" onPointerDown={playStart}>{playButton}</button>
       </section>
       <div className="controller">
         <div className="player"></div>
