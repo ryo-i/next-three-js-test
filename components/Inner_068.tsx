@@ -173,7 +173,9 @@ const Screen = styled.div`
 
 
 const panner = new Tone.Panner();
-const synth = new Tone.PolySynth().toDestination();
+const synth = new Tone.PolySynth({
+  maxPolyphony: 100
+});
 synth.connect(panner);
 panner.toDestination();
 
@@ -454,7 +456,7 @@ function Inner() {
   useEffect(() => {
     // console.log('rondomBgmNdx', rondomBgmNdx)
     // console.log('rondomBgmUuid', rondomBgmUuid)
-    playRundomBGM(rondomBgmNdx, rondomBgmUuid);
+    playRandomBGM(rondomBgmNdx, rondomBgmUuid);
   }, [rondomBgmNdx]);
 
 
@@ -517,7 +519,7 @@ function Inner() {
   }
 
 
-  const playRundomBGM = (ndx, uuid) => {
+  const playRandomBGM = (ndx, uuid) => {
     if (sound === soundTexts[1]) return;
     if (uuid !== objectValue[ndx].uuid) return;
 

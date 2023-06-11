@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 音量メニューをスタート画面、クリア画面に追加 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- 同時発声音数の設定を変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
