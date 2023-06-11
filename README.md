@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- ランダムBGMのリプレイ後の重複を解消 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- ランダムBGMのパンを岩の左右位置で変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

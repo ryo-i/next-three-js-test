@@ -165,8 +165,12 @@ const Screen = styled.div`
   }
 `;
 
+
+const panner = new Tone.Panner();
 const synth = new Tone.PolySynth().toDestination();
-// console.log('synth', synth);
+synth.connect(panner);
+panner.toDestination();
+
 
 // Component
 function Inner() {
@@ -215,6 +219,7 @@ function Inner() {
       const pitchNumber = getPitchNumber(min, max, yRundomNumber);
       const melodyPitch = melodyPitchs[pitchNumber];
       const bassPitch = bassPitchs[pitchNumber];
+      const pan = xRundomNumber / max * -1;
 
       array.push(
         {
@@ -224,7 +229,8 @@ function Inner() {
           y: yRundomNumber,
           z: zRundomNumber,
           melodyPitch: melodyPitch,
-          bassPitch: bassPitch
+          bassPitch: bassPitch,
+          pan: pan.toFixed(2)
         }
       );
     }
@@ -326,24 +332,24 @@ function Inner() {
     const geometry = new THREE.DodecahedronGeometry( 6 );
 
     const resultObjectValue = [];
-    const makeInstance = (geometry, color, x, y, z, melodyPitch, bassPitch) => {
-      const material = new THREE.MeshPhongMaterial({color: color});
-
+    const makeInstance = (geometry, objectValue) => {
+      const material = new THREE.MeshPhongMaterial({color: objectValue.color});
       const object = new THREE.Mesh(geometry, material);
       scene.add(object);
 
-      object.position.x = x;
-      object.position.y = y;
-      object.position.z = z;
+      object.position.x = objectValue.x;
+      object.position.y = objectValue.y;
+      object.position.z = objectValue.z;
 
       resultObjectValue.push({
         uuid: object.uuid,
-        color: color,
-        x: x,
-        y: y,
-        z: z,
-        melodyPitch: melodyPitch,
-        bassPitch: bassPitch
+        color: objectValue.color,
+        x: objectValue.x,
+        y: objectValue.y,
+        z: objectValue.z,
+        melodyPitch: objectValue.melodyPitch,
+        bassPitch: objectValue.bassPitch,
+        pan: objectValue.pan
       });
       setObjectValue(resultObjectValue);
 
@@ -355,13 +361,7 @@ function Inner() {
 
       let array = [];
       for (let i = 0; i < objectValue.length; i++) {
-        const color = objectValue[i].color;
-        const x = objectValue[i].x;
-        const y = objectValue[i].y;
-        const z = objectValue[i].z;
-        const melodyPitch = objectValue[i].melodyPitch;
-        const bassPitch = objectValue[i].bassPitch;
-        array.push(makeInstance(geometry, color, x, y, z, melodyPitch, bassPitch));
+        array.push(makeInstance(geometry, objectValue[i]));
       }
       console.log('array', array)
       console.log('replayNumber', replayNumber)
@@ -446,6 +446,8 @@ function Inner() {
 
 
   useEffect(() => {
+    // console.log('rondomBgmNdx', rondomBgmNdx)
+    // console.log('rondomBgmUuid', rondomBgmUuid)
     playRundomBGM(rondomBgmNdx, rondomBgmUuid);
   }, [rondomBgmNdx]);
 
@@ -465,6 +467,7 @@ function Inner() {
     if (sound === soundTexts[1]) return;
 
     synth.volume.value = soundVolume;
+    panner.pan.value = 0;
     const now = Tone.now();
     synth.triggerAttackRelease('C6', '8n', now);
     synth.triggerAttackRelease('G5', '8n', now + 0.1);
@@ -490,6 +493,7 @@ function Inner() {
     console.log('melodyPitch', melodyPitch);
     console.log('bassPitch', bassPitch);
 
+    panner.pan.value = 0;
     const now = Tone.now();
     if (objectColor === objectColors[0]) {
       synth.triggerAttackRelease(bassPitch, '8n', now);
@@ -516,13 +520,16 @@ function Inner() {
     const objectColor = objectValue[ndx].color;
     const melodyPitch = objectValue[ndx].melodyPitch;
     const bassPitch = objectValue[ndx].bassPitch;
-
+    const pan = objectValue[ndx].pan;
+    panner.pan.value = pan;
     const now = Tone.now();
+
     if (objectColor === objectColors[0]) {
       synth.triggerAttackRelease(bassPitch, '32n', now);
     } else if (objectColor === objectColors[1]) {
       synth.triggerAttackRelease(melodyPitch, '32n', now);
       synth.triggerAttackRelease(bassPitch, '32n', now  + 0.1);
+      console.log('pan', pan);
     }
   }
 
@@ -565,7 +572,8 @@ function Inner() {
           y: position.y,
           z: position.z,
           melodyPitch: resultObjectValue[i].melodyPitch,
-          bassPitch: resultObjectValue[i].bassPitch
+          bassPitch: resultObjectValue[i].bassPitch,
+          pan: resultObjectValue[i].pan
         });
       }
     }

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ランダムBGMのリプレイ後の重複を解消 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>ランダムBGMのパンを岩の左右位置で変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

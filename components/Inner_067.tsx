@@ -187,6 +187,7 @@ function Inner() {
 
   const getInitColorValue = (length, min, max) => {
     const array = [];
+
     for (let i = 0; i < length; i++) {
       const rundomNumber = () => Math.floor(Math.random() * (max - min + 1) + min);
       array.push(
