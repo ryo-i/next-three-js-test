@@ -186,7 +186,7 @@ const envelopes = {
     release: 20
   },
   bgm: {
-    attack: 0.2,
+    attack: 0.1,
     decay: 0.1,
     sustain: 0.1,
     release: 1
@@ -196,7 +196,7 @@ const envelopes = {
 
 const buttonSynth = new Tone.PolySynth();
 buttonSynth.set({
-  oscillator: { type: 'sine' },
+  oscillator: { type: 'triangle' },
   envelope: envelopes.button
 });
 buttonSynth.toDestination();

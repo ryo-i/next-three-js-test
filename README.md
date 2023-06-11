@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 波形をサイン波に変更、エンベロープ変更、ディレイ追加 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- スタート音の波形を三角波に変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

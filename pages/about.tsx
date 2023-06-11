@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>波形をサイン波に変更、エンベロープ変更、ディレイ追加 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>スタート音の波形を三角波に変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>
