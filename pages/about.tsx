@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>スタート音の波形を三角波に変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>クリックノイズ音（プツプツ）対策の微調整 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

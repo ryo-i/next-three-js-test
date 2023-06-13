@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- スタート音の波形を三角波に変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- クリックノイズ音（プツプツ）対策の微調整 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
