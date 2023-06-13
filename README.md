@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- クリックノイズ音（プツプツ）対策の微調整 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- ディレイとパンの接続順変更＆プツプツ対策の微調整 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

@@ -186,10 +186,10 @@ const envelopes = {
     release: 20
   },
   bgm: {
-    attack: 0.1,
-    decay: 0.1,
-    sustain: 0.1,
-    release: 1
+    attack: 0.15,
+    decay: 0.15,
+    sustain: 0.15,
+    release: 1.5
   }
 };
 
@@ -208,16 +208,18 @@ hitSynth.set({
 });
 hitSynth.toDestination();
 
-const panner = new Tone.Panner().toDestination();
-const delay = new Tone.FeedbackDelay('8n', 0.5).connect(panner);
 const bgmSynth = new Tone.PolySynth({
   maxPolyphony: 100
 });
+const delay = new Tone.FeedbackDelay('8n', 0.5);
+const panner = new Tone.Panner();
 bgmSynth.set({
   oscillator: { type: 'sine' },
   envelope: envelopes.bgm
 });
-bgmSynth.connect(delay);
+bgmSynth.connect(panner);
+panner.connect(delay);
+delay.toDestination();
 
 
 // Component
@@ -576,7 +578,7 @@ function Inner() {
       bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
     } else if (objectColor === objectColors[1]) {
       bgmSynth.triggerAttackRelease(melodyPitch, '64n', now);
-      bgmSynth.triggerAttackRelease(bassPitch, '64n', now  + 0.1);
+      bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
       console.log('pan', pan);
     }
   }
