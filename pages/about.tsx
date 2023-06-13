@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>ディレイとパンの接続順変更＆プツプツ対策の微調整 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>ヒット時に鳴らす音をメロディのみに変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

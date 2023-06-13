@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- ディレイとパンの接続順変更＆プツプツ対策の微調整 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- ヒット時に鳴らす音をメロディのみに変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

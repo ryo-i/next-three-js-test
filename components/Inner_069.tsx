@@ -578,7 +578,7 @@ function Inner() {
       bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
     } else if (objectColor === objectColors[1]) {
       bgmSynth.triggerAttackRelease(melodyPitch, '64n', now);
-      bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
+      // bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
       console.log('pan', pan);
     }
   }
