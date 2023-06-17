@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>canvas以外の要素が増えてきたのでコンポーネントを分割(canvas読み込み後表示) <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>コンポーネント分割の一部を元に戻す <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>
