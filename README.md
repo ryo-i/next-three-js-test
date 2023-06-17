@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- コンポーネント分割の一部を元に戻す [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- 遊び方の説明を追加 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

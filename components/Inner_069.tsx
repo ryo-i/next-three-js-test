@@ -174,6 +174,11 @@ const Screen = styled.div`
   }
 `;
 
+const Explanation = styled.section`
+  margin: 10px 0 0;
+`;
+
+
 // Sound settings
 const envelopes = {
   button: {
@@ -498,8 +503,6 @@ function Inner() {
 
 
   useEffect(() => {
-    // console.log('rondomBgmNdx', rondomBgmNdx)
-    // console.log('rondomBgmUuid', rondomBgmUuid)
     playRandomBGM(rondomBgmNdx, rondomBgmUuid);
   }, [rondomBgmNdx]);
 
@@ -563,11 +566,6 @@ function Inner() {
 
 
   const playRandomBGM = (ndx, uuid) => {
-    console.log('ndx', ndx)
-    console.log('uuid', uuid)
-    console.log('sound', sound)
-    console.log('soundTexts[1]', soundTexts[1])
-
     if (sound === soundTexts[1]) return;
     if (uuid !== objectValue[ndx].uuid) return;
 
@@ -789,37 +787,50 @@ function Inner() {
 
 
   return (
-    <Screen className="screen">
-      <Figure ref={figureElm}
-        onPointerDown={(event) => {
-          setStartTime(event.timeStamp);
-        }}
-        onPointerUp={(event) => {
-          setEndTime(event.timeStamp);
-          const elapsedTime = event.timeStamp - startTime;
-          setElapsedTime(elapsedTime);
-          if (elapsedTime < 200) {
-            const redObjectValue = getRedObjectValue(objectValue);
-            if (redObjectValue.length === blockNumber) {
-              setIsClear(true);
-            } else {
-              getPickPosition(event);
+    <>
+      <Screen className="screen">
+        <Figure ref={figureElm}
+          onPointerDown={(event) => {
+            setStartTime(event.timeStamp);
+          }}
+          onPointerUp={(event) => {
+            setEndTime(event.timeStamp);
+            const elapsedTime = event.timeStamp - startTime;
+            setElapsedTime(elapsedTime);
+            if (elapsedTime < 200) {
+              const redObjectValue = getRedObjectValue(objectValue);
+              if (redObjectValue.length === blockNumber) {
+                setIsClear(true);
+              } else {
+                getPickPosition(event);
+              }
             }
-          }
-        }}
-      >
-      </Figure>
-      {canvas && <>
-        <p className="number">{hitNumber} / {blockNumber}</p>
-        <p className="timer">{countTimer.toFixed(2)}</p>
-        <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
-          <h2 className="title">{title}</h2>
-          <Settings />
-          <button className="playButton" onPointerDown={playStart}>{playButton}</button>
-        </section>
-        <Controller />
-      </>}
-    </Screen>
+          }}
+        >
+        </Figure>
+        {canvas && <>
+          <p className="number">{hitNumber} / {blockNumber}</p>
+          <p className="timer">{countTimer.toFixed(2)}</p>
+          <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
+            <h2 className="title">{title}</h2>
+            <Settings />
+            <button className="playButton" onPointerDown={playStart}>{playButton}</button>
+          </section>
+          <Controller />
+        </>}
+      </Screen>
+      {canvas && <Explanation>
+        <h2>遊び方</h2>
+        <ul>
+          <li>ランダムに配置された白い岩が迫ってきます</li>
+          <li>岩を撃つと赤くなります（赤い岩を撃つと白に戻ってしまいます）</li>
+          <li>全ての岩が赤くなったらゲームクリアです</li>
+          <li>Blocksで岩の数を変更できます</li>
+          <li>Soundで音量を変えるとランダムなメロディが再生されます</li>
+        </ul>
+        <hr />
+      </Explanation>}
+    </>
   );
 }
 
