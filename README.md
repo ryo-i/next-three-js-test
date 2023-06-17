@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- PC向けにmedia-queryのスタイルを追加 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- canvas以外の要素が増えてきたのでコンポーネントを分割(canvas読み込み後表示) [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

@@ -758,6 +758,50 @@ function Inner() {
 
 
   // JSX
+  function Settings() {
+    return (
+      <div className="settings">
+          <dl>
+            <dt>Blocks: {nextBlockNumber}</dt>
+            <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
+          </dl>
+          <dl>
+            <dt>Sound:</dt>
+            <dd><input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} /></dd>
+          </dl>
+        </div>
+    );
+  }
+
+
+  function Information() {
+    return (
+      <>
+        <p className="number">{hitNumber} / {blockNumber}</p>
+        <p className="timer">{countTimer.toFixed(2)}</p>
+        <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
+          <h2 className="title">{title}</h2>
+          <Settings />
+          <button className="playButton" onPointerDown={playStart}>{playButton}</button>
+        </section>
+      </>
+    );
+  }
+
+
+  function Controller() {
+    return (
+      <div className="controller">
+        <div className="player"></div>
+        <div className="sound">
+          <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
+          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
+        </div>
+      </div>
+    );
+  }
+
+
   return (
     <Screen className="screen">
       <Figure ref={figureElm}
@@ -779,29 +823,10 @@ function Inner() {
         }}
       >
       </Figure>
-      <p className="number">{hitNumber} / {blockNumber}</p>
-      <p className="timer">{countTimer.toFixed(2)}</p>
-      <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
-        <h2 className="title">{title}</h2>
-        <div className="settings">
-          <dl>
-            <dt>Blocks: {nextBlockNumber}</dt>
-            <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
-          </dl>
-          <dl>
-            <dt>Sound:</dt>
-            <dd><input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} /></dd>
-          </dl>
-        </div>
-        <button className="playButton" onPointerDown={playStart}>{playButton}</button>
-      </section>
-      <div className="controller">
-        <div className="player"></div>
-        <div className="sound">
-          <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
-          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
-        </div>
-      </div>
+      { canvas && <>
+        <Information />
+        <Controller />
+      </> }
     </Screen>
   );
 }
