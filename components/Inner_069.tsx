@@ -77,9 +77,12 @@ const Screen = styled.div`
     .title {
       margin: 0 0 30px;
       line-height: 1em;
-      font-size: 35px;
+      font-size: 50px;
       font-weight: bold;
       pointer-events: none;
+      @media(max-width: 600px) {
+        font-size: 35px;
+      }
     }
     .playButton, .settings {
       color: #fff;
@@ -110,9 +113,9 @@ const Screen = styled.div`
           }
         }
         dd {
-          margin: 0;
+          margin: 0 0 10px;
           input {
-            width: 200px;
+            width: 100%;
           }
         }
       }
