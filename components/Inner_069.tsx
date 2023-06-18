@@ -288,7 +288,7 @@ function Inner() {
           z: zRundomNumber,
           melodyPitch: melodyPitch,
           bassPitch: bassPitch,
-          pan: pan.toFixed(2)
+          pan: pan.toFixed(1)
         }
       );
     }
@@ -572,8 +572,13 @@ function Inner() {
     const objectColor = objectValue[ndx].color;
     const melodyPitch = objectValue[ndx].melodyPitch;
     const bassPitch = objectValue[ndx].bassPitch;
-    const pan = objectValue[ndx].pan;
-    panner.pan.value = pan;
+    const currentPan = panner.pan.value;
+    const nextPan = objectValue[ndx].pan;
+    if (currentPan !== nextPan) {
+      panner.pan.value = nextPan;
+      console.log('pan', nextPan);
+    }
+
     const now = Tone.now();
 
     if (objectColor === objectColors[0]) {
@@ -581,7 +586,6 @@ function Inner() {
     } else if (objectColor === objectColors[1]) {
       bgmSynth.triggerAttackRelease(melodyPitch, '64n', now);
       // bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
-      console.log('pan', pan);
     }
   }
 

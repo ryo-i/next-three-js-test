@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 遊び方の説明を追加 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- パンの設定値を少数2桁→少数1桁に(あまり変わらず) [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
