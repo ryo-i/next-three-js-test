@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- パンの設定値を少数2桁→少数1桁に(あまり変わらず) [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- X位置をパンではなくベロシティに適用 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

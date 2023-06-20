@@ -220,13 +220,11 @@ const bgmSynth = new Tone.PolySynth({
   maxPolyphony: 100
 });
 const delay = new Tone.FeedbackDelay('8n', 0.5);
-const panner = new Tone.Panner();
 bgmSynth.set({
   oscillator: { type: 'sine' },
   envelope: envelopes.bgm
 });
-bgmSynth.connect(panner);
-panner.connect(delay);
+bgmSynth.connect(delay);
 delay.toDestination();
 
 
@@ -266,7 +264,23 @@ function Inner() {
   }
 
 
-  const getInitColorValue = (length, min, max) => {
+  const getVelocityNumber = (max, number) => {
+    let thisVeloicity = 0;
+    const absVeloicity = 1 - (Math.abs(number / max));
+    const toFixedVeloicity = Number(absVeloicity.toFixed(1));
+    console.log('absVeloicity', absVeloicity);
+
+    if (toFixedVeloicity < 0.1) {
+      thisVeloicity = 0.05;
+    } else {
+      thisVeloicity = toFixedVeloicity;
+    }
+    console.log('thisVeloicity', thisVeloicity);
+    return thisVeloicity;
+  }
+
+
+  const getInitValue = (length, min, max) => {
     const array = [];
 
     for (let i = 0; i < length; i++) {
@@ -277,7 +291,7 @@ function Inner() {
       const pitchNumber = getPitchNumber(min, max, yRundomNumber);
       const melodyPitch = melodyPitchs[pitchNumber];
       const bassPitch = bassPitchs[pitchNumber];
-      const pan = xRundomNumber / max;
+      const velocity = getVelocityNumber(max, xRundomNumber);
 
       array.push(
         {
@@ -288,14 +302,14 @@ function Inner() {
           z: zRundomNumber,
           melodyPitch: melodyPitch,
           bassPitch: bassPitch,
-          pan: pan.toFixed(1)
+          velocity: velocity
         }
       );
     }
 
+    console.log('getInitValue', array)
     return array;
   }
-
 
   const changeCanvasSize = (canvasElmWidth) => {
     if (canvasElmWidth < 900) {
@@ -323,9 +337,9 @@ function Inner() {
   const [blockNumber, setBlockNumber] =  useState(10);
   const [nextBlockNumber, setNextBlockNumber] =  useState(10);
   const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[0]);
-  const [maxrandomNumber, setMaxRandomNumber] = useState(maxRandomNumbers[0]);
+  const [maxRandomNumber, setmaxRandomNumber] = useState(maxRandomNumbers[0]);
   const [objects, setObjects] = useState(null);
-  const [objectValue, setObjectValue] = useState(getInitColorValue(blockNumber, minRandomNumber, maxrandomNumber));
+  const [objectValue, setObjectValue] = useState(null);
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
   const [isClear, setIsClear] = useState(false);
@@ -346,6 +360,7 @@ function Inner() {
     const canvasElmWidth = figureElm.current.clientWidth;
     // console.log('canvasElmWidth(load)', canvasElmWidth);
     changeCanvasSize(canvasElmWidth);
+    setObjectValue(getInitValue(blockNumber, minRandomNumber, maxRandomNumber));
   }, [0]);
 
 
@@ -408,7 +423,8 @@ function Inner() {
         z: objectValue.z,
         melodyPitch: objectValue.melodyPitch,
         bassPitch: objectValue.bassPitch,
-        pan: objectValue.pan
+        // pan: objectValue.pan,
+        velocity: objectValue.velocity
       });
       setObjectValue(resultObjectValue);
 
@@ -552,14 +568,13 @@ function Inner() {
       }
     }
 
-    console.log('melodyPitch', melodyPitch);
-    console.log('bassPitch', bassPitch);
-
     const now = Tone.now();
     if (objectColor === objectColors[0]) {
       hitSynth.triggerAttackRelease(bassPitch, '4n', now);
+      console.log('bassPitch', bassPitch);
     } else if (objectColor === objectColors[1]) {
       hitSynth.triggerAttackRelease(melodyPitch, '4n', now);
+      console.log('melodyPitch', melodyPitch);
     }
   }
 
@@ -572,20 +587,15 @@ function Inner() {
     const objectColor = objectValue[ndx].color;
     const melodyPitch = objectValue[ndx].melodyPitch;
     const bassPitch = objectValue[ndx].bassPitch;
-    const currentPan = panner.pan.value;
-    const nextPan = objectValue[ndx].pan;
-    if (currentPan !== nextPan) {
-      panner.pan.value = nextPan;
-      console.log('pan', nextPan);
-    }
-
+    const velocity = objectValue[ndx].velocity;
     const now = Tone.now();
 
     if (objectColor === objectColors[0]) {
-      bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
+      bgmSynth.triggerAttackRelease(bassPitch, '64n', now, velocity);
     } else if (objectColor === objectColors[1]) {
-      bgmSynth.triggerAttackRelease(melodyPitch, '64n', now);
-      // bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
+      bgmSynth.triggerAttackRelease(melodyPitch, '64n', now, velocity);
+      // bgmSynth.triggerAttackRelease(bassPitch, '64n', now + 0.1, velocity);
+      // console.log('velocity', velocity);
     }
   }
 
@@ -629,7 +639,7 @@ function Inner() {
           z: position.z,
           melodyPitch: resultObjectValue[i].melodyPitch,
           bassPitch: resultObjectValue[i].bassPitch,
-          pan: resultObjectValue[i].pan
+          velocity: resultObjectValue[i].velocity
         });
       }
     }
@@ -691,7 +701,7 @@ function Inner() {
 
   const playStart = () => {
     setBlockNumber(nextBlockNumber);
-    setObjectValue(getInitColorValue(nextBlockNumber, minRandomNumber, maxrandomNumber));
+    setObjectValue(getInitValue(nextBlockNumber, minRandomNumber, maxRandomNumber));
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
@@ -726,19 +736,19 @@ function Inner() {
         setNextBlockNumber(getValue);
         if (getValue <= blockNumbers[0]) {
           setMinRandomNumber(minRandomNumbers[0]);
-          setMaxRandomNumber(maxRandomNumbers[0]);
+          setmaxRandomNumber(maxRandomNumbers[0]);
         } else if (getValue <= blockNumbers[1]) {
           setMinRandomNumber(minRandomNumbers[1]);
-          setMaxRandomNumber(maxRandomNumbers[1]);
+          setmaxRandomNumber(maxRandomNumbers[1]);
         } else if (getValue <= blockNumbers[2]) {
           setMinRandomNumber(minRandomNumbers[2]);
-          setMaxRandomNumber(maxRandomNumbers[2]);
+          setmaxRandomNumber(maxRandomNumbers[2]);
         } else if (getValue <= blockNumbers[3]) {
           setMinRandomNumber(minRandomNumbers[3]);
-          setMaxRandomNumber(maxRandomNumbers[3]);
+          setmaxRandomNumber(maxRandomNumbers[3]);
         } else if (getValue <= blockNumbers[4]) {
           setMinRandomNumber(minRandomNumbers[4]);
-          setMaxRandomNumber(maxRandomNumbers[4]);
+          setmaxRandomNumber(maxRandomNumbers[4]);
         }
         break;
       case 'soundVolume':

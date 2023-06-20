@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>パンの設定値を少数2桁→少数1桁に(あまり変わらず) <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>X位置をパンではなくベロシティに適用 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>
