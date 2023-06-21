@@ -219,13 +219,13 @@ hitSynth.toDestination();
 const bgmSynth = new Tone.PolySynth({
   maxPolyphony: 100
 });
-const delay = new Tone.FeedbackDelay('8n', 0.5);
 bgmSynth.set({
   oscillator: { type: 'sine' },
   envelope: envelopes.bgm
 });
-bgmSynth.connect(delay);
-delay.toDestination();
+const bgmDelay = new Tone.FeedbackDelay('8n', 0.5);
+bgmSynth.connect(bgmDelay);
+bgmDelay.toDestination();
 
 
 // Component
@@ -423,7 +423,6 @@ function Inner() {
         z: objectValue.z,
         melodyPitch: objectValue.melodyPitch,
         bassPitch: objectValue.bassPitch,
-        // pan: objectValue.pan,
         velocity: objectValue.velocity
       });
       setObjectValue(resultObjectValue);
@@ -594,8 +593,6 @@ function Inner() {
       bgmSynth.triggerAttackRelease(bassPitch, '64n', now, velocity);
     } else if (objectColor === objectColors[1]) {
       bgmSynth.triggerAttackRelease(melodyPitch, '64n', now, velocity);
-      // bgmSynth.triggerAttackRelease(bassPitch, '64n', now + 0.1, velocity);
-      // console.log('velocity', velocity);
     }
   }
 
@@ -771,35 +768,6 @@ function Inner() {
 
 
   // JSX
-  function Settings() {
-    return (
-      <div className="settings">
-        <dl>
-          <dt>Blocks: {nextBlockNumber}</dt>
-          <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
-        </dl>
-        <dl>
-          <dt>Sound:</dt>
-          <dd><input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} /></dd>
-        </dl>
-      </div>
-    );
-  }
-
-
-  function Controller() {
-    return (
-      <div className="controller">
-        <div className="player"></div>
-        <div className="sound">
-          <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
-          <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
-        </div>
-      </div>
-    );
-  }
-
-
   return (
     <>
       <Screen className="screen">
@@ -827,10 +795,25 @@ function Inner() {
           <p className="timer">{countTimer.toFixed(2)}</p>
           <section className={'situation ' + ((!isPlay || isClear) ? 'fadein' : 'fadeout')}>
             <h2 className="title">{title}</h2>
-            <Settings />
+            <div className="settings">
+              <dl>
+                <dt>Blocks: {nextBlockNumber}</dt>
+                <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
+              </dl>
+              <dl>
+                <dt>Sound:</dt>
+                <dd><input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} /></dd>
+              </dl>
+            </div>
             <button className="playButton" onPointerDown={playStart}>{playButton}</button>
           </section>
-          <Controller />
+          <div className="controller">
+            <div className="player"></div>
+            <div className="sound">
+              <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
+              <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
+            </div>
+          </div>
         </>}
       </Screen>
       {canvas && <Explanation>

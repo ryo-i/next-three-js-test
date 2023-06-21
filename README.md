@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- X位置をパンではなくベロシティに適用 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- コンポーネント分割を元に戻す(input range対策) [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 
