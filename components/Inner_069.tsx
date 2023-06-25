@@ -52,6 +52,7 @@ const Screen = styled.div`
   .number, .timer, .situation {
     position: absolute;
     font-weight: bold;
+    width: 280px;
   }
   .number, .timer {
     margin: 0;
@@ -61,6 +62,7 @@ const Screen = styled.div`
     pointer-events: none;
   }
   .number {
+    text-align: center;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -126,6 +128,8 @@ const Screen = styled.div`
     background: #333;
     color: #fff;
     display: flex;
+    .play,
+    .reset,
     .sound {
       display: flex;
       align-items: center;
@@ -138,11 +142,18 @@ const Screen = styled.div`
         border: none;
         border-radius: 50%;
         color: #fff;
-        font-size: 16px;
+
         &.Off {
           color: #333;
         }
       }
+    }
+    .playButton,
+    .resetButton {
+      font-size: 20px;
+    }
+    .soundButton {
+      font-size: 16px;
     }
   }
   input[type='range'] {
@@ -240,7 +251,8 @@ function Inner() {
   const maxRandomNumbers = [30, 35, 40, 50, 60];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
-  const soundTexts = ['On', 'Off'];
+  const buttonTexts = ['On', 'Off'];
+  const buttonIcons = ['⏵', '⏸', '⏹', '♪'];
   const soundVolumes = [-60, 0];
   const pitchLength = 24;
   const melodyPitchs = [
@@ -268,14 +280,13 @@ function Inner() {
     let thisVeloicity = 0;
     const absVeloicity = 1 - (Math.abs(number / max));
     const toFixedVeloicity = Number(absVeloicity.toFixed(1));
-    console.log('absVeloicity', absVeloicity);
 
     if (toFixedVeloicity < 0.1) {
       thisVeloicity = 0.05;
     } else {
       thisVeloicity = toFixedVeloicity;
     }
-    console.log('thisVeloicity', thisVeloicity);
+    // console.log('thisVeloicity', thisVeloicity);
     return thisVeloicity;
   }
 
@@ -307,7 +318,7 @@ function Inner() {
       );
     }
 
-    console.log('getInitValue', array)
+    // console.log('getInitValue', array)
     return array;
   }
 
@@ -349,7 +360,9 @@ function Inner() {
   const [timerId, setTimerId] = useState(null);
   const [title, setTitle] = useState(titleTexts[0]);
   const [playButton, setPlayButton] = useState(playButtonTexts[0]);
-  const [sound, setSound] = useState(soundTexts[1]);
+  const [playText, setPlayText] = useState(buttonTexts[1]);
+  const [resetText, setResetText] = useState(buttonTexts[0]);
+  const [soundText, setSoundText] = useState(buttonTexts[1]);
   const [soundVolume, setSoundVolume] = useState(soundVolumes[0]);
   const [currentSoundVolume, setCurrentSoundVolume] = useState(soundVolumes[0]);
   const [rondomBgmNdx, setRondomBgmNdx] = useState(null);
@@ -437,9 +450,7 @@ function Inner() {
       for (let i = 0; i < objectValue.length; i++) {
         array.push(makeInstance(geometry, objectValue[i]));
       }
-      console.log('array', array)
-      console.log('replayNumber', replayNumber)
-
+      // console.log('array', array)
       setObjects(array);
 
       return array;
@@ -479,8 +490,8 @@ function Inner() {
         object.rotation.y = rot;
 
         const positionZ = object.position.z;
-
-        if (positionZ === initCameraPositionZ) {
+        const isCameraPositionZ = positionZ === initCameraPositionZ;
+        if (isCameraPositionZ) {
           object.position.z = objectValue[ndx].z;
           setRondomBgmNdx(ndx);
           setRondomBgmUuid(object.uuid);
@@ -523,30 +534,29 @@ function Inner() {
 
 
   const soundStart = () => {
-    console.log('toneState-1', Tone.context.state);
+    // console.log('toneState-1', Tone.context.state);
 
     if (Tone.context.state === 'suspended') {
       Tone.context.resume();
       Tone.start();
-      console.log('toneState1-2', Tone.context.state);
+      // console.log('toneState1-2', Tone.context.state);
     }
   };
 
 
   const playStartSound = () => {
-    if (sound === soundTexts[1]) return;
+    if (soundText === buttonTexts[1]) return;
 
     const now = Tone.now();
     buttonSynth.triggerAttackRelease('C6', '8n', now);
     buttonSynth.triggerAttackRelease('G5', '8n', now + 0.1);
     buttonSynth.triggerAttackRelease('C5', '8n', now + 0.2);
-
-    console.log('toneState1-3', Tone.context.state);
+    // console.log('toneState1-3', Tone.context.state);
   }
 
 
   const playClearSound = () => {
-    if (sound === soundTexts[1]) return;
+    if (soundText === buttonTexts[1]) return;
 
     const now = Tone.now();
     buttonSynth.triggerAttackRelease('C5', '8n', now + 0.1);
@@ -556,7 +566,7 @@ function Inner() {
 
 
   const playHitSound = (uuid, objectColor) => {
-    if (sound === soundTexts[1]) return;
+    if (soundText === buttonTexts[1]) return;
     let melodyPitch = '';
     let bassPitch = '';
 
@@ -570,17 +580,14 @@ function Inner() {
     const now = Tone.now();
     if (objectColor === objectColors[0]) {
       hitSynth.triggerAttackRelease(bassPitch, '4n', now);
-      console.log('bassPitch', bassPitch);
     } else if (objectColor === objectColors[1]) {
       hitSynth.triggerAttackRelease(melodyPitch, '4n', now);
-      console.log('melodyPitch', melodyPitch);
     }
   }
 
 
-
   const playRandomBGM = (ndx, uuid) => {
-    if (sound === soundTexts[1]) return;
+    if (soundText === buttonTexts[1]) return;
     if (uuid !== objectValue[ndx].uuid) return;
 
     const objectColor = objectValue[ndx].color;
@@ -593,6 +600,7 @@ function Inner() {
       bgmSynth.triggerAttackRelease(bassPitch, '64n', now, velocity);
     } else if (objectColor === objectColors[1]) {
       bgmSynth.triggerAttackRelease(melodyPitch, '64n', now, velocity);
+      console.log('melodyPitch', melodyPitch);
     }
   }
 
@@ -648,6 +656,7 @@ function Inner() {
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
       playClearSound();
+      setResetText(buttonTexts[0]);
     }
 
     setObjectValue(resultObjectValue);
@@ -658,7 +667,6 @@ function Inner() {
   const getPickPosition = (event) => {
     if (isClear || !isPlay) return;
 
-    // console.log('event', event);
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
@@ -699,27 +707,63 @@ function Inner() {
   const playStart = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitValue(nextBlockNumber, minRandomNumber, maxRandomNumber));
+    // console.log('objectValue', objectValue);
+
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
     if (!isReplay) setIsReplay(true);
-    setHitNumber(0);
+    if (countTimer !== 0) setCountTimer(0);
+    if (hitNumber !== 0) setHitNumber(0);
+
     countUp();
-
-    console.log('objectValue', objectValue)
-
     playStartSound();
+    setResetText(buttonTexts[1]);
   }
 
 
-  const toggleMute = () => {
-    const isMute = sound === soundTexts[1];
-    const isZero = currentSoundVolume === soundVolumes[0];
-    if (!isMute) {
-      setSound(soundTexts[1]);
-      setSoundVolume(soundVolumes[0]);
-    } else if (!isZero) {
-      setSound(soundTexts[0]);
-      setSoundVolume(currentSoundVolume);
+  const playReset = () => {
+    clearInterval(timerId);
+    setIsClear(true);
+    setTitle(titleTexts[0]);
+    setPlayButton(playButtonTexts[0]);
+    playClearSound();
+    setResetText(buttonTexts[0]);
+    setCountTimer(0);
+    setHitNumber(0);
+  }
+
+
+  const toggleButton = (e: React.PointerEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement;
+    const getName: string = String(target.name);
+    const getValue: string = String(target.value);
+
+    switch (getName){
+      case 'play':
+        const isPlay = getValue === buttonTexts[0];
+        if (isPlay) return;
+        setPlayText(buttonTexts[0]);
+        setResetText(buttonTexts[1]);
+        playStart();
+        break;
+      case 'reset':
+        const isReset = getValue === buttonTexts[0];
+        if (isReset) return;
+        setPlayText(buttonTexts[1]);
+        setResetText(buttonTexts[0]);
+        playReset();
+        break;
+      case 'sound':
+        const isMute = getValue === buttonTexts[1];
+        const isZero = currentSoundVolume === soundVolumes[0];
+        if (!isMute) {
+          setSoundText(buttonTexts[1]);
+          setSoundVolume(soundVolumes[0]);
+        } else if (!isZero) {
+          setSoundText(buttonTexts[0]);
+          setSoundVolume(currentSoundVolume);
+        }
+        break;
     }
   }
 
@@ -751,9 +795,9 @@ function Inner() {
       case 'soundVolume':
         const isZero = getValue === soundVolumes[0];
         if (isZero) {
-          setSound(soundTexts[1]);
+          setSoundText(buttonTexts[1]);
         } else {
-          setSound(soundTexts[0]);
+          setSoundText(buttonTexts[0]);
         }
 
         setSoundVolume(getValue);
@@ -761,7 +805,6 @@ function Inner() {
         buttonSynth.volume.value = getValue;
         hitSynth.volume.value = getValue;
         bgmSynth.volume.value = getValue;
-
         break;
     }
   };
@@ -808,9 +851,12 @@ function Inner() {
             <button className="playButton" onPointerDown={playStart}>{playButton}</button>
           </section>
           <div className="controller">
-            <div className="player"></div>
+            <div className="player">
+              <button type="button" name="play" value={playText} className={'playButton ' + playText} onPointerDown={(e) => toggleButton(e)}>{buttonIcons[0]}</button>
+              <button type="button" name="reset" value={resetText} className={'resetButton ' + resetText} onPointerDown={(e) => toggleButton(e)}>{buttonIcons[2]}</button>
+            </div>
             <div className="sound">
-              <button className={'soundButton ' + sound} onPointerDown={toggleMute}>♪</button>
+              <button type="button" name="sound" value={soundText} className={'soundButton ' + soundText} onPointerDown={(e) => toggleButton(e)}>{buttonIcons[3]}</button>
               <input type="range" name="soundVolume" min={soundVolumes[0]} max={soundVolumes[1]} step="1" value={soundVolume} onChange={changeRange} onPointerDown={soundStart} />
             </div>
           </div>
