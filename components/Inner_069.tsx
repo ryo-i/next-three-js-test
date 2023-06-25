@@ -655,6 +655,7 @@ function Inner() {
       setTitle(titleTexts[1]);
       setPlayButton(playButtonTexts[1]);
       playClearSound();
+      setPlayText(buttonTexts[1]);
       setResetText(buttonTexts[0]);
     }
 
@@ -716,6 +717,7 @@ function Inner() {
 
     countUp();
     playStartSound();
+    setPlayText(buttonTexts[0]);
     setResetText(buttonTexts[1]);
   }
 
@@ -729,6 +731,8 @@ function Inner() {
     setResetText(buttonTexts[0]);
     setCountTimer(0);
     setHitNumber(0);
+    setPlayText(buttonTexts[1]);
+    setResetText(buttonTexts[0]);
   }
 
 
@@ -741,15 +745,11 @@ function Inner() {
       case 'play':
         const isPlay = getValue === buttonTexts[0];
         if (isPlay) return;
-        setPlayText(buttonTexts[0]);
-        setResetText(buttonTexts[1]);
         playStart();
         break;
       case 'reset':
         const isReset = getValue === buttonTexts[0];
         if (isReset) return;
-        setPlayText(buttonTexts[1]);
-        setResetText(buttonTexts[0]);
         playReset();
         break;
       case 'sound':
