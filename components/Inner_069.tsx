@@ -142,7 +142,6 @@ const Screen = styled.div`
         border: none;
         border-radius: 50%;
         color: #fff;
-
         &.Off {
           color: #333;
         }
@@ -150,7 +149,7 @@ const Screen = styled.div`
     }
     .playButton,
     .resetButton {
-      font-size: 20px;
+      // font-size: 20px;
     }
     .soundButton {
       font-size: 16px;
@@ -252,7 +251,7 @@ function Inner() {
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
   const buttonTexts = ['On', 'Off'];
-  const buttonIcons = ['⏵', '⏸', '⏹', '♪'];
+  const buttonIcons = ['▶︎', '⏸', '■', '♪'];
   const soundVolumes = [-60, 0];
   const pitchLength = 24;
   const melodyPitchs = [
