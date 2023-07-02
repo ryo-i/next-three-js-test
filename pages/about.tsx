@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>X位置をベロシティからパンに戻す(rampToを使う) <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>rampToの設定を変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>

@@ -576,7 +576,7 @@ function Inner() {
     const currentPan = bgmPanner.pan.value;
     const nextPan = objectValue[ndx].pan;
     if (currentPan !== nextPan) {
-      bgmPanner.pan.rampTo(nextPan, .05);
+      bgmPanner.pan.rampTo(nextPan, .1);
     }
     const now = Tone.now();
 
