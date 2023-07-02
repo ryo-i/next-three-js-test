@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 再生・停止ボタンの不統一な動作を統一 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- X位置をベロシティからパンに戻す(rampToを使う) [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

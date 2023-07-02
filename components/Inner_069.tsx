@@ -234,7 +234,9 @@ bgmSynth.set({
   envelope: envelopes.bgm
 });
 const bgmDelay = new Tone.FeedbackDelay('8n', 0.5);
-bgmSynth.connect(bgmDelay);
+const bgmPanner = new Tone.Panner();
+bgmSynth.connect(bgmPanner);
+bgmPanner.connect(bgmDelay);
 bgmDelay.toDestination();
 
 
@@ -275,21 +277,6 @@ function Inner() {
   }
 
 
-  const getVelocityNumber = (max, number) => {
-    let thisVeloicity = 0;
-    const absVeloicity = 1 - (Math.abs(number / max));
-    const toFixedVeloicity = Number(absVeloicity.toFixed(1));
-
-    if (toFixedVeloicity < 0.1) {
-      thisVeloicity = 0.05;
-    } else {
-      thisVeloicity = toFixedVeloicity;
-    }
-    // console.log('thisVeloicity', thisVeloicity);
-    return thisVeloicity;
-  }
-
-
   const getInitValue = (length, min, max) => {
     const array = [];
 
@@ -301,7 +288,7 @@ function Inner() {
       const pitchNumber = getPitchNumber(min, max, yRundomNumber);
       const melodyPitch = melodyPitchs[pitchNumber];
       const bassPitch = bassPitchs[pitchNumber];
-      const velocity = getVelocityNumber(max, xRundomNumber);
+      const pan = xRundomNumber / max;
 
       array.push(
         {
@@ -312,7 +299,7 @@ function Inner() {
           z: zRundomNumber,
           melodyPitch: melodyPitch,
           bassPitch: bassPitch,
-          velocity: velocity
+          pan: Number(pan.toFixed(1))
         }
       );
     }
@@ -435,7 +422,7 @@ function Inner() {
         z: objectValue.z,
         melodyPitch: objectValue.melodyPitch,
         bassPitch: objectValue.bassPitch,
-        velocity: objectValue.velocity
+        pan: objectValue.pan
       });
       setObjectValue(resultObjectValue);
 
@@ -533,34 +520,28 @@ function Inner() {
 
 
   const soundStart = () => {
-    // console.log('toneState-1', Tone.context.state);
-
     if (Tone.context.state === 'suspended') {
       Tone.context.resume();
       Tone.start();
-      // console.log('toneState1-2', Tone.context.state);
     }
   };
 
 
   const playStartSound = () => {
     if (soundText === buttonTexts[1]) return;
-
     const now = Tone.now();
-    buttonSynth.triggerAttackRelease('C6', '8n', now);
-    buttonSynth.triggerAttackRelease('G5', '8n', now + 0.1);
-    buttonSynth.triggerAttackRelease('C5', '8n', now + 0.2);
-    // console.log('toneState1-3', Tone.context.state);
+    buttonSynth.triggerAttackRelease('C6', '8n', now, 0.6);
+    buttonSynth.triggerAttackRelease('G5', '8n', now + 0.1, 0.8);
+    buttonSynth.triggerAttackRelease('C5', '8n', now + 0.2, 1);
   }
 
 
   const playClearSound = () => {
     if (soundText === buttonTexts[1]) return;
-
     const now = Tone.now();
-    buttonSynth.triggerAttackRelease('C5', '8n', now + 0.1);
-    buttonSynth.triggerAttackRelease('G5', '8n', now + 0.2);
-    buttonSynth.triggerAttackRelease('C6', '8n', now + 0.3);
+    buttonSynth.triggerAttackRelease('C5', '8n', now + 0.1, 0.6);
+    buttonSynth.triggerAttackRelease('G5', '8n', now + 0.2, 0.8);
+    buttonSynth.triggerAttackRelease('C6', '8n', now + 0.3, 1);
   }
 
 
@@ -592,14 +573,18 @@ function Inner() {
     const objectColor = objectValue[ndx].color;
     const melodyPitch = objectValue[ndx].melodyPitch;
     const bassPitch = objectValue[ndx].bassPitch;
-    const velocity = objectValue[ndx].velocity;
+    const currentPan = bgmPanner.pan.value;
+    const nextPan = objectValue[ndx].pan;
+    if (currentPan !== nextPan) {
+      bgmPanner.pan.rampTo(nextPan, .05);
+    }
     const now = Tone.now();
 
     if (objectColor === objectColors[0]) {
-      bgmSynth.triggerAttackRelease(bassPitch, '64n', now, velocity);
+      bgmSynth.triggerAttackRelease(bassPitch, '64n', now);
     } else if (objectColor === objectColors[1]) {
-      bgmSynth.triggerAttackRelease(melodyPitch, '64n', now, velocity);
-      console.log('melodyPitch', melodyPitch);
+      bgmSynth.triggerAttackRelease(melodyPitch, '64n', now);
+      // console.log('melodyPitch', melodyPitch);
     }
   }
 
@@ -643,7 +628,7 @@ function Inner() {
           z: position.z,
           melodyPitch: resultObjectValue[i].melodyPitch,
           bassPitch: resultObjectValue[i].bassPitch,
-          velocity: resultObjectValue[i].velocity
+          pan: resultObjectValue[i].pan
         });
       }
     }
@@ -670,7 +655,7 @@ function Inner() {
     const pos = getCanvasRelativePosition(event);
     const pickPosition = {
       x: (pos.x / canvas.width ) *  2 - 1,
-      y: (pos.y / canvas.height) * -2 + 1, // note we flip Y
+      y: (pos.y / canvas.height) * -2 + 1,
     };
 
     setPositionX(pos.x);
@@ -707,7 +692,7 @@ function Inner() {
   const playStart = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitValue(nextBlockNumber, minRandomNumber, maxRandomNumber));
-    // console.log('objectValue', objectValue);
+    console.log('objectValue', objectValue);
 
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
