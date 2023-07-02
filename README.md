@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 岩のランダム配置設定を微調整 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- 岩の最大数を100から50に変更 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
 
 ## 詳細（ブログ）
 

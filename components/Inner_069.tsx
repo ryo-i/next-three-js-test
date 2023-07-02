@@ -825,7 +825,7 @@ function Inner() {
             <div className="settings">
               <dl>
                 <dt>Blocks: {nextBlockNumber}</dt>
-                <dd><input type="range" name="blockNumber" min="10" max="100" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
+                <dd><input type="range" name="blockNumber" min="10" max="50" step="10" value={nextBlockNumber} onChange={changeRange} /></dd>
               </dl>
               <dl>
                 <dt>Sound:</dt>
