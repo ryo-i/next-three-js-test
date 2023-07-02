@@ -248,8 +248,8 @@ function Inner() {
   const objectColors = [0xffffff, 0xff0000];
   const initCameraPositionZ = 300;
   const blockNumbers =  [20, 40, 60, 80, 100];
-  const minRandomNumbers = [-30, -35, -40, -50, -60];
-  const maxRandomNumbers = [30, 35, 40, 50, 60];
+  const minRandomNumbers = [-30, -40, -50, -60, -70];
+  const maxRandomNumbers = [30, 40, 50, 60, 70];
   const titleTexts = ['Dodecahedron', 'Clear!'];
   const playButtonTexts = ['Game Start', 'Replay?'];
   const buttonTexts = ['On', 'Off'];
