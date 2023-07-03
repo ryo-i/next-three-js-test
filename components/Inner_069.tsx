@@ -324,18 +324,11 @@ function Inner() {
   const [cameraPositionX, setCameraPositionX] = useState(0);
   const [cameraPositionY, setCameraPositionY] = useState(0);
   const [cameraPositionZ, setCameraPositionZ] = useState(initCameraPositionZ);
-  const [positionX, setPositionX] = useState(0);
-  const [positionY, setPositionY] = useState(0);
-  const [pickPositionX, setPickPositionX] = useState(0);
-  const [pickPositionY, setPickPositionY] = useState(0);
   const [startTime, setStartTime] = useState(0);
-  const [endTime, setEndTime] = useState(0);
-  const [elapsedTime, setElapsedTime] = useState(0);
   const [blockNumber, setBlockNumber] =  useState(10);
   const [nextBlockNumber, setNextBlockNumber] =  useState(10);
   const [minRandomNumber, setMinRandomNumber] = useState(minRandomNumbers[0]);
   const [maxRandomNumber, setmaxRandomNumber] = useState(maxRandomNumbers[0]);
-  const [objects, setObjects] = useState(null);
   const [objectValue, setObjectValue] = useState(null);
   const [hitNumber, setHitNumber] = useState(0);
   const [isPlay, setIsPlay] = useState(false);
@@ -432,14 +425,12 @@ function Inner() {
     const getObjects = () => {
       if (objects) return objects;
 
-      let array = [];
+      const newObjects = [];
       for (let i = 0; i < objectValue.length; i++) {
-        array.push(makeInstance(geometry, objectValue[i]));
+        newObjects.push(makeInstance(geometry, objectValue[i]));
       }
-      // console.log('array', array)
-      setObjects(array);
-
-      return array;
+      // console.log('newObjects', newObjects)
+      return newObjects;
     };
 
 
@@ -499,17 +490,6 @@ function Inner() {
 
   useEffect(() => {
     if (!isPlay || !isReplay) return;
-
-    if (objects) {
-      const array = objects;
-      for (let i = 0; i < objects.length; i++) {
-        array[i].position.x = objectValue[i].x;
-        array[i].position.y = objectValue[i].y;
-        array[i].position.z = objectValue[i].z;
-      }
-      setObjects(array);
-    }
-
     setReplayNumber(replayNumber + 1);
   }, [isReplay]);
 
@@ -568,6 +548,7 @@ function Inner() {
 
   const playRandomBGM = (ndx, uuid) => {
     if (soundText === buttonTexts[1]) return;
+    if (!objectValue || !objectValue[ndx]) return;
     if (uuid !== objectValue[ndx].uuid) return;
 
     const objectColor = objectValue[ndx].color;
@@ -657,12 +638,6 @@ function Inner() {
       x: (pos.x / canvas.width ) *  2 - 1,
       y: (pos.y / canvas.height) * -2 + 1,
     };
-
-    setPositionX(pos.x);
-    setPositionY(pos.y);
-    setPickPositionX(pickPosition.x);
-    setPickPositionY(pickPosition.y);
-
     pointer.x = pickPosition.x;
 	  pointer.y = pickPosition.y;
 
@@ -692,7 +667,7 @@ function Inner() {
   const playStart = () => {
     setBlockNumber(nextBlockNumber);
     setObjectValue(getInitValue(nextBlockNumber, minRandomNumber, maxRandomNumber));
-    console.log('objectValue', objectValue);
+    // console.log('objectValue', objectValue);
 
     if (isClear) setIsClear(false);
     if (!isPlay) setIsPlay(true);
@@ -803,9 +778,7 @@ function Inner() {
             setStartTime(event.timeStamp);
           }}
           onPointerUp={(event) => {
-            setEndTime(event.timeStamp);
             const elapsedTime = event.timeStamp - startTime;
-            setElapsedTime(elapsedTime);
             if (elapsedTime < 200) {
               const redObjectValue = getRedObjectValue(objectValue);
               if (redObjectValue.length === blockNumber) {

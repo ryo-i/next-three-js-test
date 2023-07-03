@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>岩の最大数を100から50に変更 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
+                    <li>岩の数変更後のエラー修正＆使わなくなたフックを削除 <a href="https://github.com/ryo-i/next-app-started/issues/13">#13</a></li>
                 </ul>
             </section>
             <section>
