@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 岩の数変更後のエラー修正＆使わなくなたフックを削除 [#13](https://github.com/ryo-i/next-three-js-test/issues/13)
+- cannon-esをインストール＆処理結果をconsoleに表示 [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 
