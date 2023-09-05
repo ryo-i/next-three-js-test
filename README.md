@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-esをインストール＆処理結果をconsoleに表示 [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-jsのpositionとquaternionをthree.jsに反映 [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

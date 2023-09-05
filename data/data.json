@@ -427,8 +427,14 @@
         },
         "test070": {
             "id": "070",
-            "title": "物理エンジンcannon-es事始め",
+            "title": "cannon-es-1: 物理エンジン事始め(console表示)",
             "text": "cannon-esをインストール＆処理結果をconsoleに表示",
+            "blog": ""
+        },
+        "test071": {
+            "id": "071",
+            "title": "cannon-es-2: 上から下に球が落下",
+            "text": "cannon-jsのpositionとquaternionをthree.jsに反映",
             "blog": ""
         }
     },

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>cannon-esをインストール＆処理結果をconsoleに表示 <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>cannon-jsのpositionとquaternionをthree.jsに反映 <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
