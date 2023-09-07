@@ -436,6 +436,12 @@
             "title": "cannon-es-2: 上から下に球が落下",
             "text": "cannon-jsのpositionとquaternionをthree.jsに反映",
             "blog": ""
+        },
+        "test072": {
+            "id": "072",
+            "title": "cannon-es-3: 落下する球を八面体に変更（転がらない）",
+            "text": "SphereGeometryをOctahedronGeometryに変更",
+            "blog": ""
         }
     },
     "footer": {
