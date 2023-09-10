@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 落下する球を八面体に変更（転がらない） [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- 床を表示 & cannon-esを適用（跳ねない） [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

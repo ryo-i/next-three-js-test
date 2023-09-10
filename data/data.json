@@ -442,6 +442,12 @@
             "title": "cannon-es-3: 落下する球を八面体に変更（転がらない）",
             "text": "SphereGeometryをOctahedronGeometryに変更",
             "blog": ""
+        },
+        "test073": {
+            "id": "073",
+            "title": "cannon-es-3: 床を表示 & cannon-esを適用（跳ねない）",
+            "text": "床のPlaneGeometryを追加し、球と同様にcannon-esを適用。玉が止まる位置は床にぴったりくっついている（しかし球は跳ねない）",
+            "blog": ""
         }
     },
     "footer": {

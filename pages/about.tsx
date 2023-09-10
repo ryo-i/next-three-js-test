@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>落下する球を八面体に変更（転がらない） <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>床を表示 & cannon-esを適用（跳ねない） <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
