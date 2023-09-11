@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>床を表示 & cannon-esを適用（跳ねない） <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>衝突設定を追加（跳ねた！） <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
