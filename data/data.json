@@ -454,6 +454,12 @@
             "title": "cannon-es-5: 衝突設定を追加（跳ねた！）",
             "text": "ContactMaterialとaddContactMaterialの設定を追加",
             "blog": ""
+        },
+        "test075": {
+            "id": "075",
+            "title": "cannon-es-6: シャドー設定を追加",
+            "text": "DirectionalLighのshadow設定、castShadow、receiveShadowなどを追加",
+            "blog": ""
         }
     },
     "footer": {
