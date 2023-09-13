@@ -54,18 +54,40 @@ function Inner() {
     // Setup our physics world
     const world = new CANNON.World({
       gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
-    })
+    });
+    const radius = 1 // m
+
 
     // Create a sphere body
-    const radius = 1 // m
-    const sphereMaterial = new CANNON.Material('sphere');
-    const sphereBody = new CANNON.Body({
+    const sphereMaterial1 = new CANNON.Material('sphere');
+    const sphereBody1 = new CANNON.Body({
       mass: 5, // kg
       shape: new CANNON.Sphere(radius),
-      material: sphereMaterial
+      material: sphereMaterial1
     });
-    sphereBody.position.set(0, 10, 0); // m
-    world.addBody(sphereBody);
+    sphereBody1.position.set(-3, 10, 0); // m
+    world.addBody(sphereBody1);
+
+
+    const sphereMaterial2 = new CANNON.Material('sphere');
+    const sphereBody2 = new CANNON.Body({
+      mass: 5, // kg
+      shape: new CANNON.Sphere(radius),
+      material: sphereMaterial2
+    });
+    sphereBody2.position.set(0, 10, 0); // m
+    world.addBody(sphereBody2);
+
+
+    const sphereMaterial3 = new CANNON.Material('sphere');
+    const sphereBody3 = new CANNON.Body({
+      mass: 5, // kg
+      shape: new CANNON.Sphere(radius),
+      material: sphereMaterial3
+    });
+    sphereBody3.position.set(3, 10, 0); // m
+    world.addBody(sphereBody3);
+
 
     // Create a static plane for the ground
     const groundMaterial = new CANNON.Material('ground');
@@ -79,17 +101,31 @@ function Inner() {
     groundBody.quaternion.setFromEuler(-Math.PI / 2, 0, 0) // make it face up
     world.addBody(groundBody);
 
+
     // Create contact material behaviour
-    const mat_ground = new CANNON.ContactMaterial(groundMaterial, sphereMaterial, {
+    const mat_ground1 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial1, {
+      friction: 0.0,
+      restitution: 0.3
+    });
+
+    const mat_ground2 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial2, {
+      friction: 0.0,
+      restitution: 0.5
+    });
+
+    const mat_ground3 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial3, {
       friction: 0.0,
       restitution: 0.7
     });
 
-    world.addContactMaterial(mat_ground);
+    world.addContactMaterial(mat_ground1);
+    world.addContactMaterial(mat_ground2);
+    world.addContactMaterial(mat_ground3);
 
 
     // three.js
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x555555);
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize( canvasSize, canvasSize );
@@ -124,15 +160,26 @@ function Inner() {
     // Cube
     const cubeGgeometry = new THREE.SphereGeometry(radius);
     const cubeMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
-    const cubeMesh = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh.castShadow = true;
-    cubeMesh.receiveShadow = true;
-    scene.add(cubeMesh);
+
+    const cubeMesh1 = new THREE.Mesh(cubeGgeometry, cubeMat);
+    cubeMesh1.castShadow = true;
+    cubeMesh1.receiveShadow = true;
+    scene.add(cubeMesh1);
+
+    const cubeMesh2 = new THREE.Mesh(cubeGgeometry, cubeMat);
+    cubeMesh2.castShadow = true;
+    cubeMesh2.receiveShadow = true;
+    scene.add(cubeMesh2);
+
+    const cubeMesh3 = new THREE.Mesh(cubeGgeometry, cubeMat);
+    cubeMesh3.castShadow = true;
+    cubeMesh3.receiveShadow = true;
+    scene.add(cubeMesh3);
 
     // light
     const light = new THREE.DirectionalLight( 0xffffff, 1 );
-    light.position.x = 0.5;
-    light.target.position.x = -0.5;
+    // light.position.x = 0.5;
+    // light.target.position.x = -0.5;
     light.castShadow = true;
     light.shadow.mapSize.width = 512; // default
     light.shadow.mapSize.height = 512; // default
@@ -146,8 +193,14 @@ function Inner() {
 
       world.fixedStep()
 
-      cubeMesh.position.copy(cannonVec3ToThree(sphereBody.position));
-      cubeMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
+      cubeMesh1.position.copy(cannonVec3ToThree(sphereBody1.position));
+      cubeMesh1.quaternion.copy(cannonQuaternionToThree(sphereBody1.quaternion));
+
+      cubeMesh2.position.copy(cannonVec3ToThree(sphereBody2.position));
+      cubeMesh2.quaternion.copy(cannonQuaternionToThree(sphereBody2.quaternion));
+
+      cubeMesh3.position.copy(cannonVec3ToThree(sphereBody3.position));
+      cubeMesh3.quaternion.copy(cannonQuaternionToThree(sphereBody3.quaternion));
 
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));

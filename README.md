@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- 衝突設定を追加（跳ねた！） [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-7: 複数の球の跳ね具合を変える [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

@@ -460,6 +460,12 @@
             "title": "cannon-es-6: シャドー設定を追加",
             "text": "DirectionalLighのshadow設定、castShadow、receiveShadowなどを追加",
             "blog": ""
+        },
+        "test076": {
+            "id": "076",
+            "title": "cannon-es-7: 複数の球の跳ね具合を変える",
+            "text": "ContactMaterialのrestitutionの数値を変える",
+            "blog": ""
         }
     },
     "footer": {
