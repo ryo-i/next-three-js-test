@@ -466,6 +466,12 @@
             "title": "cannon-es-7: 複数の球の跳ね具合を変える",
             "text": "ContactMaterialのrestitutionの数値を変える",
             "blog": ""
+        },
+        "test077": {
+            "id": "077",
+            "title": "cannon-es-8: 8面体リベンジ(転がらない)",
+            "text": "SphereGeometryをOctahedronGeometryに変更。まだ転がらない",
+            "blog": ""
         }
     },
     "footer": {

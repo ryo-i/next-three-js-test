@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-es-7: 複数の球の跳ね具合を変える [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-8: 8面体リベンジ(転がらない) [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>cannon-es-7: 複数の球の跳ね具合を変える <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>cannon-es-8: 8面体リベンジ(転がらない) <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
