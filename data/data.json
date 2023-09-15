@@ -472,6 +472,12 @@
             "title": "cannon-es-8: 8面体リベンジ(転がらない)",
             "text": "SphereGeometryをOctahedronGeometryに変更。まだ転がらない",
             "blog": ""
+        },
+        "test078": {
+            "id": "078",
+            "title": "cannon-es-9: 床を傾けてみる(転がらない)",
+            "text": "床のsetFromEulerを打ち替えて傾けるが転がらないまま落ちる(あと床以外も地面)",
+            "blog": ""
         }
     },
     "footer": {
