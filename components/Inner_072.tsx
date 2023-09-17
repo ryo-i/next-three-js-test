@@ -55,16 +55,16 @@ function Inner() {
       gravity: new CANNON.Vec3(0, -9.82, 0), // m/s²
     })
 
-    // Create a sphere body
+    // Create a octahedron body
     const radius = 1 // m
-    const sphereBody = new CANNON.Body({
+    const octahedronBody = new CANNON.Body({
       mass: 5, // kg
       shape: new CANNON.Sphere(radius),
     })
-    sphereBody.position.set(0, 10, 0) // m
-    world.addBody(sphereBody)
-    console.log('sphereBody', sphereBody.position)
-    console.log('sphereBody', sphereBody.quaternion)
+    octahedronBody.position.set(0, 10, 0) // m
+    world.addBody(octahedronBody)
+    console.log('octahedronBody', octahedronBody.position)
+    console.log('octahedronBody', octahedronBody.quaternion)
 
     // Create a static plane for the ground
     const groundBody = new CANNON.Body({
@@ -89,8 +89,8 @@ function Inner() {
 
     const geometry = new THREE.OctahedronGeometry(radius)
     const material = new THREE.MeshNormalMaterial()
-    const sphereMesh = new THREE.Mesh(geometry, material)
-    scene.add(sphereMesh)
+    const octahedronMesh = new THREE.Mesh(geometry, material)
+    scene.add(octahedronMesh)
 
     camera.position.y = 5;
     camera.position.z = 20;
@@ -103,8 +103,8 @@ function Inner() {
 
       world.fixedStep()
 
-      sphereMesh.position.copy(cannonVec3ToThree(sphereBody.position));
-      sphereMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
+      octahedronMesh.position.copy(cannonVec3ToThree(octahedronBody.position));
+      octahedronMesh.quaternion.copy(cannonQuaternionToThree(octahedronBody.quaternion));
 
       renderer.render( scene, camera );
     };
