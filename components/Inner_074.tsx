@@ -119,11 +119,11 @@ function Inner() {
     planeMesh.position.y = -5;
     scene.add(planeMesh);
 
-    // Cube
-    const cubeGgeometry = new THREE.SphereGeometry(radius);
-    const cubeMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
-    const cubeMesh = new THREE.Mesh(cubeGgeometry, cubeMat);
-    scene.add(cubeMesh);
+    // Sphere
+    const sphereGgeometry = new THREE.SphereGeometry(radius);
+    const sphereMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
+    const sphereMesh = new THREE.Mesh(sphereGgeometry, sphereMat);
+    scene.add(sphereMesh);
 
     const light = new THREE.HemisphereLight( 0xffffff, 0x080820, 1 );
     scene.add( light );
@@ -133,8 +133,8 @@ function Inner() {
 
       world.fixedStep()
 
-      cubeMesh.position.copy(cannonVec3ToThree(sphereBody.position));
-      cubeMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
+      sphereMesh.position.copy(cannonVec3ToThree(sphereBody.position));
+      sphereMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
 
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));

@@ -59,31 +59,31 @@ function Inner() {
 
 
     // Create a sphere body
-    const sphereMaterial1 = new CANNON.Material('sphere');
+    const octahedronMaterial1 = new CANNON.Material('sphere');
     const sphereBody1 = new CANNON.Body({
       mass: 5, // kg
       shape: new CANNON.Sphere(radius),
-      material: sphereMaterial1
+      material: octahedronMaterial1
     });
     sphereBody1.position.set(-3, 10, 0); // m
     world.addBody(sphereBody1);
 
 
-    const sphereMaterial2 = new CANNON.Material('sphere');
+    const octahedronMaterial2 = new CANNON.Material('sphere');
     const sphereBody2 = new CANNON.Body({
       mass: 5, // kg
       shape: new CANNON.Sphere(radius),
-      material: sphereMaterial2
+      material: octahedronMaterial2
     });
     sphereBody2.position.set(0, 10, 0); // m
     world.addBody(sphereBody2);
 
 
-    const sphereMaterial3 = new CANNON.Material('sphere');
+    const octahedronMaterial3 = new CANNON.Material('sphere');
     const sphereBody3 = new CANNON.Body({
       mass: 5, // kg
       shape: new CANNON.Sphere(radius),
-      material: sphereMaterial3
+      material: octahedronMaterial3
     });
     sphereBody3.position.set(3, 10, 0); // m
     world.addBody(sphereBody3);
@@ -103,17 +103,17 @@ function Inner() {
 
 
     // Create contact material behaviour
-    const mat_ground1 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial1, {
+    const mat_ground1 = new CANNON.ContactMaterial(groundMaterial, octahedronMaterial1, {
       friction: 0.0,
       restitution: 0.3
     });
 
-    const mat_ground2 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial2, {
+    const mat_ground2 = new CANNON.ContactMaterial(groundMaterial, octahedronMaterial2, {
       friction: 0.0,
       restitution: 0.5
     });
 
-    const mat_ground3 = new CANNON.ContactMaterial(groundMaterial, sphereMaterial3, {
+    const mat_ground3 = new CANNON.ContactMaterial(groundMaterial, octahedronMaterial3, {
       friction: 0.0,
       restitution: 0.7
     });
@@ -158,24 +158,24 @@ function Inner() {
     planeMesh.receiveShadow = true;
     scene.add(planeMesh);
 
-    // Cube
-    const cubeGgeometry = new THREE.OctahedronGeometry(radius);
-    const cubeMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
+    // Octahedron
+    const octahedronGeometry = new THREE.OctahedronGeometry(radius);
+    const octahedronMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
 
-    const cubeMesh1 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh1.castShadow = true;
-    cubeMesh1.receiveShadow = true;
-    scene.add(cubeMesh1);
+    const octahedronMesh1 = new THREE.Mesh(octahedronGeometry, octahedronMat);
+    octahedronMesh1.castShadow = true;
+    octahedronMesh1.receiveShadow = true;
+    scene.add(octahedronMesh1);
 
-    const cubeMesh2 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh2.castShadow = true;
-    cubeMesh2.receiveShadow = true;
-    scene.add(cubeMesh2);
+    const octahedronMesh2 = new THREE.Mesh(octahedronGeometry, octahedronMat);
+    octahedronMesh2.castShadow = true;
+    octahedronMesh2.receiveShadow = true;
+    scene.add(octahedronMesh2);
 
-    const cubeMesh3 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh3.castShadow = true;
-    cubeMesh3.receiveShadow = true;
-    scene.add(cubeMesh3);
+    const octahedronMesh3 = new THREE.Mesh(octahedronGeometry, octahedronMat);
+    octahedronMesh3.castShadow = true;
+    octahedronMesh3.receiveShadow = true;
+    scene.add(octahedronMesh3);
 
     // light
     const light = new THREE.DirectionalLight( 0xffffff, 1 );
@@ -194,14 +194,14 @@ function Inner() {
 
       world.fixedStep()
 
-      cubeMesh1.position.copy(cannonVec3ToThree(sphereBody1.position));
-      cubeMesh1.quaternion.copy(cannonQuaternionToThree(sphereBody1.quaternion));
+      octahedronMesh1.position.copy(cannonVec3ToThree(sphereBody1.position));
+      octahedronMesh1.quaternion.copy(cannonQuaternionToThree(sphereBody1.quaternion));
 
-      cubeMesh2.position.copy(cannonVec3ToThree(sphereBody2.position));
-      cubeMesh2.quaternion.copy(cannonQuaternionToThree(sphereBody2.quaternion));
+      octahedronMesh2.position.copy(cannonVec3ToThree(sphereBody2.position));
+      octahedronMesh2.quaternion.copy(cannonQuaternionToThree(sphereBody2.quaternion));
 
-      cubeMesh3.position.copy(cannonVec3ToThree(sphereBody3.position));
-      cubeMesh3.quaternion.copy(cannonQuaternionToThree(sphereBody3.quaternion));
+      octahedronMesh3.position.copy(cannonVec3ToThree(sphereBody3.position));
+      octahedronMesh3.quaternion.copy(cannonQuaternionToThree(sphereBody3.quaternion));
 
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));

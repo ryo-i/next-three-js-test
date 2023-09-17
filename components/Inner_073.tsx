@@ -107,7 +107,7 @@ function Inner() {
     groundMesh.position.y = -5;
     scene.add(groundMesh);
 
-    // Cube
+    // Sphere
     const geometry = new THREE.SphereGeometry(radius)
     const material = new THREE.MeshStandardMaterial({color: 0xFF0000});
     const sphereMesh = new THREE.Mesh(geometry, material)

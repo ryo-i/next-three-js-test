@@ -157,24 +157,24 @@ function Inner() {
     planeMesh.receiveShadow = true;
     scene.add(planeMesh);
 
-    // Cube
-    const cubeGgeometry = new THREE.SphereGeometry(radius);
-    const cubeMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
+    // Sphere
+    const sphereGgeometry = new THREE.SphereGeometry(radius);
+    const sphereMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
 
-    const cubeMesh1 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh1.castShadow = true;
-    cubeMesh1.receiveShadow = true;
-    scene.add(cubeMesh1);
+    const sphereMesh1 = new THREE.Mesh(sphereGgeometry, sphereMat);
+    sphereMesh1.castShadow = true;
+    sphereMesh1.receiveShadow = true;
+    scene.add(sphereMesh1);
 
-    const cubeMesh2 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh2.castShadow = true;
-    cubeMesh2.receiveShadow = true;
-    scene.add(cubeMesh2);
+    const sphereMesh2 = new THREE.Mesh(sphereGgeometry, sphereMat);
+    sphereMesh2.castShadow = true;
+    sphereMesh2.receiveShadow = true;
+    scene.add(sphereMesh2);
 
-    const cubeMesh3 = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh3.castShadow = true;
-    cubeMesh3.receiveShadow = true;
-    scene.add(cubeMesh3);
+    const sphereMesh3 = new THREE.Mesh(sphereGgeometry, sphereMat);
+    sphereMesh3.castShadow = true;
+    sphereMesh3.receiveShadow = true;
+    scene.add(sphereMesh3);
 
     // light
     const light = new THREE.DirectionalLight( 0xffffff, 1 );
@@ -193,14 +193,14 @@ function Inner() {
 
       world.fixedStep()
 
-      cubeMesh1.position.copy(cannonVec3ToThree(sphereBody1.position));
-      cubeMesh1.quaternion.copy(cannonQuaternionToThree(sphereBody1.quaternion));
+      sphereMesh1.position.copy(cannonVec3ToThree(sphereBody1.position));
+      sphereMesh1.quaternion.copy(cannonQuaternionToThree(sphereBody1.quaternion));
 
-      cubeMesh2.position.copy(cannonVec3ToThree(sphereBody2.position));
-      cubeMesh2.quaternion.copy(cannonQuaternionToThree(sphereBody2.quaternion));
+      sphereMesh2.position.copy(cannonVec3ToThree(sphereBody2.position));
+      sphereMesh2.quaternion.copy(cannonQuaternionToThree(sphereBody2.quaternion));
 
-      cubeMesh3.position.copy(cannonVec3ToThree(sphereBody3.position));
-      cubeMesh3.quaternion.copy(cannonQuaternionToThree(sphereBody3.quaternion));
+      sphereMesh3.position.copy(cannonVec3ToThree(sphereBody3.position));
+      sphereMesh3.quaternion.copy(cannonQuaternionToThree(sphereBody3.quaternion));
 
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));

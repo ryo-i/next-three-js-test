@@ -121,13 +121,13 @@ function Inner() {
     planeMesh.receiveShadow = true;
     scene.add(planeMesh);
 
-    // Cube
-    const cubeGgeometry = new THREE.SphereGeometry(radius);
-    const cubeMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
-    const cubeMesh = new THREE.Mesh(cubeGgeometry, cubeMat);
-    cubeMesh.castShadow = true;
-    cubeMesh.receiveShadow = true;
-    scene.add(cubeMesh);
+    // Sphere
+    const sphereGgeometry = new THREE.SphereGeometry(radius);
+    const sphereMat = new THREE.MeshStandardMaterial({color: 0xFF0000});
+    const sphereMesh = new THREE.Mesh(sphereGgeometry, sphereMat);
+    sphereMesh.castShadow = true;
+    sphereMesh.receiveShadow = true;
+    scene.add(sphereMesh);
 
     // light
     const light = new THREE.DirectionalLight( 0xffffff, 1 );
@@ -146,8 +146,8 @@ function Inner() {
 
       world.fixedStep()
 
-      cubeMesh.position.copy(cannonVec3ToThree(sphereBody.position));
-      cubeMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
+      sphereMesh.position.copy(cannonVec3ToThree(sphereBody.position));
+      sphereMesh.quaternion.copy(cannonQuaternionToThree(sphereBody.quaternion));
 
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));
