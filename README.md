@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-es-9: 床を傾けてみる(転がらない) [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-10: 8面体をキューブに変更(転がった！) [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 
