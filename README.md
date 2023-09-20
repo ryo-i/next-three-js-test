@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-es-11: velocityで落下の向きを変更 [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-12: 減衰率(angularDamping) [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

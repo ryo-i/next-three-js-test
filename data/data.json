@@ -487,8 +487,14 @@
         },
         "test080": {
             "id": "080",
-            "title": "cannon-es-11: velocityで落下の向きを変更",
+            "title": "cannon-es-11: 角速度(velocity)",
             "text": "",
+            "blog": ""
+        },
+        "test081": {
+            "id": "081",
+            "title": "cannon-es-12: 減衰率(angularDamping)",
+            "text": "数値が少ないほどよく跳ねた",
             "blog": ""
         }
     },
