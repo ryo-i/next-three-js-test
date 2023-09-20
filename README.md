@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-es-10: 8面体をキューブに変更(転がった！) [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-11: velocityで落下の向きを変更 [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

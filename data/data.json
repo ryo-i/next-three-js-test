@@ -484,6 +484,12 @@
             "title": "cannon-es-10: 8面体をキューブに変更(転がった！)",
             "text": "OctahedronGeometryをBoxGeometryに変更し、Cannon.Boxを設定",
             "blog": ""
+        },
+        "test080": {
+            "id": "080",
+            "title": "cannon-es-11: velocityで落下の向きを変更",
+            "text": "",
+            "blog": ""
         }
     },
     "footer": {

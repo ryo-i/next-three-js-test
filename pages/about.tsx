@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>cannon-es-10: 8面体をキューブに変更(転がった！) <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>cannon-es-11: velocityで落下の向きを変更 <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
