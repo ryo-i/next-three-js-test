@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>cannon-es-12: 減衰率(angularDamping) <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>cannon-es-13: 摩擦係数(friction) <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
