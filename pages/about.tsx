@@ -58,7 +58,7 @@ function About() {
             <section>
                 <h2>進捗</h2>
                 <ul>
-                    <li>cannon-es-13: 摩擦係数(friction) <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
+                    <li>cannon-es-14: 複数の球をランダムな位置から落とす <a href="https://github.com/ryo-i/next-app-started/issues/14">#14</a></li>
                 </ul>
             </section>
             <section>
