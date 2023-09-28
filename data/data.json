@@ -508,6 +508,12 @@
             "title": "cannon-es-14: 複数の球をランダムな位置から落とす",
             "text": "",
             "blog": ""
+        },
+        "test084": {
+            "id": "084",
+            "title": "cannon-es-15: 同じ高さの球を時間差で落とす",
+            "text": "async/awaitとsetTimeouteを使う",
+            "blog": ""
         }
     },
     "footer": {
