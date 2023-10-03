@@ -8,7 +8,7 @@ Next.js環境でthree.jsが動くかテスト
 
 ## 進捗（コミット）
 
-- cannon-es-15: 同じ高さの球を時間差で落とす [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
+- cannon-es-16: ボタンを押すと球が落ちる [#14](https://github.com/ryo-i/next-three-js-test/issues/14)
 
 ## 詳細（ブログ）
 

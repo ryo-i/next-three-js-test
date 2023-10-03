@@ -66,7 +66,7 @@ function Inner() {
     const cannonshape = new CANNON.Sphere(size);
 
     // Create a Cannon body
-    const cannoBodies = [];
+    const cannonBodies = [];
     const cannonMaterials = [];
     const objectLength = 30;
     const weitTime = 300;
@@ -90,7 +90,7 @@ function Inner() {
         cannonBody.angularDamping = 0.3; //減衰率
 
         world.addBody(cannonBody);
-        cannoBodies.push(cannonBody);
+        cannonBodies.push(cannonBody);
         cannonMaterials.push(cannonMaterial);
 
         await new Promise(resolve => setTimeout(resolve, weitTime));
@@ -161,7 +161,7 @@ function Inner() {
     // Object
     const threeGeometry = new THREE.SphereGeometry(size);
     const threeMaterial = new THREE.MeshStandardMaterial({color: 0xFF0000});
-    const threeMeshs = [];
+    const threeMeshes = [];
 
     async function addThreeMesh() {
       for (let i = 0; i < objectLength; i++) {
@@ -169,7 +169,7 @@ function Inner() {
         threeMesh.castShadow = true;
         threeMesh.receiveShadow = true;
         scene.add(threeMesh);
-        threeMeshs.push(threeMesh);
+        threeMeshes.push(threeMesh);
 
         await new Promise(resolve => setTimeout(resolve, weitTime));
       }
@@ -188,10 +188,10 @@ function Inner() {
     // light.shadow.radius = 10;
     scene.add( light );
 
-    async function addCannoBodies() {
+    async function addcannonBodies() {
       for (let i = 0; i < objectLength; i++) {
-        threeMeshs[i].position.copy(cannonVec3ToThree(cannoBodies[i].position));
-        threeMeshs[i].quaternion.copy(cannonQuaternionToThree(cannoBodies[i].quaternion));
+        threeMeshes[i].position.copy(cannonVec3ToThree(cannonBodies[i].position));
+        threeMeshes[i].quaternion.copy(cannonQuaternionToThree(cannonBodies[i].quaternion));
 
         // 1秒待つ
         await new Promise(resolve => setTimeout(resolve, weitTime));
@@ -203,7 +203,7 @@ function Inner() {
       requestAnimationFrame( animate );
 
       world.fixedStep();
-      addCannoBodies();
+      addcannonBodies();
       planeMesh.position.copy(cannonVec3ToThree(groundBody.position));
       planeMesh.quaternion.copy(cannonQuaternionToThree(groundBody.quaternion));
 
