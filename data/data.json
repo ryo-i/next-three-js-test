@@ -520,6 +520,12 @@
             "title": "cannon-es-16: ボタンを押すと球が落ちる",
             "text": "",
             "blog": ""
+        },
+        "test086": {
+            "id": "086",
+            "title": "cannon-es-17: 衝突時にでconsole表示(beginContact)",
+            "text": "bodyBが奇数の場合のみ（beginContactイベントが1度に2回実行されたため）",
+            "blog": ""
         }
     },
     "footer": {

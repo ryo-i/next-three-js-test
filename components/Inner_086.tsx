@@ -150,8 +150,6 @@ function Inner() {
     });
     world.addContactMaterial(mat_ground);
 
-    console.log('world', world);
-
     const addObject = () => {
        // Create a Cannon body
       const cannonBody = new CANNON.Body({
@@ -186,6 +184,21 @@ function Inner() {
       meshArray.push(threeMesh);
       setThreeMeshes(meshArray);
     };
+
+    world.addEventListener('beginContact', (event) => {
+      const { bodyA, bodyB } = event;
+      // console.log('bodyA.id', bodyA.id);
+      // console.log('bodyB.id', bodyB.id);
+
+      // if (bodyA.id % 2 === 0 ) { // bodyAが偶数
+      // if (bodyA.id % 2 !== 0 ) { // bodyAが奇数
+      // if (bodyB.id % 2 === 0 ) { // bodyBが偶数
+      if (bodyB.id % 2 !== 0 ) { // bodyBが奇数
+        // console.log('bodyA', bodyA.id);
+        console.log('bodyB.id', bodyB.id);
+      }
+    })
+
 
     const addBtn = document.querySelector('.addBtn');
     addBtn.addEventListener('click', addObject);
